@@ -34,6 +34,37 @@
   			font-size: 18px;
             color: black;
 		}
+
+        body {
+            background-color: #c5e8ed;
+            background-image: url('../contact.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        .contact-icons {
+            display: flex; /* Use flexbox for horizontal layout */
+            justify-content: center; /* Center items horizontally */
+            margin: 50px;
+    }
+        .icon-button {
+            display: flex; /* Use flexbox for vertical centering */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Center items horizontally */
+            margin: 0 50px;
+            cursor: pointer;
+            width: 100px; /* Adjust this value to set the width of the icon container */
+            height: 100px; /* Adjust this value to set the height of the icon container */
+        }
+        .icon-image {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
     </style>
     
     <body style="background-color:#c5e8ed;">
@@ -41,6 +72,29 @@
         <br>
         <p style="text-align:right; padding-right: 30;"><a href="../index.html">&lt;&lt; Back</a></div></p>
         <br>
-        <h1>OMG a new section!!!!</h1>
+        <h1>How to Contact Me</h1>
+        <br>
+        <ul style="text-align:center" class="contact-icons">
+            <!-- Email Icon -->
+            <a class="icon-button" href="mailto:kaylenemareetherese@gmail.com?subject=WebsiteContact" target="_blank">
+                <img class="icon-image" src="../e-mail-icon.png" alt="Email">
+            </a>
+
+            <!-- Instagram Icon -->
+            <a class="icon-button" href="https://www.instagram.com/bearynatural.khowe/" target="_blank">
+                <img class="icon-image" src="../instagram-logo.png" alt="Instagram">
+            </a>
+
+            <!-- LinkedIn Icon -->
+            <a class="icon-button" href="https://www.linkedin.com/in/kaylene-h-59044264" target="_blank">
+                <img class="icon-image" src="../Linkedin-logo-png.png" alt="LinkedIn">
+            </a>
+
+            <!-- Github Icon -->
+            <a class="icon-button" href="https://github.com/BearyNatural" target="_blank">
+                <img class="icon-image" src="../GitHub-Mark.png" alt="Github">
+            </a>
+        </ul>
+
     </body>
 </html>
