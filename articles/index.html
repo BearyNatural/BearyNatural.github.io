@@ -1,40 +1,12 @@
 <!DOCTYPE html>
-<html>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-    <head> 
-    	<title>Kaylene's website!</title>
-	</head>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaylene's Website!</title>
     <style>
-        
-        a {
-            font-size: 15px;
-            font-family: Sans-Serif;
-            text-decoration: none;
-            color: black;
-            display: block;
-        }
-        h1 {
-            text-align: center;
-            font-size: 32px;
-            font-weight: 600;
-            padding-top: 10px;
-            color: black;
-        }
-		h2 {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 600;
-            padding-bottom: 10px;
-            color: black;
-        }
-        p {
- 			font-family: Sans-Serif;
-  			font-size: 18px;
-            color: black;
-		}
         body {
+            font-family: Sans-Serif;
             background-color: #c5e8ed;
             background-image: url('../Single-Sunflower-Transparent-Images.png');
             background-repeat: no-repeat;
@@ -43,15 +15,130 @@
             height: 100%;
             margin: 0;
             padding: 0;
+            display: flex;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+        .sidebar {
+            width: 60px;
+            height: 60px;
+            transition: width 0.3s, height 0.3s;
+            background: #c5e8ed;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            overflow: hidden;
+            top: 0;
+        }
+        .sidebar:hover {
+            width: 300px;
+            height: 100%;
+        }
+        .sidebar .icon {
+            width: 100px;
+            height: auto;
+            display: flex;
+            justify-content: left;
+            align-items: right;
+        }
+        .sidebar .icon img {
+            max-width: 100px;
+            max-height: auto;
+        }
+        .sidebar .content {
+            display: none;
+            padding: 20px;
+        }
+        .sidebar:hover .content {
+            display: block;
+        }
+        .main-content {
+            margin-left: 60px;
+            width: calc(100% - 60px);
+            padding: 20px;
+            transition: margin-left 0.3s, width 0.3s;
+        }
+        .sidebar:hover ~ .main-content {
+            margin-left: 300px;
+            width: calc(100% - 300px);
+        }
+        a {
+            font-size: 15px;
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 10px 0;
+        }
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 600;
+            padding-top: 10px;
+            color: black;
+        }
+        h2 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            padding-bottom: 10px;
+            color: black;
+        }
+        p {
+            font-size: 18px;
+            color: black;
+        }
+        .footer {
+            text-align: right;
+            padding-right: 30px;
+            margin-top: 20px;
+        }
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="icon">
+            <img src="../bee.png" alt="Search">
+        </div>
+        <div class="content">
+            <input type="text" id="searchBar" class="search-bar" placeholder="Search articles...">
+            <a href="20240603.html">Benefits of CI/CD</a>
+            <a href="#" onclick="showContent('Article 2')">Article 2</a>
+            <a href="#" onclick="showContent('Article 3')">Article 3</a>
+        </div>
+    </div>
+    <div class="main-content">
+        <h1 id="mainTitle">OMG a new section!!!!</h1>
+        <h2 id="mainContent">This section is still under construction.</h2>
+    </div>
+    <div class="footer">
+        <a href="../index.html">&lt;&lt; Back</a>
+    </div>
+
+    <script>
+        function showContent(article) {
+            document.getElementById('mainTitle').innerText = article;
+            document.getElementById('mainContent').innerText = 'This section is still under construction.';
         }
 
-    </style>
-    
-    <body style="background-color:#c5e8ed;">
-
-        <br>
-        <p style="text-align:right; padding-right: 30;"><a href="../index.html">&lt;&lt; Back</a></div></p>
-        <br>
-        <h1>OMG a new section!!!!</h1>
-    </body>
+        document.getElementById('searchBar').addEventListener('input', function() {
+            let filter = this.value.toLowerCase();
+            let articles = document.querySelectorAll('.sidebar .content a');
+            articles.forEach(function(article) {
+                if (article.textContent.toLowerCase().includes(filter)) {
+                    article.style.display = '';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
 </html>
