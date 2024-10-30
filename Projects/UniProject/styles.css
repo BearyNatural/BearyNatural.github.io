@@ -65,7 +65,7 @@ p {
     left: 50%;
     transform: translate(-50%,-150%) scale(0);
     width: 400px;
-    height: 600px;
+    height: 700px;
     z-index: 2;
     text-align: center;
     padding: 10px;
