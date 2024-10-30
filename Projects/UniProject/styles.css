@@ -63,7 +63,7 @@ p {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-150%) scale(0);
+    transform: translate(-50%,-50%) scale(0);
     width: 400px;
     height: 800px;
     z-index: 2;
