@@ -1,17 +1,30 @@
+/* Updated styles from the HTML file */
+h1 {
+    text-align: center;
+    font-size: 64px;
+    font-weight: 1200;
+    padding-top: 10px;
+    color: black;
+}
+
+body {
+    background-color: #c5e8ed;
+    background-image: url('404.jpg'); /* This will override previous body styles if needed */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Existing styles */
 a {
     font-size: 15px;
     font-family: sans-serif;
     text-decoration: none;
     color: black;
     display: block;
-}
-
-h1 {
-    text-align: center;
-    font-size: 32px;
-    font-weight: 600;
-    padding-top: 10px;
-    color: black;
 }
 
 h2 {
@@ -73,17 +86,6 @@ p2 {
     background-color: inherit;
     font-family: inherit;
     margin: 0;
-}
-
-body {
-    background-color: #c5e8ed;
-    background-image: url('images.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100%;
-    margin: 0;
-    padding: 0;
 }
 
 li {
