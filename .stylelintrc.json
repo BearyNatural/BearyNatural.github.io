@@ -4,6 +4,6 @@
     "stylelint-scss"
   ],
   "rules": {
-    "indentation": 2
+    "indentation": null
   }
 }
