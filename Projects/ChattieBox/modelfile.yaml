@@ -1,0 +1,20 @@
+# Base model to use
+FROM llama2:latest
+
+# Define the prompt template
+TEMPLATE "[INST] <<SYS>>{{ .System }}<</SYS>>\n\n{{ .Prompt }} [/INST]"
+
+# Define parameters for text generation
+PARAMETER stop [INST]
+PARAMETER stop [/INST]
+PARAMETER stop <<SYS>>
+PARAMETER stop <</SYS>>
+
+# System message or initial instructions for the model
+SYSTEM "You are an intelligent assistant that helps answer questions in a clear and concise manner."
+
+# License information for using the model
+LICENSE """
+# Llama 2 Community License Agreement
+Llama 2 is licensed under the LLAMA 2 Community License. For more details, visit the official license page.
+"""

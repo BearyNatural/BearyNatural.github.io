@@ -1,204 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Confirmation Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-    <style>
-        a {
-            font-size: 15px;
-            font-family: Sans-Serif;
-            text-decoration: none;
-            color: black;
-            display: block;
-        }
-        h1 {
-            text-align: center;
-            font-size: 32px;
-            font-weight: 600;
-            padding-top: 10px;
-            color: black;
-        }
-		h2 {
-            text-align: center;
-            font-size: 32px;
-            font-weight: 600;
-            padding-bottom: 10px;
-            color: black;
-        }
-        p {
- 			font-family: Sans-Serif;
-  			font-size: 10px;
-            color: black;
-		}
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            font-family: Sans-Serif;
-            font-size: 10px;
-            color: grey;
-            text-align: center;
-        } 
-        /* Popup container */
-        .popup-form {
-            position: relative;
-            display: inline-block;
-			overflow: auto;
-            transition: box-shadow .35s ease !important;  
-            cursor: pointer;  
-        }
-        .popup-form:active {
-            background-color: #c5e8ed;
-            color: black;
-        }
-        /* Popup content */
-        .popup .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-150%) scale(0);
-            width: 400px;
-            height: 600px;
-            z-index: 2;
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            background: #FAE033;
-            z-index: 1;
-        }
-        .popup.active .content {
-            transition: all 300ms ease-in-out;
-            transform: translate(-50%,-50%) scale(1);
-        }
-        .popup .close-btn {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            width: 20px;
-            height: 20px;
-            color: white;
-            font-size: 20px;
-            border-radius: 50%;
-            padding: 2px 5px 7px 5px;
-            background: #237be6;
-            cursor: pointer; 
-        } 
-        body {
-                background-color: #c5e8ed;
-                background-image: url('sunflowers.png');
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-attachment: fixed;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-        }
-    </style>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    	<title>Confirmation Page</title>
-	</head>
- 
-    
-    <body>
-        <br>
-        <p style="text-align:right; padding-right: 30;"><a href="shop.html">&lt;&lt; Back</a></p>
-        <br>
-        <table border=0 width=90% height=20% align=center cellspacing="1" cellpadding="5" sytle="font-weight: bold; color: #FFFFFF;">
-            <tr>
-                <th colspan=3><h1> Prioritising what counts! </h1></th>
-            </tr>
-            <tr>
-                <td width=20% align=center></td>
-                <td width=20% align=center style="font-family: Sans-Serif; font-size: 20; font-weight: bold; color: black;">  </td>
-                <td width=20% align=center></td>
-            </tr>
-            <tr>
-                <th colspan=3 height=120% align=center style="font-family: Sans-Serif; font-size: 50; font-weight: bold;" id="message"></th>
-            </tr>
-        </table>
-        <br>
-        <br>
-        <br>
-        <table border=0 cellspacing=5 cellpadding=5 align=center width=65%>
-            <tr>
-                <td colspan=4></td>
-            </tr>
-            <tr>
-                <td align=center>
-                <a href="imagelink" id="imagelink" target="_blank" ><img id="image" alt="" style="display: block; margin: 0 auto;"></a></td>
-            </tr>
-        </table>
+<body>
+    <br>
+    <p style="text-align:right; padding-right: 30px;"><a href="shop.html">&lt;&lt; Back</a></p>
+    <br>
+    <table border="0" width="90%" height="20%" align="center" cellspacing="1" cellpadding="5">
+        <tr>
+            <th colspan="3"><h1>Prioritising what counts!</h1></th>
+        </tr>
+        <tr>
+            <td width="20%" align="center"></td>
+            <td width="20%" align="center" style="font-family: Sans-Serif; font-size: 20; font-weight: bold; color: black;"></td>
+            <td width="20%" align="center"></td>
+        </tr>
+        <tr>
+            <th colspan="3" height="120%" align="center" style="font-family: Sans-Serif; font-size: 50; font-weight: bold;" id="message"></th>
+        </tr>
+    </table>
+    <br><br><br>
+    <table border="0" cellspacing="5" cellpadding="5" align="center" width="65%">
+        <tr>
+            <td colspan="4"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <a href="imagelink" id="imagelink" target="_blank">
+                    <img id="image" alt="" style="display: block; margin: 0 auto;">
+                </a>
+            </td>
+        </tr>
+    </table>
 
-    <script>
-        var urlParams = new URLSearchParams(window.location.search);
-        var fname = urlParams.get('fname');
-        var sname = urlParams.get('sname');
-        var Regularity = urlParams.get('Regularity');
-        var Hours = urlParams.get('Hours');
-        var choice = urlParams.get('organisation');
-        console.log('organisation: ' + choice)
-
-        var message = `Thank you ${fname} ${sname} for volunteering your time ${Regularity} for ${Hours} hours!`;
-
-        document.getElementById('message').innerHTML = message;
-
-        var images = [
-			{
-            alt: "The Little Kings Movement",
-			src: "LKM.png",
-			href: "http://thelittlekingsmovement.org.au/index.php/volunteer-2/"},
-			{
-			alt: "YWCA Australia", 
-			src: "YWCA.png", 
-			href: "https://www.ywca.org.au/volunteer/"},
-			{
-			alt: "DV Connect", 
-			src: "DVC.png", 
-			href: "https://www.dvconnect.org/womensline/help-for-others/"},
-			{
-			alt: "Womens Community Shelters", 
-			src: "WCS.png", 
-			href: "https://www.womenscommunityshelters.org.au/"},
-			{
-			alt: "Australian Red Cross", 
-			src: "ARC.png", 
-			href: "https://www.redcross.org.au/volunteer/"},
-			{
-			alt: "The Smith Family", 
-			src: "TSF.png", 
-			href: "https://www.thesmithfamily.com.au/get-involved/volunteer"},
-			{
-			alt: "Go Volunteer", 
-			src: "GoVolunteer.png", 
-			href: "https://govolunteer.com.au/"},
-			{
-			alt: "Meals on Wheels Australia", 
-			src: "MoW.png", 
-			href: "https://mealsonwheels.org.au/get-involved/volunteer/"},
-		]
-        console.log('entering for loop')
-        for (var org of images) {
-            console.log('org.alt: ' + org.alt)
-            if (org.alt == choice) {
-                console.log('inside if statement')
-                var img = document.getElementById('image');
-                img.src = org.src;
-                var imlink = document.getElementById('imagelink');
-                imlink.href = org.href
-                break;
-            }
-        }
-        console.log('outside for loop')   
-    </script>
-</body> 
-           
+    <script src="script.js"></script>
+</body>
 
 <!-- BEGIN Client Footer -->
 <div class="footer">    
-    <br>
-    <br>
-    <br>
-    <p style="font-size: 10px; padding-left: 310; padding-right: 30;";><strong>Disclaimer:</strong>This website is for educational purposes only. We do not guarantee the accuracy or completeness of the information presented, and any reliance you place on it is at your own risk. We do not accept any responsibility or liability for any loss or damage that may arise from your use of this website or the information presented on it. The opinions expressed on this website are those of the author(s) and do not necessarily reflect the views of the university or any affiliated organization. We reserve the right to modify or update the content of this website at any time without prior notice.</p>
+    <br><br><br>
+    <p style="font-size: 10px; padding-left: 310px; padding-right: 30px;">
+        <strong>Disclaimer:</strong> This website is for educational purposes only. We do not guarantee the accuracy or completeness of the information presented, and any reliance you place on it is at your own risk. We do not accept any responsibility or liability for any loss or damage that may arise from your use of this website or the information presented on it. The opinions expressed on this website are those of the author(s) and do not necessarily reflect the views of the university or any affiliated organization. We reserve the right to modify or update the content of this website at any time without prior notice.
+    </p>
 </div>
 <!-- END Client Footer -->
 

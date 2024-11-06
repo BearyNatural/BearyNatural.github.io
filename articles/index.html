@@ -1,144 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaylene's Website!</title>
-    <style>
-        body {
-            font-family: Sans-Serif;
-            background-color: #c5e8ed;
-            background-image: url('../Single-Sunflower-Transparent-Images.png');
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        .container {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-        }
-        .sidebar {
-            width: 60px;
-            height: 60px;
-            transition: width 0.3s, height 0.3s;
-            background: #c5e8ed;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            overflow: hidden;
-            top: 0;
-        }
-        .sidebar:hover {
-            width: 300px;
-            height: 100%;
-        }
-        .sidebar .icon {
-            width: 100px;
-            height: auto;
-            display: flex;
-            justify-content: left;
-            align-items: right;
-        }
-        .sidebar .icon img {
-            max-width: 100px;
-            max-height: auto;
-        }
-        .sidebar .content {
-            display: none;
-            padding: 20px;
-        }
-        .sidebar:hover .content {
-            display: block;
-        }
-        .main-content {
-            margin-left: 60px;
-            width: calc(100% - 60px);
-            padding: 20px;
-            transition: margin-left 0.3s, width 0.3s;
-        }
-        .sidebar:hover ~ .main-content {
-            margin-left: 300px;
-            width: calc(100% - 300px);
-        }
-        a {
-            font-size: 15px;
-            text-decoration: none;
-            color: black;
-            display: block;
-            padding: 10px 0;
-        }
-        h1 {
-            text-align: center;
-            font-size: 32px;
-            font-weight: 600;
-            padding-top: 10px;
-            color: black;
-        }
-        h2 {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 600;
-            padding-bottom: 10px;
-            color: black;
-        }
-        p {
-            font-size: 18px;
-            color: black;
-        }
-        .footer {
-            text-align: right;
-            padding-right: 30px;
-            margin-top: 20px;
-        }
-        .search-bar {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-    </style>
+    <title>Benefits of CI/CD</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="sidebar">
-        <div class="icon">
-            <img src="../bee.png" alt="Search">
-        </div>
-        <div class="content">
-            <input type="text" id="searchBar" class="search-bar" placeholder="Search articles...">
-            <a href="20240603.html">Benefits of CI/CD</a>
-            <a href="#" onclick="showContent('Article 2')">Article 2</a>
-            <a href="#" onclick="showContent('Article 3')">Article 3</a>
-        </div>
-    </div>
-    <div class="main-content">
-        <h1 id="mainTitle">OMG a new section!!!!</h1>
-        <h2 id="mainContent">This section is still under construction.</h2>
-    </div>
-    <div class="footer">
-        <a href="../index.html">&lt;&lt; Back</a>
-    </div>
+    <div class="container">
+        <h1>Benefits of CI/CD</h1>
+        <p>Continuous Integration and Continuous Deployment (CI/CD) are essential practices for modern software development, offering numerous advantages that enhance productivity, code quality, and collaboration. By automating the build, test, and deployment processes, CI/CD enables development teams to focus more on coding and less on repetitive tasks.</p>
+        
+        <h2>Increased Productivity</h2>
+        <ul>
+            <li><strong>Automation of Repetitive Tasks:</strong> CI/CD pipelines handle building, testing, and deploying applications, saving time and reducing human error.</li>
+            <li><strong>Faster Feedback Loop:</strong> Automated tests provide immediate feedback, allowing developers to address issues quickly and accelerate development cycles.</li>
+        </ul>
 
-    <script>
-        function showContent(article) {
-            document.getElementById('mainTitle').innerText = article;
-            document.getElementById('mainContent').innerText = 'This section is still under construction.';
-        }
+        <h2>Improved Code Quality</h2>
+        <ul>
+            <li><strong>Consistent Testing:</strong> Automated tests run with every code change, ensuring application stability and functionality.</li>
+            <li><strong>Early Bug Detection:</strong> CI/CD pipelines catch bugs early, reducing the time and cost of fixes.</li>
+        </ul>
 
-        document.getElementById('searchBar').addEventListener('input', function() {
-            let filter = this.value.toLowerCase();
-            let articles = document.querySelectorAll('.sidebar .content a');
-            articles.forEach(function(article) {
-                if (article.textContent.toLowerCase().includes(filter)) {
-                    article.style.display = '';
-                } else {
-                    article.style.display = 'none';
-                }
-            });
-        });
-    </script>
+        <h2>Enhanced Collaboration</h2>
+        <ul>
+            <li><strong>Unified Codebase:</strong> Frequent merges promote collaboration and reduce integration conflicts.</li>
+            <li><strong>Transparency:</strong> CI/CD pipelines provide a clear view of the build, test, and deployment process, aiding team communication.</li>
+        </ul>
+
+        <h2>Faster Time to Market</h2>
+        <ul>
+            <li><strong>Rapid Releases:</strong> CI/CD enables quick and reliable releases of new features and updates, responding faster to market demands.</li>
+            <li><strong>Competitive Advantage:</strong> Continuous delivery of new and improved products keeps organizations ahead of competitors.</li>
+        </ul>
+
+        <h2>Reduced Risk</h2>
+        <ul>
+            <li><strong>Safe Deployments:</strong> Only code that passes all tests is deployed, minimizing the risk of deploying unstable code.</li>
+            <li><strong>Rollback Mechanisms:</strong> CI/CD systems can quickly roll back to a previous stable version in case of failure, reducing downtime.</li>
+        </ul>
+
+        <div class="footer">
+            <p>Embrace CI/CD to let the machines handle the repetitive tasks, freeing the engineers to innovate and create.</p>
+        </div>
+        <div class="footer2">
+            <a href="index.html">&lt;&lt; Back</a>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
 </body>
 </html>

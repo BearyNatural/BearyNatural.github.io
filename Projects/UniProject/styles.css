@@ -1,0 +1,138 @@
+a {
+    font-size: 15px;
+    font-family: Sans-Serif;
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    padding-top: 10px;
+    color: black;
+}
+
+h2 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    color: black;
+}
+
+p {
+    font-family: Sans-Serif;
+    font-size: 10px;
+    color: black;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-family: Sans-Serif;
+    font-size: 10px;
+    color: grey;
+    text-align: center;
+}
+
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+/* Popup container */
+.popup-form {
+    position: relative;
+    display: inline-block;
+    overflow: auto;
+    transition: box-shadow .35s ease !important;  
+    cursor: pointer;  
+}
+
+.popup-form:active {
+    background-color: #c5e8ed;
+    color: black;
+}
+
+/* Popup content */
+.popup .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    width: 400px;
+    height: 800px;
+    z-index: 2;
+    text-align: center;
+    padding: 15px;
+    border-radius: 5px;
+    background: #FAE033;
+    z-index: 1;
+}
+
+.popup.active .content {
+    transition: all 300ms ease-in-out;
+    transform: translate(-50%,-50%) scale(1);
+}
+
+.popup .close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 20px;
+    height: 20px;
+    color: white;
+    font-size: 20px;
+    border-radius: 50%;
+    padding: 2px 5px 7px 5px;
+    background: #237be6;
+    cursor: pointer; 
+}
+
+body {
+    background-color: #c5e8ed;
+    background-image: url('sunflowers.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.input-field .validate {
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 15px;
+    color: #000000;
+    background: #ffffff;
+    border: 2px solid rgb(214, 214, 214);
+    width: 270px;
+    outline: none;
+}
+
+.second-button {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    padding: 15px 40px;
+    border-radius: 5px;
+    border: none;
+    background: #05438f;
+    transition: box-shadow .35s ease !important;
+    outline: none;
+    cursor: pointer;        
+}
+
+.second-button:active {
+    background: linear-gradient(145deg, #222222, #292929);
+    border: none;
+    outline: none;
+}

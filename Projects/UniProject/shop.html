@@ -1,220 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Shop Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
 
-    <style>
-        a {
-            font-size: 15px;
-            font-family: Sans-Serif;
-            text-decoration: none;
-            color: black;
-            display: block;
-        }
-        h1 {
-            text-align: center;
-            font-size: 32px;
-            font-weight: 600;
-            padding-top: 10px;
-            color: black;
-        }
-		h2 {
-            text-align: center;
-            font-size: 32px;
-            font-weight: 600;
-            padding-bottom: 10px;
-            color: black;
-        }
-        p {
- 			font-family: Sans-Serif;
-  			font-size: 10px;
-            color: black;
-		}
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            font-family: Sans-Serif;
-            font-size: 10px;
-            color: grey;
-            text-align: center;
-        } 
-        /* Popup container */
-        .popup-form {
-            position: relative;
-            display: inline-block;
-			overflow: auto;
-            transition: box-shadow .35s ease !important;  
-            cursor: pointer;  
-        }
-        .popup-form:active {
-            background-color: #c5e8ed;
-            color: black;
-        }
-        /* Popup content */
-        .popup .content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-150%) scale(0);
-            width: 400px;
-            height: 600px;
-            z-index: 2;
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            background: #FAE033;
-            z-index: 1;
-        }
-        .popup.active .content {
-            transition: all 300ms ease-in-out;
-            transform: translate(-50%,-50%) scale(1);
-        }
-        .popup .close-btn {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            width: 20px;
-            height: 20px;
-            color: white;
-            font-size: 20px;
-            border-radius: 50%;
-            padding: 2px 5px 7px 5px;
-            background: #237be6;
-            cursor: pointer; 
-        } 
-        body {
-                background-color: #c5e8ed;
-                background-image: url('sunflowers.png');
-                background-repeat: no-repeat;
-                background-size: cover;
-                background-attachment: fixed;
-                height: 100%;
-                margin: 0;
-                padding: 0;
-        }
-    </style>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    	<title>Shop Page</title>
-	</head>
- 
-    
-    <body>
-        <br>
-        <p style="text-align:right; padding-right: 30;"><a href="index.html">&lt;&lt; Back</a></p>
-        <br>
-        <table border=0 width=90% height=20% align=center cellspacing="1" cellpadding="5" sytle="font-weight: bold; color: #FFFFFF;">
-            <tr>
-                <th colspan=3><h1> Prioritising what counts! </h1></th>
-            </tr>
-            <tr>
-                <td width=20% align=center></td>
-                <td width=20% align=center style="font-family: Sans-Serif; font-size: 20; font-weight: bold; color: black;">  </td>
-                <td width=20% align=center></td>
-            </tr>
-            <tr>
-                <td colspan=3 height=80% align=center><em>Where would you like to volunteer your time?</em></td>
-            </tr>
-        </table>
-        <table border=0 cellspacing=5 cellpadding=5 align=center width=65%>
-            <tr>
-                <td colspan=4></td>
-            </tr>
-            <tr align=center>
-                <td onMouseOver="this.style.cursor='pointer'; title='The Little Kings Movement. Brightening up the lives of people with disabilities.'" name=title onclick="togglePopup('The Little Kings Movement')"><img src=LKM.png alt="The Little Kings Movement" width=100%></td>
-                <td onMouseOver="this.style.cursor='pointer'; title='YWCA Australia'" name=title onclick="togglePopup('YWCA Australia')"><img src=YWCA.png alt="YWCA Australia" width=60%></td>
-                <td onMouseOver="this.style.cursor='pointer'; title='DV Connect. Be heard. Be safe.'" name=title onclick="togglePopup('DV Connect')"><img src=DVC.png alt="DV Connect" width=90%></td>
-                <td onMouseOver="this.style.cursor='pointer'; title='Womens Community Shelters. Safe. Secure. Supported. Equal.'" name=title onclick="togglePopup('Womens Community Shelters')"><img src=WCS.png alt="Womens Community Shelters" width=60%></td>
-            </tr>
-            <tr align=center>
-                <td onMouseOver="this.style.cursor='pointer'; title='Australian Red Cross. The Power of Humanity.'" name=title onclick="togglePopup('Australian Red Cross')"><img src=ARC.png alt="Australian Red Cross" width=80%></td>
-                <td onMouseOver="this.style.cursor='pointer'; title='The Smith Family. Learn today, change tomorrow.'" name=title onclick="togglePopup('The Smith Family')"><img src=TSF.png alt="The Smith Family" width=70%></td>
-                <td onMouseOver="this.style.cursor='pointer'; title='Go Volunteer'" name=title onclick="togglePopup('Go Volunteer')"><img src=GoVolunteer.png alt="GoVolunteer" width=110%></td>
-                <td onMouseOver="this.style.cursor='pointer'; title='Meals on Wheels Australia'" name=title onclick="togglePopup('Meals on Wheels Australia')"><img src=MoW.png alt="Meals on Wheels Australia" width=80%></td>
-            </tr>
-        </table>
+<body>
+    <br>
+    <p style="text-align:right; padding-right: 30px;"><a href="index.html">&lt;&lt; Back</a></p>
+    <br>
+    <table border="0" width="90%" height="20%" align="center" cellspacing="1" cellpadding="5">
+        <tr>
+            <th colspan="3"><h1>Prioritising what counts!</h1></th>
+        </tr>
+        <tr>
+            <td width="20%" align="center"></td>
+            <td width="20%" align="center" style="font-family: Sans-Serif; font-size: 20; font-weight: bold; color: black;"></td>
+            <td width="20%" align="center"></td>
+        </tr>
+        <tr>
+            <td colspan="3" height="80%" align="center"><em>Where would you like to volunteer your time?</em></td>
+        </tr>
+    </table>
+    <table border="0" cellspacing="5" cellpadding="5" align="center" width="65%">
+        <tr>
+            <td colspan="4"></td>
+        </tr>
+        <tr align="center">
+            <td onclick="togglePopup('The Little Kings Movement')"><img src="LKM.png" alt="The Little Kings Movement" width="100%"></td>
+            <td onclick="togglePopup('YWCA Australia')"><img src="YWCA.png" alt="YWCA Australia" width="60%"></td>
+            <td onclick="togglePopup('DV Connect')"><img src="DVC.png" alt="DV Connect" width="90%"></td>
+            <td onclick="togglePopup('Womens Community Shelters')"><img src="WCS.png" alt="Womens Community Shelters" width="60%"></td>
+        </tr>
+        <tr align="center">
+            <td onclick="togglePopup('Australian Red Cross')"><img src="ARC.png" alt="Australian Red Cross" width="80%"></td>
+            <td onclick="togglePopup('The Smith Family')"><img src="TSF.png" alt="The Smith Family" width="70%"></td>
+            <td onclick="togglePopup('Go Volunteer')"><img src="GoVolunteer.png" alt="GoVolunteer" width="110%"></td>
+            <td onclick="togglePopup('Meals on Wheels Australia')"><img src="MoW.png" alt="Meals on Wheels Australia" width="80%"></td>
+        </tr>
+    </table>
 
-    <!--Form 1-->
-        <div class="popup" id="popup">
-            <div class="content" id="popup">
-                <div class="close-btn" onclick="togglePopup()">×</div>
-                    <h1>Volunteering your time!</h1>
-                    <h2 id="popupTitle"></h2>
+    <!-- Form 1 -->
+    <div class="popup" id="popup">
+        <div class="content" id="popup">
+            <div class="close-btn" onclick="togglePopup()">×</div>
+            <h1>Volunteering your time!</h1>
+            <h2 id="popupTitle"></h2>
 
-                    <form method=get action="confirmation.html" onsubmit="return submitForm()">
-                        <div class="input-field" name="CustName">
-                            <label for="fname"></label>
-                            <input type="text" name="fname" placeholder="First Name" required>
-                            <br>
-                            <br>
-                            <label for="lname"></label>
-                            <input type="text" name="sname" placeholder="Surname" required>
-                            <br>
-                            <br>
-                            <h3>How regularly can you volunteer?</h3>
-                            <select name="Regularity" id="Regularity" required>
-                                    <option value="">Please make a selection</option>
-                                    <option value=once>Once</option>
-                                    <option value=weekly>Weekly</option>
-                                    <option value=monthly>Monthly</option>
-                                    <option value=quarterly>Quarterly</option>
-                            </select>
-                        </div>
-                        <div class="input-field">
-                            <h3>How many hours can you afford to give each time?</h3>
-                            <select name="Hours" id="Hours" required>
-                                <option value="">Please make a selection</option>
-                                <option value=1>1 hour</option>
-                                <option value=2>2 hours</option>
-                                <option value=4>4 hours</option>
-                                <option value=6>6 hours</option>
-                                <option value=8>8 hours</option>
-                            </select>
-                        </div>
-                        <br>
-                        <br>
-                        <input type="hidden" id="organisation" name="organisation" value="" />
-                        <input type="submit" name="submit" id="submit" data-inline="true" value="Confirm">
-                    </form>
-                    <p>Want to find out more? <a href="moreinfo.html" target="_blank">Click here!</a></p>                
+            <form method="get" action="confirmation.html" onsubmit="return submitForm()">
+                <div class="input-field" name="CustName">
+                    <label for="fname"></label>
+                    <input type="text" name="fname" placeholder="First Name" required>
+                    <br><br>
+                    <label for="lname"></label>
+                    <input type="text" name="sname" placeholder="Surname" required>
+                    <br><br>
+                    <h3>How regularly can you volunteer?</h3>
+                    <select name="Regularity" id="Regularity" required>
+                        <option value="">Please make a selection</option>
+                        <option value="once">Once</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="quarterly">Quarterly</option>
+                    </select>
                 </div>
-            </div>
+                <div class="input-field">
+                    <h3>How many hours can you afford to give each time?</h3>
+                    <select name="Hours" id="Hours" required>
+                        <option value="">Please make a selection</option>
+                        <option value="1">1 hour</option>
+                        <option value="2">2 hours</option>
+                        <option value="4">4 hours</option>
+                        <option value="6">6 hours</option>
+                        <option value="8">8 hours</option>
+                    </select>
+                </div>
+                <br><br>
+                <input type="hidden" id="organisation" name="organisation" value="" />
+                <input type="submit" name="submit" id="submit" value="Confirm">
+            </form>
+            <p>Want to find out more? <a href="moreinfo.html" target="_blank">Click here!</a></p>                
         </div>
-        <script>
-            function togglePopup(title) {
-            // Show the popup
-                document.getElementById('organisation').value = title;
-                document.getElementById("popup").classList.toggle("active");
-            // Set the popup title
-                document.getElementById("popupTitle").innerHTML = title;
-            }
+    </div>
 
-            function submitForm() {
-                // Here, you can access the value of 'organisation' and do whatever you need with it
-                var organisation = document.getElementById('organisation').value;
-
-                // Log the value to the console (for testing purposes)
-                console.log("Organisation: " + organisation);
-
-                // You can return false here if you want to prevent the form from being submitted
-                // For example, if some validation fails
-
-                // If everything is okay, return true to allow the form to be submitted
-                return true;
-            }
-            // set the value of the popuptitleInputfield
-                // console.log(title);
-                // window.location.href = confirmationUrl;
-        </script>
-    </body>
+    <script src="script.js"></script>
+</body>
 
 <!-- BEGIN Client Footer -->
-    <div class="footer">    
-        <br>
-        <br>
-        <br>
-        <p style="font-size: 10px; padding-left: 310; padding-right: 30;";><strong>Disclaimer:</strong>This website is for educational purposes only. We do not guarantee the accuracy or completeness of the information presented, and any reliance you place on it is at your own risk. We do not accept any responsibility or liability for any loss or damage that may arise from your use of this website or the information presented on it. The opinions expressed on this website are those of the author(s) and do not necessarily reflect the views of the university or any affiliated organization. We reserve the right to modify or update the content of this website at any time without prior notice.</p>
-    </div>
+<div class="footer">    
+    <br><br><br>
+    <p style="font-size: 10px; padding-left: 310px; padding-right: 30px;">
+        <strong>Disclaimer:</strong> This website is for educational purposes only. We do not guarantee the accuracy or completeness of the information presented, and any reliance you place on it is at your own risk. We do not accept any responsibility or liability for any loss or damage that may arise from your use of this website or the information presented on it. The opinions expressed on this website are those of the author(s) and do not necessarily reflect the views of the university or any affiliated organization. We reserve the right to modify or update the content of this website at any time without prior notice.
+    </p>
+</div>
 <!-- END Client Footer -->
 
 </html>
