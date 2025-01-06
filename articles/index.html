@@ -7,29 +7,31 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body class="index-page">
+<body>
     <div class="back-button">
         <p><a href="../index.html">&lt;&lt; Back</a></p>
     </div>
-    <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search by title or date..." />
+    <div class="container">
+        <header>
+            <h1>Kaylene's Articles</h1>
+        </header>
+        <aside class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by title or date..." />
+        </aside>
+        <main>
+            <ul id="articleList">
+                <li data-title="Benefits of CI/CD" data-date="20240603">
+                    <a href="20240603.html">Benefits of CI/CD</a>
+                </li>
+                <li data-title="Proof of Concept: CloudWatch Alarms" data-date="20240410">
+                    <a href="CWMetrics.html">Proof of Concept: CloudWatch Alarms</a>
+                </li>
+                <!-- Add more articles as needed -->
+                <li data-title="Super Secret Squirrel Business" data-date="20240515">
+                    <a href="../SSS.html">Super Secret Squirrel Business</a>
+                </li>
+            </ul>
+        </main>
     </div>
-    <header>
-        <h1>Kaylene's Articles</h1>
-    </header>
-    <main>
-        <ul id="articleList">
-            <li data-title="Benefits of CI/CD" data-date="20240603">
-                <a href="20240603.html">Benefits of CI/CD</a>
-            </li>
-            <li data-title="Proof of Concept: CloudWatch Alarms" data-date="20240410">
-                <a href="CWMetrics.html">Proof of Concept: CloudWatch Alarms</a>
-            </li>
-            <!-- Add more articles as needed -->
-            <li data-title="Super Secret Squirrel Business" data-date="20240515">
-                <a href="../SSS.html">Super Secret Squirrel Business</a>
-            </li>
-        </ul>
-    </main>
 </body>
 </html>
