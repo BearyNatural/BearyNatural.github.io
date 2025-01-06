@@ -26,85 +26,56 @@ a:hover {
     font-size: 15px;
 }
 
-/* Container Layout (Specific to index.html) */
-body.index-page .container {
+/* Search Bar Styles */
+.search-bar {
     display: flex;
-    flex-direction: row;
-    min-height: 100vh;
+    justify-content: center;
+    padding: 10px;
+    background-color: #e4f1f7;
+    border-bottom: 1px solid #ccc;
 }
 
-/* Header Styles (Specific to index.html) */
-body.index-page header {
+.search-bar input {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Header Styles */
+header {
     text-align: center;
     padding: 20px;
     background-color: #c5e8ed;
     width: 100%;
 }
 
-body.index-page header h1 {
+header h1 {
     margin: 0;
     font-size: 2em;
 }
 
-/* Search Bar Styles (Specific to index.html) */
-body.index-page .search-bar {
+/* Main Content */
+main {
     padding: 20px;
-    background-color: #e4f1f7;
-    width: 25%;
-    display: none; /* Initially hidden */
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
 }
 
-body.index-page .search-bar input {
-    padding: 10px;
-    font-size: 1rem;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-/* Show search bar on hover */
-body.index-page .container:hover .search-bar {
-    display: block;
-}
-
-/* Main Content (Specific to index.html) */
-body.index-page main {
-    padding: 20px;
-    width: 75%;
-}
-
-body.index-page ul {
+ul {
     list-style-type: none;
     padding: 0;
 }
 
-body.index-page li {
+li {
     margin: 10px 0;
 }
 
-body.index-page li a {
+li a {
+    text-decoration: none;
+    color: #333;
     font-size: 1.2em;
 }
 
-/* Shared styles for articles */
-body.article-page {
-    background-color: #ffffff;
-    padding: 20px;
-    line-height: 1.6;
-}
-
-body.article-page h1,
-body.article-page h2 {
-    text-align: center;
-    color: #333;
-}
-
-body.article-page p {
-    font-size: 18px;
-    color: #555;
-    margin: 10px 0;
+li a:hover {
+    color: #0073e6;
 }
