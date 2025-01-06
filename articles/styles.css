@@ -6,6 +6,15 @@ body {
     background-color: #f4f4f4;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: #0073e6;
+}
+
 /* Back Button Styles */
 .back-button {
     background-color: #c5e8ed;
@@ -14,37 +23,31 @@ body {
 }
 
 .back-button a {
-    text-decoration: none;
-    color: black;
     font-size: 15px;
 }
 
-.back-button a:hover {
-    color: #0073e6;
-}
-
-/* Container Layout */
-.container {
+/* Container Layout (Specific to index.html) */
+body.index-page .container {
     display: flex;
     flex-direction: row;
     min-height: 100vh;
 }
 
-/* Header Styles */
-header {
+/* Header Styles (Specific to index.html) */
+body.index-page header {
     text-align: center;
     padding: 20px;
     background-color: #c5e8ed;
     width: 100%;
 }
 
-header h1 {
+body.index-page header h1 {
     margin: 0;
     font-size: 2em;
 }
 
-/* Search Bar Styles */
-.search-bar {
+/* Search Bar Styles (Specific to index.html) */
+body.index-page .search-bar {
     padding: 20px;
     background-color: #e4f1f7;
     width: 25%;
@@ -55,7 +58,7 @@ header h1 {
     height: 100%;
 }
 
-.search-bar input {
+body.index-page .search-bar input {
     padding: 10px;
     font-size: 1rem;
     width: 100%;
@@ -64,31 +67,44 @@ header h1 {
 }
 
 /* Show search bar on hover */
-.container:hover .search-bar {
+body.index-page .container:hover .search-bar {
     display: block;
 }
 
-/* Main Content */
-main {
+/* Main Content (Specific to index.html) */
+body.index-page main {
     padding: 20px;
     width: 75%;
 }
 
-ul {
+body.index-page ul {
     list-style-type: none;
     padding: 0;
 }
 
-li {
+body.index-page li {
     margin: 10px 0;
 }
 
-li a {
-    text-decoration: none;
-    color: #333;
+body.index-page li a {
     font-size: 1.2em;
 }
 
-li a:hover {
-    color: #0073e6;
+/* Shared styles for articles */
+body.article-page {
+    background-color: #ffffff;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+body.article-page h1,
+body.article-page h2 {
+    text-align: center;
+    color: #333;
+}
+
+body.article-page p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
 }
