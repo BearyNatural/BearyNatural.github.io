@@ -28,7 +28,7 @@ a:hover {
 
 /* Search Bar Styles */
 .search-bar {
-    display: flex;
+    display: none; /* Initially hidden */
     justify-content: right;
     padding: 10px;
     background-color: #e4f1f7;
@@ -36,11 +36,16 @@ a:hover {
 }
 
 .search-bar input {
-    width: 80%;
+    width: 20%;
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
+}
+
+/* Show search bar on hover */
+.container:hover .search-bar {
+    display: flex;
 }
 
 /* Header Styles */
