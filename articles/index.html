@@ -3,13 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaylene's Website!</title>
+    <title>Articles</title>
+    <br>
+    <p style="text-align:right; padding-right: 30px;"><a href="../index.html">&lt;&lt; Back</a></p>
+    <br>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <br>
-    <p class="back-link"><a href="../index.html">&lt;&lt; Back</a></p>
-    <br>
-    <h1>OMG a new section!!!!</h1>
+<div class="container">
+        <header>
+            <h1>Kaylene's Articles</h1>
+        </header>
+        <aside class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by title or date..." />
+        </aside>
+        <main>
+            <ul id="articleList">
+                <li data-title="Benefits of CI/CD" data-date="20240603">
+                    <a href="20240603.html">Benefits of CI/CD</a>
+                </li>
+                <li data-title="Super Secret Squirrel Business" data-date="20240515">
+                    <a href="SSS.html">Super Secret Squirrel Business</a>
+                </li>
+                <li data-title="Proof of Concept: CloudWatch Alarms" data-date="20240410">
+                    <a href="CWMetrics.html">Proof of Concept: CloudWatch Alarms</a>
+                </li>
+                <!-- Add more articles as needed -->
+            </ul>
+        </main>
+    </div>
 </body>
 </html>
