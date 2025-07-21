@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Troubleshooting ECS EC2 Over-Scaling with Custom Metrics</title>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+
+<body class="article-page" id="top">
+  <div class="back-button">
+    <p><a href="index.html">&lt;&lt; Back</a></p>
+  </div>
+  <header>
+    <h1>Troubleshooting ECS EC2 Over-Scaling with Custom Metrics</h1>
+  </header>
+  <main>
+    <p>This article explores unexpected EC2 over-scaling when using ECS with step scaling policies based on a custom CloudWatch metric.</p>
+
+    <h2>The Problem</h2>
+    <p>When a custom metric triggered task scaling in ECS, the number of EC2 instances scaled up more than expected. For example, one ECS task would require just one EC2 instance, yet two or more were provisioned. Extra instances would eventually be shut down, but only after 40–50 minutes.</p>
+
+    <h2>Root Causes and Findings</h2>
+    <ul>
+      <li>The ECS cluster used a GPU-backed EC2 Auto Scaling Group via a capacity provider.</li>
+      <li>The step scaling worked correctly at the task level but over-provisioned EC2 instances.</li>
+      <li><strong>Over-Scaling from Zero</strong>: When scaling from zero EC2 instances, ECS often launches <strong>two</strong> instances by design. This is documented behaviour to prevent cold-start delays. This explained the initial double-scaling when starting from zero instances.</li>
+      <li>The primary issue was the <code>instanceWarmupPeriod</code> being set to <strong>0</strong> in the ECS capacity provider. This caused ECS to assume EC2 instances were available before they were fully ready, leading to premature scale-outs.</li>
+      <li><strong>CloudWatch Metric Issues</strong>: Metric values were being skewed due to multiple data points in a single period, some reporting zero. The metric was using <code>Stat: Average</code>, which diluted the actual workload signal.</li>
+      <li>The alarm had a comparison operator set to <code>GreaterThanOrEqualToThreshold</code>, causing EC2 to scale out even when the task count didn't increase.</li>
+    </ul>
+
+    <h2>Implemented Fixes</h2>
+    <ul>
+      <li><strong>Warmup Period Fix</strong>: The capacity provider was updated to use a <code>instanceWarmupPeriod</code> of <strong>300 seconds</strong> (5 minutes). This change aligned EC2 readiness timing with ECS scaling decisions. After this change, launching a task resulted in only one EC2 instance being provisioned, as expected (except for the documented initial scaling from zero).</li>
+      <li><strong>CloudWatch Metric Fix</strong>: Switching to <code>Stat: Sum</code> or analyzing <code>SampleCount</code> helped expose hidden data points. This ensured the scaling alarm responded to real workload demand instead of averaged-down values.</li>
+      <li><strong>Alarm Threshold Fix</strong>: Changing the comparison operator from <code>GreaterThanOrEqualToThreshold</code> to <code>GreaterThanThreshold</code> ensured that scale-out events only occurred when the workload truly required them.</li>
+    </ul>
+
+    <h2>Additional Considerations</h2>
+    <ul>
+      <li><strong>Managed Scaling</strong>: AWS recommends using the "managed scaling" feature of ECS capacity providers, which automatically handles the relationship between task and instance scaling. This can prevent many of the issues described in this article.</li>
+      <li><strong>Target Tracking Policies</strong>: Consider using target tracking scaling policies instead of step scaling for some use cases. Target tracking maintains a specific metric value (like CPU utilization) and can provide smoother scaling behavior.</li>
+      <li><strong>Managed Termination Protection</strong>: Check the capacity provider's "managed termination protection" setting, as this can affect instance termination behavior. When enabled, it prevents the termination of instances that are running tasks.</li>
+    </ul>
+
+    <div class="footer">
+      <p>This issue showed the importance of aligning ECS scaling logic with EC2 readiness, choosing the right CloudWatch statistic, and carefully configuring alarm thresholds. These small changes can significantly improve ECS scaling behavior.</p>
+    </div>
+
+    <h2>References</h2>
+    <ul>
+      <li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/capacity-cluster-speed-up-ec2.html#:~:text=instanceWarmupPeriod" target="_blank">1. ECS instanceWarmupPeriod documentation</a></li>
+      <li><a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Metric" target="_blank">2. CloudWatch metric concepts</a></li>
+      <li><a href="https://docs.aws.amazon.com/cli/latest/reference/cloudwatch/get-metric-statistics.html" target="_blank">3. get-metric-statistics CLI reference</a></li>
+      <li><a href="https://repost.aws/knowledge-center/ecs-service-auto-scaling-issues" target="_blank">4. ECS over-scaling from 0 instance explanation</a></li>
+      <li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-auto-scaling.html#managed-scaling" target="_blank">5. ECS Managed Scaling documentation</a></li>
+      <li><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html" target="_blank">6. Target Tracking Scaling Policies for ECS</a></li>
+    </ul>
+
+    <div class="footer2">
+      <a href="#top">&uarr; Back to Top</a>
+    </div>
+  </main>
+</body>
+
+</html>
