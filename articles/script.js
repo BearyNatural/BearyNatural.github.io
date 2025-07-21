@@ -6,9 +6,11 @@ document.addEventListener("DOMContentLoaded", function () {
     searchInput.addEventListener("input", function () {
         const filter = searchInput.value.toLowerCase();
         Array.from(articles).forEach((article) => {
-            const title = article.getAttribute("data-title").toLowerCase();
-            const date = article.getAttribute("data-date");
-            if (title.includes(filter) || date.includes(filter)) {
+            const title = (article.getAttribute("data-title") || "").toLowerCase();
+            const date = (article.getAttribute("data-date") || "").toLowerCase();
+            const tags = (article.getAttribute("data-tags") || "").toLowerCase();
+
+            if (title.includes(filter) || date.includes(filter) || tags.includes(filter)) {
                 article.style.display = "";
             } else {
                 article.style.display = "none";
