@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="article-page">
+    <div class="back-button">
+        <p><a href="../index.html">&lt;&lt; Back</a></p>
+    </div>
+    <header>
+        <h1>Monitoring ECS Fargate with CloudWatch Metrics</h1>
+    </header>
+    <main>
+        <p>This project was built to investigate a client issue. Their CloudWatch alarms stayed stuck in the <strong>ALARM</strong> state. Even after the triggering condition had passed. It especially happened with <strong>low-threshold alarms</strong>. The goal was to replicate this behavior and explore how ECS Fargate and CloudWatch interact.</p>
+
+        <p>The setup uses ECS Fargate to run a simple containerized app. The service is deployed into a basic VPC using Terraform. Everything is managed in code. i.e. the VPC, the ECS service, IAM roles, and logging.</p>
+
+        <p>CloudWatch is used for both logging and monitoring. The container sends its logs to a log group, and CloudWatch Container Insights is enabled. This collects metrics like CPU and memory usage directly from the ECS tasks.</p>
+
+        <p>This project is useful if you are trying to troubleshoot CloudWatch alarm behaviour, or if you want a simple, real-world example of ECS Fargate working with CloudWatch. It is also a great reference for setting up ECS Fargate infrastructure using Terraform.</p>
+
+        <p>All infrastructure is lightweight. It is designed for quick testing and low-cost monitoring. The default setup uses an Amazon Linux base image with stress testing enabled, so it simulates activity for the alarms to monitor.</p>
+
+        <p>By deploying this, you get hands-on insight into how alarms behave with short-lived or fluctuating workloads. You can also practice tuning CloudWatch alarms and checking how quickly state transitions happen in real time.</p>
+
+        <p>Overall, this is a small but effective example of observability in action. It shows how ECS and CloudWatch work together and gives you a place to experiment and learn before applying these techniques to production environments.</p>
+    </main>
+</body>
+</html>
