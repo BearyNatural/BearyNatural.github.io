@@ -41,12 +41,12 @@
     <h2>Additional Considerations</h2>
     <ul>
       <li><strong>Managed Scaling</strong>: AWS recommends using the "managed scaling" feature of ECS capacity providers, which automatically handles the relationship between task and instance scaling. This can prevent many of the issues described in this article.</li>
-      <li><strong>Target Tracking Policies</strong>: Consider using target tracking scaling policies instead of step scaling for some use cases. Target tracking maintains a specific metric value (like CPU utilization) and can provide smoother scaling behavior.</li>
-      <li><strong>Managed Termination Protection</strong>: Check the capacity provider's "managed termination protection" setting, as this can affect instance termination behavior. When enabled, it prevents the termination of instances that are running tasks.</li>
+      <li><strong>Target Tracking Policies</strong>: Consider using target tracking scaling policies instead of step scaling for some use cases. Target tracking maintains a specific metric value (like CPU utilization) and can provide smoother scaling behaviour.</li>
+      <li><strong>Managed Termination Protection</strong>: Check the capacity provider's "managed termination protection" setting, as this can affect instance termination behaviour. When enabled, it prevents the termination of instances that are running tasks.</li>
     </ul>
 
     <div class="footer">
-      <p>This issue showed the importance of aligning ECS scaling logic with EC2 readiness, choosing the right CloudWatch statistic, and carefully configuring alarm thresholds. These small changes can significantly improve ECS scaling behavior.</p>
+      <p>This issue showed the importance of aligning ECS scaling logic with EC2 readiness, choosing the right CloudWatch statistic, and carefully configuring alarm thresholds. These small changes can significantly improve ECS scaling behaviour.</p>
     </div>
 
     <h2>References</h2>
