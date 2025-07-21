@@ -103,3 +103,26 @@ body.article-page p {
     color: #555;
     margin: 10px 0;
 }
+
+/* Footer for closing message */
+.footer {
+    text-align: center;
+    padding-top: 30px;
+    font-style: italic;
+    color: #444;
+}
+
+/* "Back to Top" footer button */
+.footer2 {
+    text-align: center;
+    padding: 20px;
+}
+
+.footer2 a {
+    font-size: 16px;
+    color: #0073e6;
+}
+
+.footer2 a:hover {
+    color: #005bb5;
+}
