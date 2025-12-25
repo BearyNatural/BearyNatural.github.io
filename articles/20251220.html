@@ -40,10 +40,10 @@
 
         <h2>Making the Instance “Patch Aware”</h2>
         <p>
-            The next step was tagging the instance so Patch Manager knows how to treat it. I used a 
-            <code>Patch Group</code> tag with values like <code>Win-Nonprod</code>, 
-            <code>Win-Staging</code>, and <code>Win-Prod</code>. This lets me group instances logically 
-            and apply different patching waves per environment.
+            The next step was tagging the instance so Patch Manager knows how to treat it. 
+            I used environment tags and a different patching schedule for each environment, 
+            so Nonprod and Staging are updated before Prod. This lets me group instances 
+            logically and apply different patching waves per environment.
         </p>
         <p>
             In Terraform, I created an <strong>SSM patch baseline</strong> for Windows that:
