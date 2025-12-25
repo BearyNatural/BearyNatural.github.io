@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learning How Simple SSM Patching Is for Windows EC2</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+    
+<body class="article-page" id="top">
+    <div class="back-button">
+        <p><a href="../index.html">&lt;&lt; Back</a></p>
+    </div>
+    <header>
+        <h1>Learning How Simple SSM Patching Is for Windows EC2</h1>
+    </header>
+    <main>
+        <p>
+            This week I spent some time setting up automated patching for a Windows EC2 instance using 
+            <strong>AWS Systems Manager (SSM)</strong>, and it turned out to be much simpler than I expected.
+            Once the core pieces are in place, patching becomes a repeatable, low-touch process instead of
+            a manual chore.
+        </p>
+
+        <h2>Getting the Windows Instance Ready</h2>
+        <p>
+            I started with a standard Windows Server instance built via Terraform. Modern AWS Windows AMIs 
+            already include the SSM Agent, so the main things I needed were:
+        </p>
+        <ul>
+            <li>An IAM instance profile with the <code>AmazonSSMManagedInstanceCore</code> policy.</li>
+            <li>Network access so the instance can reach SSM endpoints (in my case, via a public subnet).</li>
+        </ul>
+        <p>
+            As soon as the instance booted with the correct IAM role attached, it appeared in the 
+            Systems Manager console as a managed instance. That was the first confirmation that 
+            the patching pipeline could work without me ever logging in via RDP.
+        </p>
+
+        <h2>Making the Instance “Patch Aware”</h2>
+        <p>
+            The next step was tagging the instance so Patch Manager knows how to treat it. I used a 
+            <code>Patch Group</code> tag with values like <code>Win-Nonprod</code>, 
+            <code>Win-Staging</code>, and <code>Win-Prod</code>. This lets me group instances logically 
+            and apply different patching waves per environment.
+        </p>
+        <p>
+            In Terraform, I created an <strong>SSM patch baseline</strong> for Windows that:
+        </p>
+        <ul>
+            <li>Targets the Windows Server product I care about (for example, Windows Server 2025).</li>
+            <li>Includes Critical and Important security updates, plus key update classifications.</li>
+            <li>Globally excludes low severity updates to reduce noise.</li>
+        </ul>
+        <p>
+            Each patch group value is then registered against this baseline. That way, when SSM looks at
+            an instance with <code>Patch Group = Win-Nonprod</code>, it knows exactly which rules and 
+            approvals to apply.
+        </p>
+
+        <h2>Separating Scan and Install</h2>
+        <p>
+            To make patching safer and more observable, I split the process into two phases:
+        </p>
+        <ol>
+            <li><strong>Scan</strong> to identify which patches are missing.</li>
+            <li><strong>Install</strong> will apply the approved patches during a controlled window.</li>
+        </ol>
+        <p>
+            For the scan phase, I used an SSM Association with the <code>AWS-RunPatchBaseline</code> 
+            document in <code>Scan</code> mode. This runs on a schedule and updates compliance information,
+            so I can see exactly what is pending before anything changes on the server.
+        </p>
+        <p>
+            For installs, I set up an <strong>SSM Maintenance Window</strong>. Each patch wave 
+            (non-prod, staging, prod) has its own schedule, all driven by the same 
+            <code>Patch Group</code> tags. Inside that window, a maintenance window task runs 
+            <code>AWS-RunPatchBaseline</code> with <code>Operation = Install</code>, so patches are 
+            only applied within that defined time frame.
+        </p>
+
+        <h2>What Surprised Me</h2>
+        <p>
+            The biggest surprise was how little “custom scripting” I actually needed. Once the building 
+            blocks were in place (SSM-managed instance, patch group tags, patch baseline, and maintenance 
+            windows) everything else was configuration:
+        </p>
+        <ul>
+            <li>No logging into Windows Update manually.</li>
+            <li>No one-off PowerShell scripts to maintain for every server.</li>
+            <li>A single Terraform-defined pattern that can be reused for any new Windows instance.</li>
+        </ul>
+        <p>
+            Adding a new Windows EC2 instance to the patching process is now as simple as applying the 
+            correct <code>Patch Group</code> tag and letting Systems Manager do its job.
+        </p>
+
+        <div class="footer">
+            <p>
+                In short, learning SSM patching for Windows EC2 showed me that automated updates do not have 
+                to be complex. With the right IAM role, tags, patch baseline, and maintenance window, 
+                patching becomes a predictable, repeatable process that scales as your environment grows.
+            </p>
+        </div>
+        <div class="footer2">
+            <a href="#top">&uarr; Back to Top</a>
+        </div>
+    </main>
+</body>
+</html>
