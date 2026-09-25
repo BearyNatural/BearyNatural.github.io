@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml' lang='en'>
 <head>
-    <script>/* Sow by Season (/garden/): reopen links to pages inside the app. */(function(){var p=location.pathname;if(p.indexOf("/garden/")===0&&p!=="/garden/")location.replace("/garden/?to="+encodeURIComponent(p+location.search));})();</script>
+    <script>/* Sow by Season (/sow-by-season/): reopen links to pages inside the app. */(function(){var p=location.pathname,b="/sow-by-season/";if(p.indexOf("/garden/")===0)p=b+p.slice(8);if(p.indexOf(b)===0&&p!==b)location.replace(b+"?to="+encodeURIComponent(p+location.search));})();</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coming Soon</title>
