@@ -1,0 +1,28 @@
+{
+  "name": "Sow by Season",
+  "short_name": "Sow by Season",
+  "description": "Know what to plant, and when — an Australian garden planner. Your garden stays on your device.",
+  "start_url": "/garden/",
+  "scope": "/garden/",
+  "display": "standalone",
+  "background_color": "#F6F4EE",
+  "theme_color": "#2F6B3F",
+  "icons": [
+    {
+      "src": "/garden/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/garden/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/garden/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
