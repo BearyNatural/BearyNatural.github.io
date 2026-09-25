@@ -3,24 +3,64 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Kaylene's website!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hobbies · Kaylene's website!</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <br>
-    <p style="text-align:right; padding-right: 30px;"><a href="../index.html">&lt;&lt; Back</a></p>
-    <br>
-    <h1>OMG a new section!!!!</h1>
+    <p class="back"><a href="../index.html">&lt;&lt; Back</a></p>
+    <h1>Hobbies</h1>
 
-    <div style="max-width: 560px; margin: 24px auto; padding: 20px 24px; background: rgba(255, 255, 255, 0.88); border-radius: 16px; text-align: center;">
-        <h2>&#127793; Sow by Season</h2>
-        <p>An Australian garden planner: what to plant, when to plant it and how much &mdash; with your local climate, weather and seasons. Your garden stays on your own device.</p>
-        <p style="font-size: 15px;">On iPhone: open it in Safari, tap Share, then <em>Add to Home Screen</em>. On Android: download the app for reminders, a home-screen widget and automatic backup.</p>
-        <a href="../sow-by-season/" style="display: inline-block; margin-top: 8px; padding: 10px 20px; background: #2F6B3F; color: white; border-radius: 10px; font-weight: 600;">Open Sow by Season</a>
-        <a href="../sow-by-season/android.html" style="display: inline-block; margin-top: 8px; padding: 10px 20px; background: white; color: #2F6B3F; border: 2px solid #2F6B3F; border-radius: 10px; font-weight: 600;">Download for Android</a>
-    </div>
+    <nav class="sections" aria-label="Hobby sections">
+        <a href="#gardens">Gardens</a>
+        <a href="#chickens">Chickens</a>
+        <a href="#tech">Tech</a>
+        <a href="#iot">IoT</a>
+        <a href="#fur-babies">Fur-Babies</a>
+        <a href="#other">Other random hobbies</a>
+    </nav>
+
+    <main>
+        <section id="gardens" class="card">
+            <h2>&#127803; Gardens</h2>
+            <p class="soon">Coming soon.</p>
+        </section>
+
+        <section id="chickens" class="card">
+            <h2>&#128020; Chickens</h2>
+            <p class="soon">Coming soon.</p>
+        </section>
+
+        <section id="tech" class="card">
+            <h2>&#128187; Tech</h2>
+            <div class="project">
+                <h3>&#127793; Sow by Season</h3>
+                <p>An Australian garden planner: what to plant, when to plant it and how much &mdash; with your local climate, weather and seasons. Your garden stays on your own device.</p>
+                <div class="buttons">
+                    <a class="button" href="../sow-by-season/">Try it in your browser</a>
+                    <a class="button secondary" href="../sow-by-season/android.html">Download for Android</a>
+                </div>
+                <p class="small">No download needed in the browser. On iPhone: open it in Safari, tap Share, then <em>Add to Home Screen</em>. The Android app adds reminders, a home-screen widget and automatic backup.</p>
+            </div>
+        </section>
+
+        <section id="iot" class="card">
+            <h2>&#128225; IoT</h2>
+            <p class="soon">Coming soon.</p>
+        </section>
+
+        <section id="fur-babies" class="card">
+            <h2>&#128062; Fur-Babies</h2>
+            <p class="soon">Coming soon.</p>
+        </section>
+
+        <section id="other" class="card">
+            <h2>&#10024; Other random hobbies</h2>
+            <p class="soon">Coming soon.</p>
+        </section>
+    </main>
 
 </body>
 
