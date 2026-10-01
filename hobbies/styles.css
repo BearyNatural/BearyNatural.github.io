@@ -103,6 +103,12 @@ h3 {
     text-align: center;
 }
 
+.project + .project {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
 .soon {
     text-align: center;
     color: #555;
