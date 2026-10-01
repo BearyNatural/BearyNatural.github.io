@@ -140,3 +140,9 @@ h3 {
     background: white;
     color: #2F6B3F;
 }
+
+.title-icon {
+    width: 1.3em;
+    height: 1.3em;
+    vertical-align: -0.3em;
+}
