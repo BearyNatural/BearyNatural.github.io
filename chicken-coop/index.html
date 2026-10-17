@@ -256,7 +256,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
         <div class="sheets" id="cutPlan"></div>
       </section>
 
-      <p class="foot">Sizes are for your measured bare frame: 1803 long × 860 wide × 913 high, outside of the steel. The clad half is taken as half the length, about 901 from the hatch end to the middle of the middle post. Check that one before cutting the back wall, door, top deck and floors. There's ply for the floor or the top deck on the run half, not both.</p>
+      <p class="foot">Sizes are for your measured bare frame: 1803 long × 860 wide × 913 high, outside of the steel, with the clad half 895 from the hatch end to the middle of the middle post. There's ply for the floor or the top deck on the run half, not both.</p>
     </aside>
   </main>
 </div>
@@ -268,18 +268,18 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
   'use strict';
 
   var PIECES = [
-    { key: 'frame', step: 1, kind: 'steel', name: 'Steel frame', size: '1803 × 860 × 913, as measured', src: 'Existing' },
+    { key: 'frame', step: 1, kind: 'steel', name: 'Steel frame', size: '1803 × 860 × 913, clad half 895, as measured', src: 'Existing' },
     { key: 'mesh', step: 1, kind: 'steel', name: 'Mesh half and mesh door', size: 'stays as it is', src: 'Existing' },
-    { key: 'floorHen', step: 2, kind: 'ply', name: 'Floor, hen half', size: '896 × 852, notch round posts', src: 'Sheet 1' },
-    { key: 'floorRun', step: 2, opt: 'floor', kind: 'ply', name: 'Floor, run half', size: '896 × 852, notch round posts', src: 'Sheet 3' },
+    { key: 'floorHen', step: 2, kind: 'ply', name: 'Floor, hen half', size: '890 × 852, notch round posts', src: 'Sheet 1' },
+    { key: 'floorRun', step: 2, opt: 'floor', kind: 'ply', name: 'Floor, run half', size: '903 × 852, notch round posts', src: 'Sheet 3' },
     { key: 'endWall', step: 3, kind: 'ply', name: 'End wall', size: '860 × 913, hole 650 × 340', src: 'Sheet 2' },
-    { key: 'backWall', step: 4, kind: 'ply', name: 'Back wall', size: '910 × 913', src: 'Sheet 2' },
+    { key: 'backWall', step: 4, kind: 'ply', name: 'Back wall', size: '904 × 913', src: 'Sheet 2' },
     { key: 'hingeStrip', step: 4, kind: 'ply', name: 'Hinge strip', size: '80 × 913', src: 'Sheet 1' },
-    { key: 'deckHen', step: 5, kind: 'ply', name: 'Top deck, hen half', size: '910 × 878', src: 'Sheet 1' },
-    { key: 'packers', step: 5, opt: 'floor', kind: 'ply', name: 'Packer strips ×3', size: '45 wide: 2 × 902 long, 1 × 788 long', src: 'Sheet 3' },
-    { key: 'deckRun', step: 5, opt: 'deck', kind: 'ply', name: 'Top deck, run half', size: '902 × 878', src: 'Sheet 3' },
-    { key: 'door', step: 6, kind: 'ply', name: 'Front door', size: '824 × 910', src: 'Sheet 3' },
-    { key: 'doorBattens', step: 6, kind: 'timber', name: 'Door ledges ×2', size: '790 × 100, palings laid flat', src: 'Paling 8' },
+    { key: 'deckHen', step: 5, kind: 'ply', name: 'Top deck, hen half', size: '904 × 878', src: 'Sheet 1' },
+    { key: 'packers', step: 5, opt: 'floor', kind: 'ply', name: 'Packer strips ×3', size: '45 wide: 2 × 908 long, 1 × 788 long', src: 'Sheet 3' },
+    { key: 'deckRun', step: 5, opt: 'deck', kind: 'ply', name: 'Top deck, run half', size: '908 × 878', src: 'Sheet 3' },
+    { key: 'door', step: 6, kind: 'ply', name: 'Front door', size: '818 × 910', src: 'Sheet 3' },
+    { key: 'doorBattens', step: 6, kind: 'timber', name: 'Door ledges ×2', size: '785 × 100, palings laid flat', src: 'Paling 8' },
     { key: 'hinges', step: 6, kind: 'hw', name: 'Hinges and latch', size: 'the pair you have', src: 'Hardware' },
     { key: 'hatch', step: 7, kind: 'ply', name: 'Hatch door', size: '650 × 340, the piece cut out of the end wall', src: 'Sheet 2' },
     { key: 'hatchStops', step: 7, kind: 'ply', name: 'Hatch stops', size: '30 wide ply strips: 650, 340, 340', src: 'Ply offcut' },
@@ -298,7 +298,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     { key: 'roofMesh', step: 11, kind: 'steel', name: 'Mesh under the iron', size: 'about 1810 × 990, holes 6 mm or smaller', src: 'Mesh' },
     { key: 'infill', step: 11, kind: 'hw', name: 'Corrugated infill strips', size: 'along the back rail and the front wall', src: 'Buy' },
     { key: 'metalBig', step: 11, kind: 'metal', name: 'Roof sheets ×2', size: '840 × 1205, the big sheet cut in half', src: 'Metal' },
-    { key: 'metalNarrow', step: 11, kind: 'metal', name: 'Narrow roof strip', size: 'your narrow sheet, cut 1205 long', src: '1800 sheet' }
+    { key: 'metalNarrow', step: 11, kind: 'metal', name: 'Third roof sheet', size: '815 × 1205, cut from the 815-wide sheet', src: 'Metal' }
   ];
   var PMAP = {};
   PIECES.forEach(function (p) { PMAP[p.key] = p; });
@@ -378,8 +378,8 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       body: function () { return [
         'First lay fine mesh over the whole roof frame. Holes of 6 mm or smaller keep mice out. Wrap it over the top edges of the gables, the front wall and the back rail, and staple it to their outside faces just below the top, so the iron sits straight on the mesh.',
         'Corrugated iron still leaves a wavy gap under each crest where it crosses the back rail and the front wall. Lay corrugated infill strips on the mesh along those two edges before the iron goes down, so nothing can crawl into the corrugations.',
-        'Corrugations run down the slope. The two halves of the big sheet go on first, then the narrow strip at the mesh end, each overlapping the one before by one corrugation.',
-        'Overhang about 175 at the back, 40 at the front and 50 at each end. Roofing screws with rubber washers go through every second crest into the back rail, the middle purlin and the front top cleat. Those tops are only 24 wide, so mark a line on the sheet where each one runs.'
+        'Corrugations run down the slope. The two halves of the big sheet go on first, from the hatch end, then a 1205 length cut from the 815-wide sheet at the mesh end. Three full-width pieces cover more than the roof needs, so overlap each join by about 3½ corrugations (about 265). That leaves about 75 hanging past each gable, and no lengthwise cutting.',
+        'Overhang about 175 at the back and 40 at the front. Roofing screws with rubber washers go through every second crest into the back rail, the middle purlin and the front top cleat. Those tops are only 24 wide, so mark a line on the sheet where each one runs.'
       ]; } }
   ];
   var STEP_COUNT = STEPS.length;
@@ -457,21 +457,21 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
   // Cutting plan (mm, 2440 × 1220 sheets). Each piece carries the number of the step it goes on in.
   var SHEETS = [
     { name: 'Sheet 1', parts: [
-      { key: 'deckHen', x: 0, y: 0, w: 910, h: 878, label: 'Top deck', size: '910 × 878' },
-      { key: 'gables', x: 913, y: 0, w: 657, h: 878, label: 'Gables ×2', size: '878 × 657', diag: [101, 556] },
-      { key: 'floorHen', x: 1573, y: 0, w: 852, h: 896, label: 'Floor', size: '896 × 852' },
+      { key: 'deckHen', x: 0, y: 0, w: 904, h: 878, label: 'Top deck', size: '904 × 878' },
+      { key: 'gables', x: 907, y: 0, w: 657, h: 878, label: 'Gables ×2', size: '878 × 657', diag: [101, 556] },
+      { key: 'floorHen', x: 1567, y: 0, w: 852, h: 890, label: 'Floor', size: '890 × 852' },
       { key: 'hingeStrip', x: 0, y: 881, w: 913, h: 80, label: 'Hinge strip', size: '913 × 80' }
     ] },
     { name: 'Sheet 2', parts: [
       { key: 'endWall', x: 0, y: 0, w: 860, h: 913, label: 'End wall', size: '860 × 913', lab: { b: [430, 160, 70], n: [430, 300, 'middle'] } },
       { key: 'hatch', x: 105, y: 483, w: 650, h: 340, label: 'Hatch door', size: '650 × 340', cutout: true },
-      { key: 'backWall', x: 863, y: 0, w: 910, h: 913, label: 'Back wall', size: '910 × 913' },
-      { key: 'frontWall', x: 1776, y: 0, w: 549, h: 897, label: 'Front wall', size: '897 × 549', extra: 'no hole' }
+      { key: 'backWall', x: 863, y: 0, w: 904, h: 913, label: 'Back wall', size: '904 × 913' },
+      { key: 'frontWall', x: 1770, y: 0, w: 549, h: 897, label: 'Front wall', size: '897 × 549', extra: 'no hole' }
     ] },
     { name: 'Sheet 3', parts: [
-      { key: 'door', x: 0, y: 0, w: 824, h: 910, label: 'Door', size: '824 × 910' },
-      { key: 'floorRun', opt: 'floor', x: 827, y: 0, w: 896, h: 852, label: 'Floor', size: '896 × 852' },
-      { key: 'deckRun', opt: 'deck', x: 827, y: 0, w: 902, h: 878, label: 'Run deck', size: '902 × 878' },
+      { key: 'door', x: 0, y: 0, w: 818, h: 910, label: 'Door', size: '818 × 910' },
+      { key: 'floorRun', opt: 'floor', x: 821, y: 0, w: 903, h: 852, label: 'Floor', size: '903 × 852' },
+      { key: 'deckRun', opt: 'deck', x: 821, y: 0, w: 908, h: 878, label: 'Run deck', size: '908 × 878' },
       { key: 'frontWall', x: 1732, y: 0, w: 549, h: 897, label: 'Front wall', size: '897 × 549', lab: { b: [100, 75, 50], n: [170, 75, 'start'], small: true } },
       { key: 'flap', x: 1812, y: 150, w: 270, h: 600, label: 'Flap', size: '600 × 270', cutout: true },
       { key: 'packers', opt: 'floor', x: 2284, y: 0, w: 150, h: 1220, label: 'Packers', size: '3 strips 45 × 1220' }
@@ -560,8 +560,8 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       { key: 'uprights', len: 441, name: 'End upright', size: '441 × 48 × 24' },
       { key: 'gableBattens', len: 200, name: 'Gable block', size: '200 × 48 × 24' }] },
     { ids: '8', how: 'Full width, no ripping.', parts: [
-      { key: 'doorBattens', len: 790, name: 'Door ledge', size: '790 × 100' },
-      { key: 'doorBattens', len: 790, name: 'Door ledge', size: '790 × 100' }] },
+      { key: 'doorBattens', len: 785, name: 'Door ledge', size: '785 × 100' },
+      { key: 'doorBattens', len: 785, name: 'Door ledge', size: '785 × 100' }] },
     { ids: '9', how: 'Full width, no ripping.', parts: [
       { key: 'drip', len: 700, name: 'Drip strip', size: '700 × 100' },
       { key: 'uprights', len: 441, name: 'Middle joint backer', size: '441 × 100' }] },
@@ -748,6 +748,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     var B = 200, LF = 1803, WF = 860, HF = 913, T = 9;   // measured bare frame, outside of the steel
     var X0 = -LF / 2, X1 = LF / 2, Z0 = -WF / 2, Z1 = WF / 2;
     var D = WF + 2 * T, HD = D / 2;  // deck and gable width, and half of it
+    var XM = X1 - 895;               // centre of the middle post: clad half measured 895 from the hatch end
     var R0 = B + HF + T;            // top of deck, base of roof box
     var HB = 46;                    // gable height at the back; back rail (100) = HB + purlin depth
     var S = (500 - HB) / D, ANG = Math.atan(S), CA = Math.cos(ANG), SA = Math.sin(ANG);
@@ -871,7 +872,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
 
     // 1. Steel frame and mesh
     var steel = new THREE.Group(), P = 30;
-    [[X0, Z0], [X0, Z1 - P], [X1 - P, Z0], [X1 - P, Z1 - P], [-15, Z0], [-15, Z1 - P]].forEach(function (c) {
+    [[X0, Z0], [X0, Z1 - P], [X1 - P, Z0], [X1 - P, Z1 - P], [XM - 14, Z0], [XM - 14, Z1 - P]].forEach(function (c) {
       steel.add(boxMesh(c[0], c[0] + P, B, B + HF, c[1], c[1] + P, 'steel', false));
     });
     [[B, B + P], [B + HF - P, B + HF]].forEach(function (r) {
@@ -879,23 +880,23 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       steel.add(boxMesh(X0, X1, r[0], r[1], Z0, Z0 + P, 'steel', false));
       steel.add(boxMesh(X0, X0 + P, r[0], r[1], Z0, Z1, 'steel', false));
       steel.add(boxMesh(X1 - P, X1, r[0], r[1], Z0, Z1, 'steel', false));
-      steel.add(boxMesh(-15, 15, r[0], r[1], Z0, Z1, 'steel', false));
+      steel.add(boxMesh(XM - 14, XM + 14, r[0], r[1], Z0, Z1, 'steel', false));
     });
     reg('frame', steel, [0, 0, 0], [300, B + HF - 15, Z1 - 15]);
 
     var meshG = new THREE.Group();
     var wEnd = wire(WF, HF); wEnd.rotation.y = Math.PI / 2; wEnd.position.set(X0 - 1, B + HF / 2, 0); meshG.add(wEnd);
-    var wF = wire(-X0, HF); wF.position.set(X0 / 2, B + HF / 2, Z1 + 1); meshG.add(wF);
-    var wB = wire(-X0, HF); wB.position.set(X0 / 2, B + HF / 2, Z0 - 1); meshG.add(wB);
-    var wT = wire(-X0, WF); wT.rotation.x = -Math.PI / 2; wT.position.set(X0 / 2, B + HF + 1, 0); meshG.add(wT);
+    var wF = wire(XM - X0, HF); wF.position.set((X0 + XM) / 2, B + HF / 2, Z1 + 1); meshG.add(wF);
+    var wB = wire(XM - X0, HF); wB.position.set((X0 + XM) / 2, B + HF / 2, Z0 - 1); meshG.add(wB);
+    var wT = wire(XM - X0, WF); wT.rotation.x = -Math.PI / 2; wT.position.set((X0 + XM) / 2, B + HF + 1, 0); meshG.add(wT);
     [[-440, -420, B + 40, B + HF - 34], [-38, -18, B + 40, B + HF - 34], [-440, -18, B + 40, B + 60], [-440, -18, B + HF - 54, B + HF - 34]].forEach(function (r) {
       meshG.add(boxMesh(r[0], r[1], r[2], r[3], Z1 + 1, Z1 + 7, 'steel', false));
     });
     reg('mesh', meshG, [0, 0, 0], [-650, B + 560, Z1 + 1]);
 
     // 2. Floor
-    reg('floorHen', boxMesh(2, 898, B + 30, B + 39, Z0 + 4, Z1 - 4, 'ply'), [0, 120, 0]);
-    reg('floorRun', boxMesh(-898, -2, B + 30, B + 39, Z0 + 4, Z1 - 4, 'ply'), [0, 120, 0]);
+    reg('floorHen', boxMesh(XM + 2, X1 - 3, B + 30, B + 39, Z0 + 4, Z1 - 4, 'ply'), [0, 120, 0]);
+    reg('floorRun', boxMesh(X0 + 3, XM - 2, B + 30, B + 39, Z0 + 4, Z1 - 4, 'ply'), [0, 120, 0]);
 
     // 3. End wall with hatch hole
     var endWall = extrudeShape(rectShape(WF, HF, [[(WF - 650) / 2, 90, (WF + 650) / 2, 430]]), 'ply', Math.PI / 2);
@@ -903,25 +904,25 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     reg('endWall', endWall, [350, 0, 0], [X1 + T, B + 640, 0]);
 
     // 4. Back wall and hinge strip
-    reg('backWall', boxMesh(0, X1 + T, B, B + HF, Z0 - T, Z0, 'ply'), [0, 0, -350]);
+    reg('backWall', boxMesh(XM, X1 + T, B, B + HF, Z0 - T, Z0, 'ply'), [0, 0, -350]);
     reg('hingeStrip', boxMesh(X1 + T - 80, X1 + T, B, B + HF, Z1, Z1 + T, 'ply'), [0, 0, 300]);
 
     // 5. Top deck
-    reg('deckHen', boxMesh(0, X1 + T, B + HF, B + HF + T, Z0 - T, Z1 + T, 'ply'), [0, 600, 0]);
+    reg('deckHen', boxMesh(XM, X1 + T, B + HF, B + HF + T, Z0 - T, Z1 + T, 'ply'), [0, 600, 0]);
     var packers = new THREE.Group();
-    packers.add(boxMesh(X0, 0, B + HF, B + HF + T, Z0 - T, Z0 - T + 45, 'ply'));
-    packers.add(boxMesh(X0, 0, B + HF, B + HF + T, Z1 + T - 45, Z1 + T, 'ply'));
+    packers.add(boxMesh(X0, XM, B + HF, B + HF + T, Z0 - T, Z0 - T + 45, 'ply'));
+    packers.add(boxMesh(X0, XM, B + HF, B + HF + T, Z1 + T - 45, Z1 + T, 'ply'));
     packers.add(boxMesh(X0, X0 + 45, B + HF, B + HF + T, Z0 - T + 45, Z1 + T - 45, 'ply'));
     reg('packers', packers, [0, 600, 0], [-452, B + HF + T, Z1 + T - 22]);
-    reg('deckRun', boxMesh(X0, 0, B + HF, B + HF + T, Z0 - T, Z1 + T, 'ply'), [0, 600, 0]);
+    reg('deckRun', boxMesh(X0, XM, B + HF, B + HF + T, Z0 - T, Z1 + T, 'ply'), [0, 600, 0]);
 
     // 6. Front door, hinged at the hatch-end corner
     var hx = 829, DH = HF - 3;
     var doorP = new THREE.Group();
     doorP.position.set(hx, B, Z1 + T);
-    doorP.add(boxMesh(4 - hx, 828 - hx, 0, DH, -T, 0, 'ply'));
+    doorP.add(boxMesh(XM + 3 - hx, 827.5 - hx, 0, DH, -T, 0, 'ply'));
     [[35, 135], [DH - 135, DH - 35]].forEach(function (r) {
-      var m = boxMesh(20 - hx, 810 - hx, r[0], r[1], -T - 12, -T, 'timber');
+      var m = boxMesh(XM + 20 - hx, 810 - hx, r[0], r[1], -T - 12, -T, 'timber');
       m.userData.key = 'doorBattens';
       doorP.add(m);
     });
@@ -930,7 +931,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       m.userData.key = 'hinges';
       doorP.add(m);
     });
-    var latch = boxMesh(8 - hx, 32 - hx, DH / 2 - 15, DH / 2 + 15, 0, 12, 'hw', false);
+    var latch = boxMesh(XM + 6 - hx, XM + 30 - hx, DH / 2 - 15, DH / 2 + 15, 0, 12, 'hw', false);
     latch.userData.key = 'hinges';
     doorP.add(latch);
     reg('door', doorP, [0, 0, 420]);
@@ -1001,10 +1002,11 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
 
     // 11. Metal roof
     var mBig = new THREE.Group();
-    mBig.add(sheet(540.5, 840, 0));
-    mBig.add(sheet(-223.5, 840, 2));
+    // Three full-width pieces overlapping 3½ corrugations (266) each, 75 past each gable.
+    mBig.add(sheet(565.5, 840, 0));
+    mBig.add(sheet(-8.5, 840, 2));
     reg('metalBig', mBig, [0, RX + 600, 0]);
-    reg('metalNarrow', sheet(-767.5, 400, 4), [0, RX + 600, 0]);
+    reg('metalNarrow', sheet(-570, 815, 4), [0, RX + 600, 0]);
     var roofMesh = wire(LF + T, Math.round(SL));
     roofMesh.rotation.x = Math.PI / 2 - ANG;
     roofMesh.position.set((X0 + X1 + T) / 2, R0 + HB + SL / 2 * SA + 47 * CA, -HD + SL / 2 * CA - 47 * SA);
