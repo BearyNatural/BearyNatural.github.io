@@ -100,7 +100,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
 .psrc { font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
 .psize { grid-column: 2 / 4; font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
 .opts { display: flex; flex-direction: column; gap: 10px; }
-.opts h3, .legend h3, .cut h3 { margin: 0; font: 500 12px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.opts h3, .legend h3, .cut h3, .sizes h3 { margin: 0; font: 500 12px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .toggles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .tog { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); font-size: 14px; cursor: pointer; }
 .tog input { accent-color: var(--coop); width: 16px; height: 16px; margin: 0; }
@@ -126,6 +126,13 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
 .lbl.dim:hover { opacity: 1; }
 .pnum, .chip .num { display: inline-block; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: var(--coop); color: var(--coop-ink); font: 500 11px/20px var(--f-mono); text-align: center; vertical-align: 1px; }
 .pnum { margin-right: 8px; }
+.sizes { display: flex; flex-direction: column; gap: 8px; }
+.size-table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.4; }
+.size-table th { text-align: left; font: 500 12px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: 6px 10px 6px 0; border-bottom: 1px solid var(--line); }
+.size-table td { padding: 8px 10px 8px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.size-table td:last-child { padding-right: 0; font-family: var(--f-mono); font-size: 13px; font-variant-numeric: tabular-nums; }
+.size-table .pnum { margin-right: 8px; }
+.size-table .note { display: block; margin-bottom: 2px; font-family: var(--f-body); font-size: 12px; color: var(--muted); }
 .cut { display: flex; flex-direction: column; gap: 8px; }
 .cut-note { margin: 0; font-size: 13px; color: var(--muted); }
 .sheets { display: flex; flex-direction: column; gap: 12px; }
@@ -248,6 +255,27 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
           <li><span class="sw hw"></span>Hinges, latch</li>
           <li><span class="sw now"></span>Added in this step</li>
         </ul>
+      </section>
+
+      <section class="sizes" aria-label="Main cut sizes">
+        <h3>Main cut sizes, in mm</h3>
+        <table class="size-table">
+          <thead>
+            <tr><th scope="col">Piece</th><th scope="col">Size</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="pnum">3</span>End wall</td><td>860 × 913<span class="note">hatch hole 650 × 340, 90 up</span></td></tr>
+            <tr><td><span class="pnum">4</span>Back wall</td><td>904 × 913</td></tr>
+            <tr><td><span class="pnum">4</span>Hinge strip</td><td>80 × 913</td></tr>
+            <tr><td><span class="pnum">5</span>Top deck, hen half</td><td>904 × 878</td></tr>
+            <tr><td><span class="pnum">6</span>Front door</td><td>818 × 910</td></tr>
+            <tr><td><span class="pnum">2</span>Floors</td><td>890 × 852<span class="note">hen half</span>903 × 852<span class="note">run half</span></td></tr>
+            <tr><td><span class="pnum">8</span>Gables</td><td>878 long, 100 and 554 high<span class="note">cut both from an 878 × 657 strip</span></td></tr>
+            <tr><td><span class="pnum">9</span>Roof front wall halves</td><td>897 × 549</td></tr>
+            <tr><td>Long palings: back rail, cleats, purlin</td><td>1794<span class="note">trim 6 off each</span></td></tr>
+            <tr><td>Door ledges, rafter, sloping strips</td><td>785, 925, 900</td></tr>
+          </tbody>
+        </table>
       </section>
 
       <section class="cut" aria-label="Cutting plan">
