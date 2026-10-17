@@ -156,6 +156,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
 .part.now circle { fill: var(--coop); stroke: var(--coop); }
 .part.now .bn { fill: var(--coop-ink); }
 .part.on rect { stroke: var(--coop); stroke-width: 16; }
+.part rect.notch, .part.now rect.notch, .part.on rect.notch { fill: var(--paper); stroke: var(--coop); stroke-width: 6; stroke-dasharray: 12 8; }
 .pal-intro { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
 .sub { margin: 0; font: 500 12px/1.4 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 .pals { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
@@ -269,7 +270,8 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
             <tr><td><span class="pnum">4</span>Hinge strip</td><td>80 × 913</td></tr>
             <tr><td><span class="pnum">5</span>Top deck, hen half</td><td>904 × 878</td></tr>
             <tr><td><span class="pnum">6</span>Front door</td><td>818 × 910</td></tr>
-            <tr><td><span class="pnum">2</span>Floors</td><td>890 × 852<span class="note">hen half</span>903 × 852<span class="note">run half</span></td></tr>
+            <tr><td><span class="pnum">2</span>Floors</td><td>890 × 852<span class="note">hen half</span>903 × 852<span class="note">run half, with a 540 × 18 notch for the mesh door</span></td></tr>
+            <tr><td><span class="pnum">2</span>Door ledger strip</td><td>500 × 20 × 12<span class="note">paling, inside the front base rail</span></td></tr>
             <tr><td><span class="pnum">8</span>Gables</td><td>878 long, 100 and 554 high<span class="note">cut both from an 878 × 657 strip</span></td></tr>
             <tr><td><span class="pnum">9</span>Roof front wall halves</td><td>897 × 549</td></tr>
             <tr><td>Long palings: back rail, cleats, purlin</td><td>1794<span class="note">trim 6 off each</span></td></tr>
@@ -299,7 +301,8 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     { key: 'frame', step: 1, kind: 'steel', name: 'Steel frame', size: '1803 × 860 × 913, clad half 895, as measured', src: 'Existing' },
     { key: 'mesh', step: 1, kind: 'steel', name: 'Mesh half and mesh door', size: 'stays as it is', src: 'Existing' },
     { key: 'floorHen', step: 2, kind: 'ply', name: 'Floor, hen half', size: '890 × 852, notch round posts', src: 'Sheet 1' },
-    { key: 'floorRun', step: 2, opt: 'floor', kind: 'ply', name: 'Floor, run half', size: '903 × 852, notch round posts', src: 'Sheet 3' },
+    { key: 'floorRun', step: 2, opt: 'floor', kind: 'ply', name: 'Floor, run half', size: '903 × 852, notch 540 × 18 for the mesh door, notch round posts', src: 'Sheet 3' },
+    { key: 'doorLedger', step: 2, opt: 'floor', kind: 'timber', name: 'Door ledger strip', size: '500 × 20 × 12, inside the front base rail at the mesh door', src: 'Paling 9' },
     { key: 'endWall', step: 3, kind: 'ply', name: 'End wall', size: '860 × 913, hole 650 × 340', src: 'Sheet 2' },
     { key: 'backWall', step: 4, kind: 'ply', name: 'Back wall', size: '904 × 913', src: 'Sheet 2' },
     { key: 'hingeStrip', step: 4, kind: 'ply', name: 'Hinge strip', size: '80 × 913', src: 'Sheet 1' },
@@ -348,11 +351,11 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       ]; } },
     { title: 'Drop in the floor', view: { p: [1700, 2700, 2000], t: [0, 300, 0] },
       body: function (s) { return [
-        'The ply floor sits inside the frame, on top of the old wire. Leave the wire there as an extra barrier.',
-        'Notch the corners around the steel posts. Leave the pieces loose so they lift out for cleaning. A lino offcut on top makes cleaning easier.',
+        'The ply floor sits on top of the steel base frame, inside the frame. Keep the mesh under the base frame: it stops rats and mice digging or chewing their way in.',
+        'The posts are 20 mm box. Lay each piece in place, mark around every post and cut the notches about 2 mm oversize. Leave the pieces loose so they lift out for cleaning. A lino offcut on top makes cleaning easier.',
         s.run === 'deck'
           ? 'You’ve chosen to deck the run half instead, so only the hen half gets a ply floor. The run keeps its wire floor.'
-          : 'Two halves: the hen half comes from sheet 1 and the run half from sheet 3.'
+          : 'Two halves: the hen half comes from sheet 1 and the run half from sheet 3. The mesh door sits 20 mm into the frame, right where the run floor would lie, so cut a notch 540 long and 18 deep off the run floor’s front edge, starting at the end that meets the hen floor. Then screw a 20 mm paling strip to the inside of the front base rail across the door opening, flush with the top, so the notched edge still has something to sit on.'
       ]; } },
     { title: 'End wall with the hatch hole', view: { p: [2900, 1300, 1700], t: [300, 600, 0] },
       body: function () { return [
@@ -498,7 +501,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     ] },
     { name: 'Sheet 3', parts: [
       { key: 'door', x: 0, y: 0, w: 818, h: 910, label: 'Door', size: '818 × 910' },
-      { key: 'floorRun', opt: 'floor', x: 821, y: 0, w: 903, h: 852, label: 'Floor', size: '903 × 852' },
+      { key: 'floorRun', opt: 'floor', x: 821, y: 0, w: 903, h: 852, label: 'Floor', size: '903 × 852', notch: [363, 0, 540, 18], notes: ['notch 540 × 18', 'front edge, hen-floor end'] },
       { key: 'deckRun', opt: 'deck', x: 821, y: 0, w: 908, h: 878, label: 'Run deck', size: '908 × 878' },
       { key: 'frontWall', x: 1732, y: 0, w: 549, h: 897, label: 'Front wall', size: '897 × 549', lab: { b: [100, 75, 50], n: [170, 75, 'start'], small: true } },
       { key: 'flap', x: 1812, y: 150, w: 270, h: 600, label: 'Flap', size: '600 × 270', cutout: true },
@@ -532,6 +535,12 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     var s = '<g class="part' + (p.cutout ? ' cutout' : '') + (n === state.step ? ' now' : '') + '" data-key="' + p.key + '">' +
       '<rect x="' + p.x + '" y="' + p.y + '" width="' + p.w + '" height="' + p.h + '"/>';
     if (p.diag) s += '<line x1="' + (p.x + p.diag[0]) + '" y1="' + p.y + '" x2="' + (p.x + p.diag[1]) + '" y2="' + (p.y + p.h) + '"/>';
+    if (p.notch) {
+      s += '<rect class="notch" x="' + (p.x + p.notch[0]) + '" y="' + (p.y + p.notch[1]) + '" width="' + p.notch[2] + '" height="' + p.notch[3] + '"/>';
+    }
+    if (p.notes) {
+      p.notes.forEach(function (t, i) { s += txt('ph', cx, p.y + 85 + i * 72, 'middle', t); });
+    }
     if (p.lab) {
       // Panel with a cut-out inside: its own number and name sit where the cut-out isn't.
       s += badge(p.x + p.lab.b[0], p.y + p.lab.b[1], p.lab.b[2], n);
@@ -590,9 +599,10 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     { ids: '8', how: 'Full width, no ripping.', parts: [
       { key: 'doorBattens', len: 785, name: 'Door ledge', size: '785 × 100' },
       { key: 'doorBattens', len: 785, name: 'Door ledge', size: '785 × 100' }] },
-    { ids: '9', how: 'Full width, no ripping.', parts: [
+    { ids: '9', how: 'Cut the drip strip and backer full width, then rip a 20 wide strip off the leftover for the door ledger.', parts: [
       { key: 'drip', len: 700, name: 'Drip strip', size: '700 × 100' },
-      { key: 'uprights', len: 441, name: 'Middle joint backer', size: '441 × 100' }] },
+      { key: 'uprights', len: 441, name: 'Middle joint backer', size: '441 × 100' },
+      { key: 'doorLedger', len: 500, name: 'Door ledger strip', size: '500 × 20 × 12' }] },
     { ids: '10', how: 'Spare, in case one turns out split or rotten.', parts: [] }
   ];
 
@@ -899,8 +909,9 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     });
 
     // 1. Steel frame and mesh
-    var steel = new THREE.Group(), P = 30;
-    [[X0, Z0], [X0, Z1 - P], [X1 - P, Z0], [X1 - P, Z1 - P], [XM - 14, Z0], [XM - 14, Z1 - P]].forEach(function (c) {
+    var steel = new THREE.Group(), P = 20;   // 20 mm square box frame
+    var DX0 = XM - 510, DX1 = XM - 10;       // mesh door opening: 500 between the door post and the middle post
+    [[X0, Z0], [X0, Z1 - P], [X1 - P, Z0], [X1 - P, Z1 - P], [XM - 10, Z0], [XM - 10, Z1 - P], [DX0 - P, Z1 - P]].forEach(function (c) {
       steel.add(boxMesh(c[0], c[0] + P, B, B + HF, c[1], c[1] + P, 'steel', false));
     });
     [[B, B + P], [B + HF - P, B + HF]].forEach(function (r) {
@@ -908,23 +919,31 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       steel.add(boxMesh(X0, X1, r[0], r[1], Z0, Z0 + P, 'steel', false));
       steel.add(boxMesh(X0, X0 + P, r[0], r[1], Z0, Z1, 'steel', false));
       steel.add(boxMesh(X1 - P, X1, r[0], r[1], Z0, Z1, 'steel', false));
-      steel.add(boxMesh(XM - 14, XM + 14, r[0], r[1], Z0, Z1, 'steel', false));
+      steel.add(boxMesh(XM - 10, XM + 10, r[0], r[1], Z0, Z1, 'steel', false));
     });
     reg('frame', steel, [0, 0, 0], [300, B + HF - 15, Z1 - 15]);
 
     var meshG = new THREE.Group();
     var wEnd = wire(WF, HF); wEnd.rotation.y = Math.PI / 2; wEnd.position.set(X0 - 1, B + HF / 2, 0); meshG.add(wEnd);
-    var wF = wire(XM - X0, HF); wF.position.set((X0 + XM) / 2, B + HF / 2, Z1 + 1); meshG.add(wF);
+    var wF = wire(DX0 - X0, HF); wF.position.set((X0 + DX0) / 2, B + HF / 2, Z1 + 1); meshG.add(wF);
     var wB = wire(XM - X0, HF); wB.position.set((X0 + XM) / 2, B + HF / 2, Z0 - 1); meshG.add(wB);
     var wT = wire(XM - X0, WF); wT.rotation.x = -Math.PI / 2; wT.position.set((X0 + XM) / 2, B + HF + 1, 0); meshG.add(wT);
-    [[-440, -420, B + 40, B + HF - 34], [-38, -18, B + 40, B + HF - 34], [-440, -18, B + 40, B + 60], [-440, -18, B + HF - 54, B + HF - 34]].forEach(function (r) {
-      meshG.add(boxMesh(r[0], r[1], r[2], r[3], Z1 + 1, Z1 + 7, 'steel', false));
+    // Existing mesh door: a 20 mm box frame sitting 20 mm into the coop, about 2 mm above the base rail.
+    var wD = wire(DX1 - DX0 - 40, HF - 84); wD.position.set((DX0 + DX1) / 2, B + HF / 2, Z1 - 10); meshG.add(wD);
+    [[DX0, DX0 + 20, B + 22, B + HF - 22], [DX1 - 20, DX1, B + 22, B + HF - 22], [DX0, DX1, B + 22, B + 42], [DX0, DX1, B + HF - 42, B + HF - 22]].forEach(function (r) {
+      meshG.add(boxMesh(r[0], r[1], r[2], r[3], Z1 - 20, Z1, 'steel', false));
     });
     reg('mesh', meshG, [0, 0, 0], [-650, B + 560, Z1 + 1]);
 
     // 2. Floor
-    reg('floorHen', boxMesh(XM + 2, X1 - 3, B + 30, B + 39, Z0 + 4, Z1 - 4, 'ply'), [0, 120, 0]);
-    reg('floorRun', boxMesh(X0 + 3, XM - 2, B + 30, B + 39, Z0 + 4, Z1 - 4, 'ply'), [0, 120, 0]);
+    reg('floorHen', boxMesh(XM + 2, X1 - 3, B + P, B + P + T, Z0 + 4, Z1 - 4, 'ply'), [0, 120, 0]);
+    // Run floor: a 540 × 18 notch off the front edge at the middle end lets the inset mesh door close.
+    var fRun = new THREE.Group();
+    fRun.add(boxMesh(X0 + 3, XM - 2, B + P, B + P + T, Z0 + 4, Z1 - 22, 'ply'));
+    fRun.add(boxMesh(X0 + 3, XM - 542, B + P, B + P + T, Z1 - 22, Z1 - 4, 'ply'));
+    reg('floorRun', fRun, [0, 120, 0], [(X0 + XM) / 2, B + P + T, 0]);
+    // Paling ledger inside the front base rail, flush with its top, carries the notched edge.
+    reg('doorLedger', boxMesh(DX0, DX1, B, B + P, Z1 - P - 12, Z1 - P, 'timber'), [0, 60, -150]);
 
     // 3. End wall with hatch hole
     var endWall = extrudeShape(rectShape(WF, HF, [[(WF - 650) / 2, 90, (WF + 650) / 2, 430]]), 'ply', Math.PI / 2);
