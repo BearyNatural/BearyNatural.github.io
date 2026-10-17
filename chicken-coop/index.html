@@ -221,7 +221,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       </nav>
 
       <article class="step">
-        <p class="step-num" id="stepNum">Step 1 of 11</p>
+        <p class="step-num" id="stepNum">Step 1 of 12</p>
         <h2 id="stepTitle">The frame as it is now</h2>
         <div class="step-body" id="stepBody"></div>
         <h3>Pieces in this step</h3>
@@ -233,7 +233,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
         <div class="toggles">
           <label class="tog wide"><input type="checkbox" id="optNums" checked> Step numbers on the pieces</label>
           <label class="tog"><input type="checkbox" id="optExplode"> Pull pieces apart</label>
-          <label class="tog"><input type="checkbox" id="optOpen"> Open doors and flaps</label>
+          <label class="tog"><input type="checkbox" id="optOpen"> Open the front door</label>
           <label class="tog"><input type="checkbox" id="optMetal" checked> Metal roof</label>
           <label class="tog"><input type="checkbox" id="optFrame" checked> Steel frame and mesh</label>
         </div>
@@ -265,16 +265,16 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
             <tr><th scope="col">Piece</th><th scope="col">Size</th></tr>
           </thead>
           <tbody>
-            <tr><td><span class="pnum">3</span>End wall</td><td>860 × 913<span class="note">hatch hole 650 × 340, 90 up</span></td></tr>
-            <tr><td><span class="pnum">4</span>Back wall</td><td>904 × 913</td></tr>
-            <tr><td><span class="pnum">4</span>Hinge strip</td><td>80 × 913</td></tr>
-            <tr><td><span class="pnum">5</span>Top deck, hen half</td><td>904 × 878</td></tr>
-            <tr><td><span class="pnum">6</span>Front door</td><td>818 × 910</td></tr>
-            <tr><td><span class="pnum">6</span>Door ledges ×2</td><td>785 × 100<span class="note">each two layers of 9 mm ply</span></td></tr>
             <tr><td><span class="pnum">2</span>Floors</td><td>890 × 852<span class="note">hen half</span>903 × 852<span class="note">run half, with a 540 × 18 notch for the mesh door</span></td></tr>
             <tr><td><span class="pnum">2</span>Door ledger strip</td><td>500 × 20 × 18<span class="note">two layers of 9 mm ply, inside the front base rail</span></td></tr>
-            <tr><td><span class="pnum">8</span>Gables</td><td>878 long, 100 and 554 high<span class="note">cut both from an 878 × 657 strip</span></td></tr>
-            <tr><td><span class="pnum">9</span>Roof front wall halves</td><td>897 × 549</td></tr>
+            <tr><td><span class="pnum">3</span>End wall</td><td>860 × 913<span class="note">solid for now</span></td></tr>
+            <tr><td><span class="pnum">4</span>Back wall</td><td>904 × 913</td></tr>
+            <tr><td><span class="pnum">5</span>Top deck, hen half</td><td>904 × 869<span class="note">cut 904 × 878, then trim 9 off the front edge</span></td></tr>
+            <tr><td><span class="pnum">8</span>Gables</td><td>878 long, 100 and 554 high<span class="note">cut both from an 878 × 657 strip, then trim 9 off the tall end of the hatch-end one</span></td></tr>
+            <tr><td><span class="pnum">9</span>Roof front wall, run half</td><td>899 × 549</td></tr>
+            <tr><td><span class="pnum">12</span>Tall front door</td><td>818 × 1468<span class="note">opens the coop and the roof storage</span></td></tr>
+            <tr><td><span class="pnum">12</span>Hinge strip</td><td>80 × 1471</td></tr>
+            <tr><td><span class="pnum">12</span>Door ledges ×3</td><td>785 × 100 ×2, 745 × 100<span class="note">each two layers of 9 mm ply</span></td></tr>
             <tr><td>Long palings: back rail, cleats, purlin</td><td>1794<span class="note">trim 6 off each</span></td></tr>
             <tr><td>Palings: rafter, sloping strips</td><td>925, 900<span class="note">cut to fit</span></td></tr>
           </tbody>
@@ -283,7 +283,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
 
       <section class="cut" aria-label="Cutting plan">
         <h3>Cutting plan, numbered by step</h3>
-        <p class="cut-note">Pencil each number on the piece as you cut it. The number on a piece's left edge is its height as drawn, and the number along its bottom is its width. Dashed outlines are pieces cut out of a wall: the hatch door and the storage flap. This step's pieces are highlighted. Tap a piece to jump to the step where it goes on.</p>
+        <p class="cut-note">Pencil each number on the piece as you cut it. The number on a piece's left edge is its height as drawn, and the number along its bottom is its width. The dashed cut-away on the run floor is the notch for the mesh door. This step's pieces are highlighted. Tap a piece to jump to the step where it goes on.</p>
         <div class="sheets" id="cutPlan"></div>
       </section>
 
@@ -304,33 +304,28 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     { key: 'floorHen', step: 2, kind: 'ply', name: 'Floor, hen half', size: '890 × 852, notch round posts', src: 'Sheet 1' },
     { key: 'floorRun', step: 2, opt: 'floor', kind: 'ply', name: 'Floor, run half', size: '903 × 852, notch 540 × 18 for the mesh door, notch round posts', src: 'Sheet 3' },
     { key: 'doorLedger', step: 2, opt: 'floor', kind: 'ply', name: 'Door ledger strip', size: '500 × 20 × 18, two layers of 9 mm ply, inside the front base rail', src: 'Sheet 2' },
-    { key: 'endWall', step: 3, kind: 'ply', name: 'End wall', size: '860 × 913, hole 650 × 340', src: 'Sheet 2' },
+    { key: 'endWall', step: 3, kind: 'ply', name: 'End wall', size: '860 × 913, solid for now', src: 'Sheet 2' },
     { key: 'backWall', step: 4, kind: 'ply', name: 'Back wall', size: '904 × 913', src: 'Sheet 2' },
-    { key: 'hingeStrip', step: 4, kind: 'ply', name: 'Hinge strip', size: '80 × 913', src: 'Sheet 1' },
-    { key: 'deckHen', step: 5, kind: 'ply', name: 'Top deck, hen half', size: '904 × 878', src: 'Sheet 1' },
+    { key: 'deckHen', step: 5, kind: 'ply', name: 'Top deck, hen half', size: '904 × 869: cut 904 × 878, then trim 9 off the front edge', src: 'Sheet 1' },
     { key: 'packers', step: 5, opt: 'floor', kind: 'ply', name: 'Packer strips ×3', size: '45 wide: 2 × 908 long, 1 × 788 long', src: 'Sheet 3' },
     { key: 'deckRun', step: 5, opt: 'deck', kind: 'ply', name: 'Top deck, run half', size: '908 × 878', src: 'Sheet 3' },
-    { key: 'door', step: 6, kind: 'ply', name: 'Front door', size: '818 × 910', src: 'Sheet 3' },
-    { key: 'doorBattens', step: 6, kind: 'ply', name: 'Door ledges ×2', size: '785 × 100, each two layers of 9 mm ply', src: 'Sheet 3' },
-    { key: 'hinges', step: 6, kind: 'hw', name: 'Hinges and latch', size: 'the pair you have', src: 'Hardware' },
-    { key: 'hatch', step: 7, kind: 'ply', name: 'Hatch door', size: '650 × 340, the piece cut out of the end wall', src: 'Sheet 2' },
-    { key: 'hatchStops', step: 7, kind: 'ply', name: 'Hatch stops', size: '30 wide ply strips: 650, 340, 340', src: 'Ply offcut' },
-    { key: 'drip', step: 7, kind: 'timber', name: 'Drip strip', size: '700 × 100, paling laid flat', src: 'Paling 8' },
-    { key: 'backRail', step: 8, kind: 'timber', name: 'Back rail', size: '1794 × 100 × 24, two palings glued', src: 'Palings 1, 2' },
-    { key: 'frontBottom', step: 8, kind: 'timber', name: 'Front bottom cleat', size: '1794 × 48 × 24, on edge', src: 'Paling 3' },
-    { key: 'gables', step: 8, kind: 'ply', name: 'Gable ends ×2', size: '878 long, 100 high at back, 554 at front', src: 'Sheet 1' },
-    { key: 'gableBattens', step: 8, kind: 'timber', name: 'Gable strips and blocks', size: '2 sloping strips 900 × 48 × 12, 2 blocks 200 × 48 × 24', src: 'Palings 6, 7' },
-    { key: 'frontWall', step: 9, kind: 'ply', name: 'Roof front wall ×2', size: '897 × 549 each, hole 600 × 270', src: 'Sheets 2, 3' },
+    { key: 'backRail', step: 6, kind: 'timber', name: 'Back rail', size: '1794 × 100 × 24, two palings glued', src: 'Palings 1, 2' },
+    { key: 'frontBottom', step: 6, kind: 'timber', name: 'Front bottom cleat', size: '1794 × 48 × 24, on edge', src: 'Paling 3' },
+    { key: 'gableBattens', step: 7, kind: 'timber', name: 'Gable strips and blocks', size: '2 sloping strips 900 × 48 × 12, 2 blocks 200 × 48 × 24', src: 'Palings 6, 7' },
+    { key: 'gables', step: 8, kind: 'ply', name: 'Gable ends ×2', size: '878 long, 100 high at back, 554 at front; trim 9 off the tall end of the hatch-end one', src: 'Sheet 1' },
+    { key: 'frontWall', step: 9, kind: 'ply', name: 'Roof front wall, run half', size: '899 × 549', src: 'Sheet 2' },
     { key: 'frontTop', step: 9, kind: 'timber', name: 'Front top cleat', size: '1794 × 48 × 24, 12 below the top', src: 'Paling 4' },
     { key: 'uprights', step: 9, kind: 'timber', name: 'End uprights ×2 and middle backer', size: '441 × 48 × 24 each; backer 441 × 100', src: 'Palings 6, 7, 8' },
-    { key: 'flap', step: 9, kind: 'ply', name: 'Storage flap', size: '600 × 270, the piece cut out of the front wall', src: 'Sheet 3' },
-    { key: 'flapStops', step: 9, kind: 'ply', name: 'Flap stops', size: '30 wide ply strips: 600, 270, 270', src: 'Ply offcut' },
     { key: 'purlins', step: 10, kind: 'timber', name: 'Middle purlin', size: '1794 × 48 × 24, on edge', src: 'Paling 5' },
     { key: 'rafter', step: 10, kind: 'timber', name: 'Middle rafter', size: '925 × 48 × 24, cut to fit', src: 'Paling 6' },
     { key: 'roofMesh', step: 11, kind: 'steel', name: 'Mesh under the iron', size: 'about 1810 × 990, holes 6 mm or smaller', src: 'Mesh' },
     { key: 'infill', step: 11, kind: 'hw', name: 'Corrugated infill strips', size: 'along the back rail and the front wall', src: 'Buy' },
     { key: 'metalBig', step: 11, kind: 'metal', name: 'Roof sheets ×2', size: '840 × 1205, the big sheet cut in half', src: 'Metal' },
-    { key: 'metalNarrow', step: 11, kind: 'metal', name: 'Third roof sheet', size: '815 × 1205, cut from the 815-wide sheet', src: 'Metal' }
+    { key: 'metalNarrow', step: 11, kind: 'metal', name: 'Third roof sheet', size: '815 × 1205, cut from the 815-wide sheet', src: 'Metal' },
+    { key: 'door', step: 12, kind: 'ply', name: 'Tall front door', size: '818 × 1468, opens the coop and the roof storage', src: 'Sheet 3' },
+    { key: 'hingeStrip', step: 12, kind: 'ply', name: 'Hinge strip', size: '80 × 1471, frame bottom to roof top', src: 'Sheet 1' },
+    { key: 'doorBattens', step: 12, kind: 'ply', name: 'Door ledges ×3', size: '785 × 100 ×2 and 745 × 100, each two layers of 9 mm ply', src: 'Sheet 3' },
+    { key: 'hinges', step: 12, kind: 'hw', name: 'Hinges ×3 and latches ×2', size: 'the egg hatch pair plus the door pair', src: 'Hardware' }
   ];
   var PMAP = {};
   PIECES.forEach(function (p) { PMAP[p.key] = p; });
@@ -358,47 +353,43 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
           ? 'You’ve chosen to deck the run half instead, so only the hen half gets a ply floor. The run keeps its wire floor.'
           : 'Two halves: the hen half comes from sheet 1 and the run half from sheet 3. The mesh door sits 20 mm into the frame, right where the run floor would lie, so cut a notch 540 long and 18 deep off the run floor’s front edge, starting at the end that meets the hen floor. Then fix a ledger strip inside the front base rail across the door opening, flush with the top, so the notched edge still has something to sit on. Make it from two 500 × 20 strips of 9 mm ply glued together (not paling, because the hens can reach it) and fix it with self-drilling screws through the rail from outside.'
       ]; } },
-    { title: 'End wall with the hatch hole', view: { p: [2900, 1300, 1700], t: [300, 600, 0] },
+    { title: 'End wall', view: { p: [2900, 1300, 1700], t: [300, 600, 0] },
       body: function () { return [
-        'Cut the 650 × 340 hatch hole first: centred, with its bottom edge 90 up from the bottom of the panel. Keep the piece that comes out, because it becomes the hatch door. Drill a starter hole at each corner on the wall side of the line, then cut along the lines with a jigsaw so the cut-out stays whole.',
-        'Never cut the steel. If a rail is in the way, fit the hole between the rails.',
+        'The end wall is solid for now. You can cut an egg hatch into it later.',
         'Screw the panel to the outside of the frame. Drill 5 mm clearance holes in the ply, then put self-drilling screws into the steel every 150 mm, 12 mm in from the edge.'
       ]; } },
-    { title: 'Back wall and hinge strip', view: { p: [2300, 1500, -2600], t: [300, 600, 0] },
+    { title: 'Back wall', view: { p: [2300, 1500, -2600], t: [300, 600, 0] },
       body: function () { return [
-        'The back wall runs from the middle post to the end and covers the back edge of the end wall.',
-        'The 80 mm hinge strip covers the front corner post and the front edge of the end wall. It gives the door hinges something solid to screw into.'
+        'The back wall runs from the middle post to the end and covers the back edge of the end wall. Screw it to the steel the same way as the end wall.'
       ]; } },
     { title: 'Top deck', view: { p: [2200, 2600, 2400], t: [0, 900, 0] },
       body: function (s) { return [
-        'The deck sits on top of the frame and the wall panels, flush with their outside faces. Its inner edge lands on the steel cross-rail at the middle.',
+        'Trim 9 mm off the front edge of the deck first, so it finishes 904 × 869. The tall front door passes in front of it.',
+        'The deck sits on top of the frame and the back wall: flush with the outside of the back wall at the back, and with the front face of the steel at the front. Its inner edge lands on the steel cross-rail at the middle.',
         s.run === 'deck'
           ? 'The run half gets its own deck piece, butted against the hen half over the middle cross-rail.'
           : 'Over the run half, lay 9 mm packer strips on the steel rails so the roof sits level with the deck. The mesh top stays in place.'
       ]; } },
-    { title: 'Front door', view: { p: [1500, 1200, 3000], t: [400, 600, 0] },
-      body: function () { return [
-        'Glue and screw two ledges across the inside of the door, set in so they sit inside the frame opening when it’s shut. Each ledge is two layers of 9 mm ply, 785 × 100; they’re ply rather than treated paling because the hens can reach them. They keep the door flat. Use screws no longer than 25 mm so they don’t poke through.',
-        'Fit the hinges across the gap between the door and the hinge strip, lined up with the ledges so the door-side screws go into them. The strip side goes through into the steel post.',
-        'Latch it on the middle post. Move the mesh door’s latch off the old ply and onto the post too, so both doors open from the centre.'
-      ]; } },
-    { title: 'Egg hatch', view: { p: [3100, 900, 900], t: [700, 500, 0] },
-      body: function () { return [
-        'The hatch door is the piece you cut out of the end wall, so it sits flush in the hole. Glue and screw 30 mm ply strips around the inside of the hole along the bottom and both sides, sticking 12 mm into the opening, so the door closes against them and can’t be pushed in.',
-        'Hinge it along the top, with the hinges on the outside face across the gap. Screw a flat paling strip to the wall just above the hinges so rain runs off past them. Add a bolt or turn-button at the bottom, and a hook to hold it open.'
-      ]; } },
-    { title: 'Roof base: back rail, cleat and gables', view: { p: [2300, 2800, 2500], t: [0, 1100, 0] },
+    { title: 'Back rail and front bottom cleat', view: { p: [2300, 2800, 2500], t: [0, 1100, 0] },
       body: function () { return [
         'Glue palings 1 and 2 together face to face to make the back rail, 100 high. Make the front bottom cleat from paling 3: rip it in half and glue the halves together.',
-        'Fix both to the steel rails every 300 mm. From inside the coop, drill up through the steel top rail and screw up through the rail and the deck into the timber. Long timber-to-steel screws driven down from the top also work. These hold the roof on in wind.',
-        'Stand a gable at each end and screw through it into the ends of the rail and the cleat. The gables come right up to the underside of the roof sheet, so there’s no gap at the ends.',
-        'Inside each gable, fix a glued block along the bottom and a single paling strip along the slope, 48 mm below the top edge. Hold a 48 mm offcut against the top edge as a spacer and fix the strip under it. The purlin sits on these strips.'
+        'Fix both to the steel rails every 300 mm. From inside the coop, drill up through the steel top rail and screw up through the rail and the deck into the timber. Long timber-to-steel screws driven down from the top also work. These hold the roof on in wind.'
       ]; } },
-    { title: 'Roof front wall and storage flap', view: { p: [1000, 1600, 3300], t: [0, 1200, 0] },
+    { title: 'Gable strips and blocks', view: { p: [2700, 2200, 1500], t: [400, 1150, 0] },
       body: function () { return [
-        'The front wall goes on in two halves, 549 high, joined over a flat paling backer in the middle, with a glued upright at each end. It comes right up to the underside of the roof sheet, so it carries the front edge of the metal.',
-        'The top cleat sits 12 mm below the top edge so it stays under the slope.',
-        'Cut the 600 × 270 storage hole in the hen-half side the same way as the hatch hole, and keep the cut-out: it becomes the flap. Fit ply stops around the inside of the hole along the bottom and both sides, then hinge the flap along the top. The water container goes in lying down and stands up inside.'
+        'Do this on the bench before the gables go up. On the inside face of each gable, fix a glued block along the bottom and a single paling strip along the slope, 48 mm below the top edge.',
+        'Hold a 48 mm offcut against the top edge as a spacer and fix the strip under it. The purlin sits on these strips.'
+      ]; } },
+    { title: 'Stand up the gables', view: { p: [2300, 2800, 2500], t: [0, 1100, 0] },
+      body: function () { return [
+        'Trim 9 mm off the tall end of the gable that goes at the hatch end, so the tall door and its hinge strip can pass in front of it. The other gable stays full length.',
+        'Stand a gable at each end and screw through it into the ends of the back rail and the front cleat. The gables come right up to the underside of the roof sheet, so there’s no gap at the ends.'
+      ]; } },
+    { title: 'Roof front wall (run half)', view: { p: [800, 1700, 3300], t: [0, 1200, 0] },
+      body: function () { return [
+        'Only the run half gets a fixed front wall, 899 × 549. It runs from the run-end gable to the middle post, with a glued upright at the gable end and a flat paling backer behind its other end. The tall door covers the hen half.',
+        'Fix the other upright inside the hatch-end gable, right at its front edge: the full-height hinge strip screws into it later.',
+        'Fix the top cleat 12 mm below the top edge so it stays under the slope. Over the hen half it spans on its own between the backer and the hatch-end upright, so screw it firmly to both. The tall door closes against it.'
       ]; } },
     { title: 'Middle purlin and rafter', view: { p: [2300, 3000, 2300], t: [0, 1200, 0] },
       body: function () { return [
@@ -408,10 +399,17 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       ]; } },
     { title: 'Mesh and metal roof', view: { p: [2600, 2600, 2900], t: [0, 900, 0] },
       body: function () { return [
-        'First lay fine mesh over the whole roof frame. Holes of 6 mm or smaller keep mice out. Wrap it over the top edges of the gables, the front wall and the back rail, and staple it to their outside faces just below the top, so the iron sits straight on the mesh.',
+        'First lay fine mesh over the whole roof frame. Holes of 6 mm or smaller keep mice out. Wrap it over the top edges of the gables, the run-half front wall and the back rail, and staple it to their outside faces just below the top, so the iron sits straight on the mesh. Over the hen half, staple it to the front top cleat instead, because the door has to swing free.',
         'Corrugated iron still leaves a wavy gap under each crest where it crosses the back rail and the front wall. Lay corrugated infill strips on the mesh along those two edges before the iron goes down, so nothing can crawl into the corrugations.',
         'Corrugations run down the slope. The two halves of the big sheet go on first, from the hatch end, then a 1205 length cut from the 815-wide sheet at the mesh end. Three full-width pieces cover more than the roof needs, so overlap each join by about 3½ corrugations (about 265). That leaves about 75 hanging past each gable, and no lengthwise cutting.',
         'Overhang about 175 at the back and 40 at the front. Roofing screws with rubber washers go through every second crest into the back rail, the middle purlin and the front top cleat. Those tops are only 24 wide, so mark a line on the sheet where each one runs.'
+      ]; } },
+    { title: 'Tall front door', view: { p: [1500, 1500, 3400], t: [400, 950, 0] },
+      body: function () { return [
+        'One door, 818 × 1468, covers the hen half from the bottom of the frame to just under the iron, so opening it gives you the hen house and the roof storage together.',
+        'Screw the full-height hinge strip (80 × 1471) over the front corner post, the end of the deck and the front of the hatch-end gable, into the upright behind it.',
+        'Glue and screw three ledges across the inside of the door, each two layers of 9 mm ply: two in the coop part, set in so they sit inside the frame opening, and a shorter one in the roof part. They keep the door flat. They’re ply rather than treated paling because the hens can reach them. Use screws no longer than 25 mm.',
+        'Hang it on three hinges (the egg hatch pair plus the door pair), lined up with the ledges, with steel strap behind them as backing plates if you like. Fit two latches: one on the middle post and one up on the roof backer. Move the mesh door’s latch onto the middle post too.'
       ]; } }
   ];
   var STEP_COUNT = STEPS.length;
@@ -489,29 +487,28 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
   // Cutting plan (mm, 2440 × 1220 sheets). Each piece carries the number of the step it goes on in.
   var SHEETS = [
     { name: 'Sheet 1', parts: [
-      { key: 'deckHen', x: 0, y: 0, w: 904, h: 878, label: 'Top deck', size: '904 × 878' },
-      { key: 'gables', x: 907, y: 0, w: 657, h: 878, label: 'Gables ×2', size: '878 × 657', diag: [101, 556] },
+      { key: 'deckHen', x: 0, y: 0, w: 904, h: 878, label: 'Top deck', size: '904 × 878', notes: ['trim 9 off the front edge'] },
+      { key: 'gables', x: 907, y: 0, w: 657, h: 878, label: 'Gables ×2', size: '878 × 657', diag: [101, 556], notes: ['hatch-end gable:', 'trim tall end 9'] },
       { key: 'floorHen', x: 1567, y: 0, w: 852, h: 890, label: 'Floor', size: '890 × 852' },
-      { key: 'hingeStrip', x: 0, y: 881, w: 913, h: 80, label: 'Hinge strip', size: '913 × 80' }
+      { key: 'hingeStrip', x: 0, y: 884, w: 1471, h: 80, label: 'Hinge strip', size: '1471 × 80' }
     ] },
     { name: 'Sheet 2', parts: [
-      { key: 'endWall', x: 0, y: 0, w: 860, h: 913, label: 'End wall', size: '860 × 913', lab: { b: [430, 160, 70], n: [430, 300, 'middle'] } },
-      { key: 'hatch', x: 105, y: 483, w: 650, h: 340, label: 'Hatch door', size: '650 × 340', cutout: true },
+      { key: 'endWall', x: 0, y: 0, w: 860, h: 913, label: 'End wall', size: '860 × 913' },
       { key: 'backWall', x: 863, y: 0, w: 904, h: 913, label: 'Back wall', size: '904 × 913' },
-      { key: 'frontWall', x: 1770, y: 0, w: 549, h: 897, label: 'Front wall', size: '897 × 549', extra: 'no hole' },
-      { key: 'doorLedger', opt: 'floor', x: 0, y: 919, w: 1003, h: 80, label: 'Ledger', size: '2 × 500 × 20' }
+      { key: 'frontWall', x: 1770, y: 0, w: 549, h: 899, label: 'Front wall', size: '899 × 549', extra: 'run half' },
+      { key: 'packers', opt: 'floor', x: 0, y: 919, w: 908, h: 141, label: 'Packers', size: '3 × 908 × 45' },
+      { key: 'doorLedger', opt: 'floor', x: 911, y: 919, w: 1003, h: 80, label: 'Ledger', size: '2 × 500 × 20' }
     ] },
     { name: 'Sheet 3', parts: [
-      { key: 'door', x: 0, y: 0, w: 818, h: 910, label: 'Door', size: '818 × 910' },
-      { key: 'doorBattens', x: 0, y: 916, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
-      { key: 'doorBattens', x: 0, y: 1019, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
-      { key: 'doorBattens', x: 821, y: 884, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
-      { key: 'doorBattens', x: 821, y: 987, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
-      { key: 'floorRun', opt: 'floor', x: 821, y: 0, w: 903, h: 852, label: 'Floor', size: '903 × 852', notch: [363, 0, 540, 18], notes: ['notch 540 × 18', 'front edge, hen-floor end'] },
-      { key: 'deckRun', opt: 'deck', x: 821, y: 0, w: 908, h: 878, label: 'Run deck', size: '908 × 878' },
-      { key: 'frontWall', x: 1732, y: 0, w: 549, h: 897, label: 'Front wall', size: '897 × 549', lab: { b: [100, 75, 50], n: [170, 75, 'start'], small: true } },
-      { key: 'flap', x: 1812, y: 150, w: 270, h: 600, label: 'Flap', size: '600 × 270', cutout: true },
-      { key: 'packers', opt: 'floor', x: 2284, y: 0, w: 150, h: 1220, label: 'Packers', size: '3 strips 45 × 1220' }
+      { key: 'door', x: 0, y: 0, w: 1468, h: 818, label: 'Tall door', size: '818 × 1468' },
+      { key: 'floorRun', opt: 'floor', x: 1471, y: 0, w: 903, h: 852, label: 'Floor', size: '903 × 852', notch: [363, 0, 540, 18], notes: ['notch 540 × 18', 'front edge, hen-floor end'] },
+      { key: 'deckRun', opt: 'deck', x: 1471, y: 0, w: 908, h: 878, label: 'Run deck', size: '908 × 878' },
+      { key: 'doorBattens', x: 0, y: 824, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
+      { key: 'doorBattens', x: 0, y: 927, w: 745, h: 100, label: 'Ledge', size: '745 × 100' },
+      { key: 'doorBattens', x: 0, y: 1030, w: 745, h: 100, label: 'Ledge', size: '745 × 100' },
+      { key: 'doorBattens', x: 1471, y: 884, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
+      { key: 'doorBattens', x: 1471, y: 987, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
+      { key: 'doorBattens', x: 1471, y: 1090, w: 785, h: 100, label: 'Ledge', size: '785 × 100' }
     ] }
   ];
 
@@ -602,8 +599,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       { key: 'gableBattens', len: 900, name: 'Sloping gable strips (one from each half)', size: '900 × 48 × 12' },
       { key: 'uprights', len: 441, name: 'End upright', size: '441 × 48 × 24' },
       { key: 'gableBattens', len: 200, name: 'Gable block', size: '200 × 48 × 24' }] },
-    { ids: '8', how: 'Full width, no ripping.', parts: [
-      { key: 'drip', len: 700, name: 'Drip strip', size: '700 × 100' },
+    { ids: '8', how: 'Full width, no ripping. The rest of this paling is spare.', parts: [
       { key: 'uprights', len: 441, name: 'Middle joint backer', size: '441 × 100' }] },
     { ids: '9 + 10', how: 'Spare, in case any turn out split or rotten. The door ledges and the ledger strip are ply instead, because the hens can reach them.', parts: [] }
   ];
@@ -947,17 +943,14 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     // Ply ledger (two 9 mm layers) inside the front base rail, flush with its top, carries the notched edge.
     reg('doorLedger', boxMesh(DX0, DX1, B, B + P, Z1 - P - 18, Z1 - P, 'ply'), [0, 60, -150]);
 
-    // 3. End wall with hatch hole
-    var endWall = extrudeShape(rectShape(WF, HF, [[(WF - 650) / 2, 90, (WF + 650) / 2, 430]]), 'ply', Math.PI / 2);
-    endWall.position.set(X1, B, Z1);
-    reg('endWall', endWall, [350, 0, 0], [X1 + T, B + 640, 0]);
+    // 3. End wall: solid for now (an egg hatch can be cut in later)
+    reg('endWall', boxMesh(X1, X1 + T, B, B + HF, Z0, Z1, 'ply'), [350, 0, 0]);
 
-    // 4. Back wall and hinge strip
+    // 4. Back wall
     reg('backWall', boxMesh(XM, X1 + T, B, B + HF, Z0 - T, Z0, 'ply'), [0, 0, -350]);
-    reg('hingeStrip', boxMesh(X1 + T - 80, X1 + T, B, B + HF, Z1, Z1 + T, 'ply'), [0, 0, 300]);
 
-    // 5. Top deck
-    reg('deckHen', boxMesh(XM, X1 + T, B + HF, B + HF + T, Z0 - T, Z1 + T, 'ply'), [0, 600, 0]);
+    // 5. Top deck: front edge trimmed 9 mm so the tall door passes in front of it
+    reg('deckHen', boxMesh(XM, X1 + T, B + HF, B + HF + T, Z0 - T, Z1, 'ply'), [0, 600, 0]);
     var packers = new THREE.Group();
     packers.add(boxMesh(X0, XM, B + HF, B + HF + T, Z0 - T, Z0 - T + 45, 'ply'));
     packers.add(boxMesh(X0, XM, B + HF, B + HF + T, Z1 + T - 45, Z1 + T, 'ply'));
@@ -965,53 +958,45 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     reg('packers', packers, [0, 600, 0], [-452, B + HF + T, Z1 + T - 22]);
     reg('deckRun', boxMesh(X0, XM, B + HF, B + HF + T, Z0 - T, Z1 + T, 'ply'), [0, 600, 0]);
 
-    // 6. Front door, hinged at the hatch-end corner
-    var hx = 829, DH = HF - 3;
+    // 12. Tall front door: one 9 mm ply door from the bottom of the frame to just under the iron,
+    // opening the hen house and the roof storage together. Hinged on a full-height strip at the hatch end.
+    var hx = 829, DH = R0 + 546 - B;
     var doorP = new THREE.Group();
     doorP.position.set(hx, B, Z1 + T);
     doorP.add(boxMesh(XM + 3 - hx, 827.5 - hx, 0, DH, -T, 0, 'ply'));
-    [[35, 135], [DH - 135, DH - 35]].forEach(function (r) {
-      var m = boxMesh(XM + 20 - hx, 810 - hx, r[0], r[1], -T - 18, -T, 'ply');
+    [[35, 135, XM + 20], [HF - 138, HF - 38, XM + 20], [R0 - B + 230, R0 - B + 330, XM + 60]].forEach(function (r) {
+      var m = boxMesh(r[2] - hx, 810 - hx, r[0], r[1], -T - 18, -T, 'ply');
       m.userData.key = 'doorBattens';
       doorP.add(m);
     });
-    [[69, 101], [DH - 101, DH - 69]].forEach(function (r) {
+    [[69, 101], [HF - 104, HF - 72], [R0 - B + 264, R0 - B + 296]].forEach(function (r) {
       var m = boxMesh(-14, 16, r[0], r[1], 0, 3, 'hw', false);
       m.userData.key = 'hinges';
       doorP.add(m);
     });
-    var latch = boxMesh(XM + 6 - hx, XM + 30 - hx, DH / 2 - 15, DH / 2 + 15, 0, 12, 'hw', false);
-    latch.userData.key = 'hinges';
-    doorP.add(latch);
+    [HF / 2, R0 - B + 280].forEach(function (y) {
+      var latch = boxMesh(XM + 6 - hx, XM + 30 - hx, y - 15, y + 15, 0, 12, 'hw', false);
+      latch.userData.key = 'hinges';
+      doorP.add(latch);
+    });
     reg('door', doorP, [0, 0, 420]);
+    reg('hingeStrip', boxMesh(X1 + T - 80, X1 + T, B, R0 + 549, Z1, Z1 + T, 'ply'), [0, 0, 300]);
 
-    // 7. Hatch door and drip strip
-    // Hatch door is the cut-out from the end wall: flush in the hole, hinged at the top outside edge.
-    var hatchP = new THREE.Group();
-    hatchP.position.set(X1 + T, B + 429, 0);
-    hatchP.add(boxMesh(-T, 0, -338, 0, -324, 324, 'ply'));
-    reg('hatch', hatchP, [520, 0, 0]);
-    var hStops = new THREE.Group();
-    hStops.add(boxMesh(X1 - T, X1, B + 72, B + 102, -343, 343, 'ply'));
-    hStops.add(boxMesh(X1 - T, X1, B + 102, B + 430, -343, -313, 'ply'));
-    hStops.add(boxMesh(X1 - T, X1, B + 102, B + 430, 313, 343, 'ply'));
-    reg('hatchStops', hStops, [180, 0, 0]);
-    reg('drip', boxMesh(X1 + T, X1 + T + 12, B + 470, B + 570, -350, 350, 'timber'), [520, 0, 0]);
-
-    // 8. Roof base
+    // 6–8. Roof base
     var RX = 1000;
     reg('backRail', boxMesh(X0 + T, X1, R0, R0 + 100, Z0 - T, Z0 - T + 24, 'timber'), [0, RX, -150]);
     reg('frontBottom', boxMesh(X0 + T, X1, R0, R0 + 48, Z1 - 24, Z1, 'timber'), [0, RX, 150]);
     // Gables reach the underside of the iron: the slope line plus the purlin depth, measured upright.
     var SH = 48 / CA;
-    function gableShape() {
+    function gableShape(len) {
       var s = new THREE.Shape();
-      s.moveTo(0, 0); s.lineTo(D, 0); s.lineTo(D, 500 + SH); s.lineTo(0, HB + SH); s.lineTo(0, 0);
+      s.moveTo(0, 0); s.lineTo(len, 0); s.lineTo(len, HB + SH + S * len); s.lineTo(0, HB + SH); s.lineTo(0, 0);
       return s;
     }
-    var gH = extrudeShape(gableShape(), 'ply', -Math.PI / 2); gH.position.set(X1 + T, R0, Z0 - T);
+    // The hatch-end gable is trimmed 9 mm at its tall end so the hinge strip can pass in front of it.
+    var gH = extrudeShape(gableShape(D - T), 'ply', -Math.PI / 2); gH.position.set(X1 + T, R0, Z0 - T);
     reg('gables', gH, [300, RX, 0]);
-    var gW = extrudeShape(gableShape(), 'ply', -Math.PI / 2); gW.position.set(X0 + T, R0, Z0 - T);
+    var gW = extrudeShape(gableShape(D), 'ply', -Math.PI / 2); gW.position.set(X0 + T, R0, Z0 - T);
     reg('gables', gW, [-300, RX, 0]);
     var gbH = new THREE.Group();
     gbH.add(sloped(X1 - 6, Z0 - T + 24, Z1 - 48, 12, 48));
@@ -1022,28 +1007,15 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     gbW.add(boxMesh(X0 + T, X0 + T + 24, R0, R0 + 48, -100, 100, 'timber'));
     reg('gableBattens', gbW, [-180, RX, 0], [X0 + T + 6, slopeY(-16.5) - 24 * CA, -16.5 + 24 * SA]);
 
-    // 9. Roof front wall, battens and storage flap
-    reg('frontWall', boxMesh(X0 + T, 4.5, R0, R0 + 549, Z1, Z1 + T, 'ply'), [0, RX, 300]);
-    var fwR = extrudeShape(rectShape(X1 - 4.5, 549, [[150, 80, 750, 350]]), 'ply');
-    fwR.position.set(4.5, R0, Z1);
-    reg('frontWall', fwR, [0, RX, 300], [850, R0 + 250, Z1 + T]);
+    // 9. Roof front wall over the run half only (the tall door covers the hen half), top cleat, uprights and backer
+    reg('frontWall', boxMesh(X0 + T, XM, R0, R0 + 549, Z1, Z1 + T, 'ply'), [0, RX, 300]);
     reg('frontTop', boxMesh(X0 + T, X1, R0 + 489, R0 + 537, Z1 - 24, Z1, 'timber'), [0, RX, 150]);
     var ups = new THREE.Group();
     [[X0 + T, X0 + T + 24], [X1 - 24, X1]].forEach(function (r) {
       ups.add(boxMesh(r[0], r[1], R0 + 48, R0 + 489, Z1 - 48, Z1, 'timber'));
     });
-    ups.add(boxMesh(-45.5, 54.5, R0 + 48, R0 + 489, Z1 - 12, Z1, 'timber'));
+    ups.add(boxMesh(XM - 50, XM + 50, R0 + 48, R0 + 489, Z1 - 12, Z1, 'timber'));
     reg('uprights', ups, [0, RX, 150]);
-    // Storage flap is the cut-out from the front wall, flush in the hole.
-    var flapP = new THREE.Group();
-    flapP.position.set(454.5, R0 + 349, Z1 + T);
-    flapP.add(boxMesh(-299, 299, -268, 0, -T, 0, 'ply'));
-    reg('flap', flapP, [0, RX, 420]);
-    var fStops = new THREE.Group();
-    fStops.add(boxMesh(136.5, 772.5, R0 + 62, R0 + 92, Z1 - T, Z1, 'ply'));
-    fStops.add(boxMesh(136.5, 166.5, R0 + 92, R0 + 350, Z1 - T, Z1, 'ply'));
-    fStops.add(boxMesh(742.5, 772.5, R0 + 92, R0 + 350, Z1 - T, Z1, 'ply'));
-    reg('flapStops', fStops, [0, RX, 180]);
 
     // 10. Purlins and middle rafter
     reg('purlins', purlin(0), [0, RX + 250, 0]);
@@ -1160,8 +1132,6 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
         r.root.position.copy(r.root.userData.base).addScaledVector(r.root.userData.ex, exT);
       });
       doorP.rotation.y = 1.75 * opT;
-      hatchP.rotation.z = 1.15 * opT;
-      flapP.rotation.x = -1.05 * opT;
       if (tween) {
         tween.k = Math.min(1, tween.k + dt / 0.9);
         var e = ease(tween.k);
