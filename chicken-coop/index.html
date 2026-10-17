@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chicken Coop Rebuild · Kaylene's website!</title>
+<meta name="description" content="Step-by-step 3D build plan for rebuilding a steel-frame chicken coop with marine ply, fence palings and an iron roof, with numbered cutting plans.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap">
+<style>
+:root {
+  /* Layout: workbench split, live model on the left and the numbered build card on the right; stacks to one column on phones */
+  --paper: #f2f4ee;
+  --card: #fbfcf8;
+  --ink: #1d2820;
+  --muted: #56635a;
+  --line: #d3dacf;
+  --coop: #2e6a4d;
+  --coop-ink: #ffffff;
+  --coop-soft: #dfeae2;
+  --scene: #e6eae1;
+  --ground: #cbd5c0;
+  --ply: #d4a96b;
+  --timber: #e3c77e;
+  --steel: #8e959b;
+  --metal: #cdc9bd;
+  --hw: #3b3f42;
+  --ply-soft: #efdcbc;
+  --ply-edge: #a57a3e;
+  --f-display: "Barlow Semi Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --f-body: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #121814; --card: #19211b; --ink: #e4eae3; --muted: #9eaca2; --line: #2c372f;
+    --coop: #74c49a; --coop-ink: #0f1a13; --coop-soft: #1f3328; --scene: #1a211c; --ground: #2a342c; --ply-soft: #46392a; --ply-edge: #c99a5c;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #121814; --card: #19211b; --ink: #e4eae3; --muted: #9eaca2; --line: #2c372f;
+  --coop: #74c49a; --coop-ink: #0f1a13; --coop-soft: #1f3328; --scene: #1a211c; --ground: #2a342c; --ply-soft: #46392a; --ply-edge: #c99a5c;
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.app {
+  height: 100%; max-width: 1500px; margin: 0 auto;
+  display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 14px;
+  padding-block: 14px 16px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 6px 24px; }
+.eyebrow { margin: 0; font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size: clamp(26px, 3.2vw, 34px); line-height: 1.05; text-wrap: balance; }
+.lede { margin: 0; color: var(--muted); font-size: 15px; max-width: 54ch; }
+.main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 390px); gap: 16px; min-height: 0; }
+.viewer { position: relative; min-height: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--scene); }
+.viewer canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+.viewer canvas:active { cursor: grabbing; }
+.views { position: absolute; top: 10px; left: 10px; display: flex; gap: 2px; padding: 3px; background: var(--card); border: 1px solid var(--line); border-radius: 8px; }
+.views button { border: 0; background: none; color: var(--muted); font: 500 13px/1 var(--f-body); padding: 7px 10px; border-radius: 6px; cursor: pointer; }
+.views button:hover { color: var(--ink); background: var(--coop-soft); }
+.chip {
+  position: absolute; left: 10px; right: 10px; bottom: 10px; max-width: 540px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 8px;
+  padding: 8px 12px; font-size: 14px; color: var(--muted);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; pointer-events: none;
+}
+.chip strong { color: var(--ink); font-weight: 600; }
+.chip .mono { font-family: var(--f-mono); font-size: 13px; color: var(--ink); }
+.chip .tag { font-family: var(--f-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--coop); }
+.fallback { position: absolute; inset: 0; display: grid; place-items: center; padding: 24px; text-align: center; color: var(--muted); }
+.panel { min-height: 0; overflow: auto; display: flex; flex-direction: column; gap: 16px; padding-bottom: 4px; }
+.stepper { display: flex; align-items: center; gap: 8px; }
+.navbtn { flex: none; border: 1px solid var(--line); background: var(--card); color: var(--ink); font: 600 14px/1 var(--f-body); padding: 9px 12px; border-radius: 8px; cursor: pointer; }
+.navbtn.primary { background: var(--coop); border-color: var(--coop); color: var(--coop-ink); }
+.navbtn:disabled { opacity: .4; cursor: default; }
+.dots { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; flex: 1; justify-content: center; min-width: 0; }
+.dots button { width: 26px; height: 26px; padding: 0; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--muted); font: 500 12px/1 var(--f-mono); cursor: pointer; font-variant-numeric: tabular-nums; }
+.dots button.done { background: var(--coop-soft); color: var(--ink); }
+.dots button[aria-current="step"] { background: var(--coop); border-color: var(--coop); color: var(--coop-ink); }
+.step { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 8px; }
+.step-num { margin: 0; font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--coop); }
+.step h2 { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 25px; line-height: 1.12; text-wrap: balance; }
+.step-body p { margin: 0 0 8px; }
+.step-body p:last-child { margin-bottom: 0; }
+.step h3 { margin: 8px 0 0; font: 500 12px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.pieces { list-style: none; margin: 0; padding: 0; }
+.piece { width: 100%; display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; column-gap: 10px; align-items: baseline; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 8px 4px; color: inherit; font: inherit; cursor: pointer; border-radius: 0; }
+.piece:hover, .piece.on { background: var(--coop-soft); }
+.sw { width: 12px; height: 12px; border-radius: 3px; align-self: center; grid-row: span 2; border: 1px solid rgba(0,0,0,.18); }
+.sw.ply { background: var(--ply); } .sw.timber { background: var(--timber); } .sw.steel { background: var(--steel); } .sw.metal { background: var(--metal); } .sw.hw { background: var(--hw); }
+.pname { font-weight: 600; font-size: 15px; line-height: 1.3; }
+.psrc { font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.psize { grid-column: 2 / 4; font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
+.opts { display: flex; flex-direction: column; gap: 10px; }
+.opts h3, .legend h3, .cut h3 { margin: 0; font: 500 12px/1.4 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.toggles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.tog { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); font-size: 14px; cursor: pointer; }
+.tog input { accent-color: var(--coop); width: 16px; height: 16px; margin: 0; }
+.seg-wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-size: 14px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--card); }
+.seg label { position: relative; }
+.seg input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.seg span { display: block; padding: 7px 12px; font-size: 14px; color: var(--muted); }
+.seg input:checked + span { background: var(--coop); color: var(--coop-ink); }
+.seg input:focus-visible + span { outline: 2px solid var(--coop); outline-offset: -2px; }
+.legend { display: flex; flex-direction: column; gap: 8px; }
+.legend ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); }
+.legend li { display: flex; align-items: center; gap: 6px; }
+.legend .sw { grid-row: auto; }
+.sw.now { background: transparent; border: 2px solid var(--coop); }
+.foot { margin: 0; font-size: 13px; color: var(--muted); }
+.tog.wide { grid-column: 1 / -1; }
+.labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.lbl { position: absolute; left: 0; top: 0; margin: 0; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 12px; border: 1px solid var(--ply-edge); background: var(--card); color: var(--ink); font: 500 12px/22px var(--f-mono); text-align: center; pointer-events: auto; cursor: pointer; transition: opacity .2s; font-variant-numeric: tabular-nums; -webkit-appearance: none; appearance: none; }
+.lbl.now { background: var(--coop); border-color: var(--coop); color: var(--coop-ink); }
+.lbl.hot { outline: 3px solid var(--coop); outline-offset: 1px; }
+.lbl.dim { opacity: .3; }
+.lbl.dim:hover { opacity: 1; }
+.pnum, .chip .num { display: inline-block; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: var(--coop); color: var(--coop-ink); font: 500 11px/20px var(--f-mono); text-align: center; vertical-align: 1px; }
+.pnum { margin-right: 8px; }
+.cut { display: flex; flex-direction: column; gap: 8px; }
+.cut-note { margin: 0; font-size: 13px; color: var(--muted); }
+.sheets { display: flex; flex-direction: column; gap: 12px; }
+.sheet { margin: 0; display: flex; flex-direction: column; gap: 4px; }
+.sheet figcaption { font: 500 12px/1.4 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.sheet svg { display: block; width: 100%; height: auto; }
+.sheet-bg { fill: none; stroke: var(--muted); stroke-width: 6; stroke-dasharray: 24 16; }
+.part { cursor: pointer; }
+.part rect { fill: var(--ply-soft); stroke: var(--ply-edge); stroke-width: 5; }
+.part line { stroke: var(--ply-edge); stroke-width: 6; }
+.part circle { fill: var(--card); stroke: var(--ply-edge); stroke-width: 6; }
+.part .bn { font-family: var(--f-mono); font-weight: 500; fill: var(--ink); }
+.part .pn { font-family: var(--f-body); font-size: 84px; font-weight: 600; fill: var(--ink); }
+.part .pn.thin { font-size: 68px; }
+.part .ps { font-family: var(--f-mono); font-size: 74px; font-weight: 500; fill: var(--ink); }
+.part .ph { font-family: var(--f-body); font-size: 66px; fill: var(--muted); }
+.part .pn.sm { font-size: 74px; }
+.part .pd { font-family: var(--f-mono); font-size: 60px; font-weight: 500; fill: var(--muted); }
+.part.cutout rect { stroke-dasharray: 22 14; stroke-width: 7; }
+.part.now rect { fill: var(--coop-soft); stroke: var(--coop); }
+.part.now circle { fill: var(--coop); stroke: var(--coop); }
+.part.now .bn { fill: var(--coop-ink); }
+.part.on rect { stroke: var(--coop); stroke-width: 16; }
+.pal-intro { display: flex; flex-direction: column; gap: 4px; margin-top: 6px; }
+.sub { margin: 0; font: 500 12px/1.4 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.pals { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.pal { display: flex; flex-direction: column; gap: 5px; padding-top: 10px; border-top: 1px solid var(--line); }
+.pal-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; }
+.pal-id { font: 500 12px/1.4 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+.pal-how { font-size: 13px; color: var(--muted); }
+.bar { position: relative; display: flex; gap: 2px; height: 24px; padding: 2px; border: 1px dashed var(--muted); border-radius: 3px; }
+.bar.ripped::after { content: ""; position: absolute; left: 2px; right: 2px; top: 50%; border-top: 1px dashed var(--ink); opacity: .45; pointer-events: none; }
+.seg { display: grid; place-items: center; flex: 0 1 auto; min-width: 0; background: var(--ply-soft); border: 1px solid var(--ply-edge); border-radius: 2px; font: 500 11px/1 var(--f-mono); color: var(--ink); cursor: pointer; }
+.seg.now { background: var(--coop); border-color: var(--coop); color: var(--coop-ink); }
+.seg.on { outline: 2px solid var(--coop); outline-offset: 1px; }
+.pal-parts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 3px; font-size: 13px; }
+.pal-parts .mono { font-family: var(--f-mono); color: var(--muted); white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--coop); outline-offset: 2px; }
+@media (max-width: 880px) {
+  html, body { height: auto; }
+  .app { height: auto; }
+  .main { grid-template-columns: minmax(0, 1fr); }
+  .viewer { height: clamp(320px, 80vw, 540px); }
+  .panel { overflow: visible; }
+}
+@media (max-width: 400px) {
+  .toggles { grid-template-columns: minmax(0, 1fr); }
+  .views button { padding: 7px 8px; }
+}
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.backlink { display: inline-block; margin-bottom: 6px; font-size: 14px; font-weight: 600; color: var(--coop); text-decoration: none; }
+.backlink:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div>
+      <a class="backlink" href="../hobbies/#chickens">&larr; Back to Hobbies</a>
+      <p class="eyebrow">Steel-frame coop · 9 mm marine ply · sizes in mm</p>
+      <h1>Chicken Coop Rebuild</h1>
+    </div>
+    <p class="lede">Step through the build in order. Every piece is numbered with the step it goes on in. Drag the model to turn it, pinch or scroll to zoom, and tap any piece to see its size.</p>
+  </header>
+
+  <main class="main">
+    <section class="viewer" id="viewer" aria-label="3D model of the coop. Use the step list to change what is shown.">
+      <div class="views" role="group" aria-label="Camera view">
+        <button type="button" data-view="iso">3D</button>
+        <button type="button" data-view="front">Front</button>
+        <button type="button" data-view="end">Hatch end</button>
+        <button type="button" data-view="top">Top</button>
+      </div>
+      <div class="chip" id="chip" aria-live="polite">Tap a piece in the model to see its size.</div>
+      <div class="fallback" id="fallback" hidden>
+        <p>The 3D model couldn't load on this device. The steps and piece sizes on the right still work.</p>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <nav class="stepper" aria-label="Build steps">
+        <button type="button" class="navbtn" id="prev">Back</button>
+        <ol class="dots" id="dots"></ol>
+        <button type="button" class="navbtn primary" id="next">Next</button>
+      </nav>
+
+      <article class="step">
+        <p class="step-num" id="stepNum">Step 1 of 11</p>
+        <h2 id="stepTitle">The frame as it is now</h2>
+        <div class="step-body" id="stepBody"></div>
+        <h3>Pieces in this step</h3>
+        <ul class="pieces" id="pieces"></ul>
+      </article>
+
+      <section class="opts" aria-label="Model options">
+        <h3>Show</h3>
+        <div class="toggles">
+          <label class="tog wide"><input type="checkbox" id="optNums" checked> Step numbers on the pieces</label>
+          <label class="tog"><input type="checkbox" id="optExplode"> Pull pieces apart</label>
+          <label class="tog"><input type="checkbox" id="optOpen"> Open doors and flaps</label>
+          <label class="tog"><input type="checkbox" id="optMetal" checked> Metal roof</label>
+          <label class="tog"><input type="checkbox" id="optFrame" checked> Steel frame and mesh</label>
+        </div>
+        <div class="seg-wrap">
+          <span>Run half gets ply for the</span>
+          <div class="seg" role="radiogroup" aria-label="Run half gets ply for">
+            <label><input type="radio" name="run" id="runFloor" value="floor" checked><span>Floor</span></label>
+            <label><input type="radio" name="run" id="runDeck" value="deck"><span>Top deck</span></label>
+          </div>
+        </div>
+      </section>
+
+      <section class="legend" aria-label="Colour key">
+        <h3>Colour key</h3>
+        <ul>
+          <li><span class="sw ply"></span>9 mm ply</li>
+          <li><span class="sw timber"></span>Fence palings</li>
+          <li><span class="sw steel"></span>Steel frame</li>
+          <li><span class="sw metal"></span>Roof sheet</li>
+          <li><span class="sw hw"></span>Hinges, latch</li>
+          <li><span class="sw now"></span>Added in this step</li>
+        </ul>
+      </section>
+
+      <section class="cut" aria-label="Cutting plan">
+        <h3>Cutting plan, numbered by step</h3>
+        <p class="cut-note">Pencil each number on the piece as you cut it. The number on a piece's left edge is its height as drawn, and the number along its bottom is its width. Dashed outlines are pieces cut out of a wall: the hatch door and the storage flap. This step's pieces are highlighted. Tap a piece to jump to the step where it goes on.</p>
+        <div class="sheets" id="cutPlan"></div>
+      </section>
+
+      <p class="foot">Sizes are for your measured bare frame: 1803 long × 860 wide × 913 high, outside of the steel. The clad half is taken as half the length, about 901 from the hatch end to the middle of the middle post. Check that one before cutting the back wall, door, top deck and floors. There's ply for the floor or the top deck on the run half, not both.</p>
+    </aside>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  var PIECES = [
+    { key: 'frame', step: 1, kind: 'steel', name: 'Steel frame', size: '1803 × 860 × 913, as measured', src: 'Existing' },
+    { key: 'mesh', step: 1, kind: 'steel', name: 'Mesh half and mesh door', size: 'stays as it is', src: 'Existing' },
+    { key: 'floorHen', step: 2, kind: 'ply', name: 'Floor, hen half', size: '896 × 852, notch round posts', src: 'Sheet 1' },
+    { key: 'floorRun', step: 2, opt: 'floor', kind: 'ply', name: 'Floor, run half', size: '896 × 852, notch round posts', src: 'Sheet 3' },
+    { key: 'endWall', step: 3, kind: 'ply', name: 'End wall', size: '860 × 913, hole 650 × 340', src: 'Sheet 2' },
+    { key: 'backWall', step: 4, kind: 'ply', name: 'Back wall', size: '910 × 913', src: 'Sheet 2' },
+    { key: 'hingeStrip', step: 4, kind: 'ply', name: 'Hinge strip', size: '80 × 913', src: 'Sheet 1' },
+    { key: 'deckHen', step: 5, kind: 'ply', name: 'Top deck, hen half', size: '910 × 878', src: 'Sheet 1' },
+    { key: 'packers', step: 5, opt: 'floor', kind: 'ply', name: 'Packer strips ×3', size: '45 wide: 2 × 902 long, 1 × 788 long', src: 'Sheet 3' },
+    { key: 'deckRun', step: 5, opt: 'deck', kind: 'ply', name: 'Top deck, run half', size: '902 × 878', src: 'Sheet 3' },
+    { key: 'door', step: 6, kind: 'ply', name: 'Front door', size: '824 × 910', src: 'Sheet 3' },
+    { key: 'doorBattens', step: 6, kind: 'timber', name: 'Door ledges ×2', size: '790 × 100, palings laid flat', src: 'Paling 8' },
+    { key: 'hinges', step: 6, kind: 'hw', name: 'Hinges and latch', size: 'the pair you have', src: 'Hardware' },
+    { key: 'hatch', step: 7, kind: 'ply', name: 'Hatch door', size: '650 × 340, the piece cut out of the end wall', src: 'Sheet 2' },
+    { key: 'hatchStops', step: 7, kind: 'ply', name: 'Hatch stops', size: '30 wide ply strips: 650, 340, 340', src: 'Ply offcut' },
+    { key: 'drip', step: 7, kind: 'timber', name: 'Drip strip', size: '700 × 100, paling laid flat', src: 'Paling 9' },
+    { key: 'backRail', step: 8, kind: 'timber', name: 'Back rail', size: '1794 × 100 × 24, two palings glued', src: 'Palings 1, 2' },
+    { key: 'frontBottom', step: 8, kind: 'timber', name: 'Front bottom cleat', size: '1794 × 48 × 24, on edge', src: 'Paling 3' },
+    { key: 'gables', step: 8, kind: 'ply', name: 'Gable ends ×2', size: '878 long, 100 high at back, 554 at front', src: 'Sheet 1' },
+    { key: 'gableBattens', step: 8, kind: 'timber', name: 'Gable strips and blocks', size: '2 sloping strips 900 × 48 × 12, 2 blocks 200 × 48 × 24', src: 'Palings 6, 7' },
+    { key: 'frontWall', step: 9, kind: 'ply', name: 'Roof front wall ×2', size: '897 × 549 each, hole 600 × 270', src: 'Sheets 2, 3' },
+    { key: 'frontTop', step: 9, kind: 'timber', name: 'Front top cleat', size: '1794 × 48 × 24, 12 below the top', src: 'Paling 4' },
+    { key: 'uprights', step: 9, kind: 'timber', name: 'End uprights ×2 and middle backer', size: '441 × 48 × 24 each; backer 441 × 100', src: 'Palings 6, 7, 9' },
+    { key: 'flap', step: 9, kind: 'ply', name: 'Storage flap', size: '600 × 270, the piece cut out of the front wall', src: 'Sheet 3' },
+    { key: 'flapStops', step: 9, kind: 'ply', name: 'Flap stops', size: '30 wide ply strips: 600, 270, 270', src: 'Ply offcut' },
+    { key: 'purlins', step: 10, kind: 'timber', name: 'Middle purlin', size: '1794 × 48 × 24, on edge', src: 'Paling 5' },
+    { key: 'rafter', step: 10, kind: 'timber', name: 'Middle rafter', size: '925 × 48 × 24, cut to fit', src: 'Paling 6' },
+    { key: 'roofMesh', step: 11, kind: 'steel', name: 'Mesh under the iron', size: 'about 1810 × 990, holes 6 mm or smaller', src: 'Mesh' },
+    { key: 'infill', step: 11, kind: 'hw', name: 'Corrugated infill strips', size: 'along the back rail and the front wall', src: 'Buy' },
+    { key: 'metalBig', step: 11, kind: 'metal', name: 'Roof sheets ×2', size: '840 × 1205, the big sheet cut in half', src: 'Metal' },
+    { key: 'metalNarrow', step: 11, kind: 'metal', name: 'Narrow roof strip', size: 'your narrow sheet, cut 1205 long', src: '1800 sheet' }
+  ];
+  var PMAP = {};
+  PIECES.forEach(function (p) { PMAP[p.key] = p; });
+
+  var VIEWS = {
+    iso: { p: [2600, 2100, 2900], t: [0, 700, 0] },
+    front: { p: [0, 950, 3700], t: [0, 760, 0] },
+    end: { p: [3600, 1050, 450], t: [200, 700, 0] },
+    top: { p: [0, 4900, 60], t: [0, 700, 0] }
+  };
+
+  var STEPS = [
+    { title: 'The frame as it is now', view: { p: [2600, 2000, 2900], t: [0, 600, 0] },
+      body: function () { return [
+        'Strip off the old 1/4" ply, the outside egg box and the old roof bits.',
+        'Keep the old panels. Lay them on the new ply as templates: their screw holes show where the steel is.',
+        'Wire-brush any rust on the frame and touch it up with cold galv paint.',
+        'Get the fence palings ready too: pull the old nails, cut off any split ends and check you have ten good ones. The paling cutting plan is at the bottom of this panel.'
+      ]; } },
+    { title: 'Drop in the floor', view: { p: [1700, 2700, 2000], t: [0, 300, 0] },
+      body: function (s) { return [
+        'The ply floor sits inside the frame, on top of the old wire. Leave the wire there as an extra barrier.',
+        'Notch the corners around the steel posts. Leave the pieces loose so they lift out for cleaning. A lino offcut on top makes cleaning easier.',
+        s.run === 'deck'
+          ? 'You’ve chosen to deck the run half instead, so only the hen half gets a ply floor. The run keeps its wire floor.'
+          : 'Two halves: the hen half comes from sheet 1 and the run half from sheet 3.'
+      ]; } },
+    { title: 'End wall with the hatch hole', view: { p: [2900, 1300, 1700], t: [300, 600, 0] },
+      body: function () { return [
+        'Cut the 650 × 340 hatch hole first: centred, with its bottom edge 90 up from the bottom of the panel. Keep the piece that comes out, because it becomes the hatch door. Drill a starter hole at each corner on the wall side of the line, then cut along the lines with a jigsaw so the cut-out stays whole.',
+        'Never cut the steel. If a rail is in the way, fit the hole between the rails.',
+        'Screw the panel to the outside of the frame. Drill 5 mm clearance holes in the ply, then put self-drilling screws into the steel every 150 mm, 12 mm in from the edge.'
+      ]; } },
+    { title: 'Back wall and hinge strip', view: { p: [2300, 1500, -2600], t: [300, 600, 0] },
+      body: function () { return [
+        'The back wall runs from the middle post to the end and covers the back edge of the end wall.',
+        'The 80 mm hinge strip covers the front corner post and the front edge of the end wall. It gives the door hinges something solid to screw into.'
+      ]; } },
+    { title: 'Top deck', view: { p: [2200, 2600, 2400], t: [0, 900, 0] },
+      body: function (s) { return [
+        'The deck sits on top of the frame and the wall panels, flush with their outside faces. Its inner edge lands on the steel cross-rail at the middle.',
+        s.run === 'deck'
+          ? 'The run half gets its own deck piece, butted against the hen half over the middle cross-rail.'
+          : 'Over the run half, lay 9 mm packer strips on the steel rails so the roof sits level with the deck. The mesh top stays in place.'
+      ]; } },
+    { title: 'Front door', view: { p: [1500, 1200, 3000], t: [400, 600, 0] },
+      body: function () { return [
+        'Screw two paling pieces flat across the inside of the door, set in so they sit inside the frame opening when it’s shut. They keep the door flat. Use screws no longer than 20 mm so they don’t poke through.',
+        'Fit the hinges across the gap between the door and the hinge strip, lined up with the paling ledges so the door-side screws go into timber. The strip side goes through into the steel post.',
+        'Latch it on the middle post. Move the mesh door’s latch off the old ply and onto the post too, so both doors open from the centre.'
+      ]; } },
+    { title: 'Egg hatch', view: { p: [3100, 900, 900], t: [700, 500, 0] },
+      body: function () { return [
+        'The hatch door is the piece you cut out of the end wall, so it sits flush in the hole. Glue and screw 30 mm ply strips around the inside of the hole along the bottom and both sides, sticking 12 mm into the opening, so the door closes against them and can’t be pushed in.',
+        'Hinge it along the top, with the hinges on the outside face across the gap. Screw a flat paling strip to the wall just above the hinges so rain runs off past them. Add a bolt or turn-button at the bottom, and a hook to hold it open.'
+      ]; } },
+    { title: 'Roof base: back rail, cleat and gables', view: { p: [2300, 2800, 2500], t: [0, 1100, 0] },
+      body: function () { return [
+        'Glue palings 1 and 2 together face to face to make the back rail, 100 high. Make the front bottom cleat from paling 3: rip it in half and glue the halves together.',
+        'Fix both to the steel rails every 300 mm. From inside the coop, drill up through the steel top rail and screw up through the rail and the deck into the timber. Long timber-to-steel screws driven down from the top also work. These hold the roof on in wind.',
+        'Stand a gable at each end and screw through it into the ends of the rail and the cleat. The gables come right up to the underside of the roof sheet, so there’s no gap at the ends.',
+        'Inside each gable, fix a glued block along the bottom and a single paling strip along the slope, 48 mm below the top edge. Hold a 48 mm offcut against the top edge as a spacer and fix the strip under it. The purlin sits on these strips.'
+      ]; } },
+    { title: 'Roof front wall and storage flap', view: { p: [1000, 1600, 3300], t: [0, 1200, 0] },
+      body: function () { return [
+        'The front wall goes on in two halves, 549 high, joined over a flat paling backer in the middle, with a glued upright at each end. It comes right up to the underside of the roof sheet, so it carries the front edge of the metal.',
+        'The top cleat sits 12 mm below the top edge so it stays under the slope.',
+        'Cut the 600 × 270 storage hole in the hen-half side the same way as the hatch hole, and keep the cut-out: it becomes the flap. Fit ply stops around the inside of the hole along the bottom and both sides, then hinge the flap along the top. The water container goes in lying down and stands up inside.'
+      ]; } },
+    { title: 'Middle purlin and rafter', view: { p: [2300, 3000, 2300], t: [0, 1200, 0] },
+      body: function () { return [
+        'The middle purlin stands on edge across the roof, resting on the sloping gable strips at each end and on the middle rafter, with its top flush with the tops of the gables. The back rail and the front wall carry the back and front edges of the sheet, so this is the only purlin you need.',
+        'The middle rafter runs up the slope from the back rail to the front top cleat, so the purlin doesn’t sag. Screw down through the purlin at an angle into the gable strips and the rafter, and through each gable into the purlin ends.',
+        'Drill two 50 mm holes high in each gable, just under the roof line, and staple fine mesh over them on the inside. With the ends closed up, these let the hot air out.'
+      ]; } },
+    { title: 'Mesh and metal roof', view: { p: [2600, 2600, 2900], t: [0, 900, 0] },
+      body: function () { return [
+        'First lay fine mesh over the whole roof frame. Holes of 6 mm or smaller keep mice out. Wrap it over the top edges of the gables, the front wall and the back rail, and staple it to their outside faces just below the top, so the iron sits straight on the mesh.',
+        'Corrugated iron still leaves a wavy gap under each crest where it crosses the back rail and the front wall. Lay corrugated infill strips on the mesh along those two edges before the iron goes down, so nothing can crawl into the corrugations.',
+        'Corrugations run down the slope. The two halves of the big sheet go on first, then the narrow strip at the mesh end, each overlapping the one before by one corrugation.',
+        'Overhang about 175 at the back, 40 at the front and 50 at each end. Roofing screws with rubber washers go through every second crest into the back rail, the middle purlin and the front top cleat. Those tops are only 24 wide, so mark a line on the sheet where each one runs.'
+      ]; } }
+  ];
+  var STEP_COUNT = STEPS.length;
+
+  var state = { step: 1, run: 'floor', explode: false, open: false, metal: true, frame: true, nums: true, hover: null, picked: null };
+  try {
+    var saved = JSON.parse(localStorage.getItem('coop-rebuild') || '{}');
+    if (saved.step >= 1 && saved.step <= STEP_COUNT) state.step = saved.step;
+    if (saved.run === 'floor' || saved.run === 'deck') state.run = saved.run;
+  } catch (e) { /* storage unavailable */ }
+  function save() {
+    try { localStorage.setItem('coop-rebuild', JSON.stringify({ step: state.step, run: state.run })); } catch (e) { /* ignore */ }
+  }
+
+  function $(id) { return document.getElementById(id); }
+  var el = {
+    prev: $('prev'), next: $('next'), dots: $('dots'), num: $('stepNum'), title: $('stepTitle'),
+    body: $('stepBody'), pieces: $('pieces'), chip: $('chip'),
+    explode: $('optExplode'), open: $('optOpen'), metal: $('optMetal'), frame: $('optFrame'),
+    runFloor: $('runFloor'), runDeck: $('runDeck'), nums: $('optNums'), cut: $('cutPlan')
+  };
+  el.runFloor.checked = state.run === 'floor';
+  el.runDeck.checked = state.run === 'deck';
+
+  var dotButtons = [];
+  STEPS.forEach(function (s, i) {
+    var li = document.createElement('li');
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = String(i + 1);
+    b.setAttribute('aria-label', 'Step ' + (i + 1) + ': ' + s.title);
+    b.addEventListener('click', function () { goTo(i + 1); });
+    li.appendChild(b);
+    el.dots.appendChild(li);
+    dotButtons.push(b);
+  });
+
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  function stepPieces() {
+    return PIECES.filter(function (p) { return p.step === state.step && (!p.opt || p.opt === state.run); });
+  }
+
+  function renderPanel() {
+    var s = STEPS[state.step - 1];
+    el.num.textContent = 'Step ' + state.step + ' of ' + STEP_COUNT;
+    el.title.textContent = s.title;
+    el.body.innerHTML = s.body(state).map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('');
+    el.pieces.innerHTML = stepPieces().map(function (p) {
+      return '<li><button type="button" class="piece" data-key="' + p.key + '">' +
+        '<span class="sw ' + p.kind + '"></span>' +
+        '<span class="pname"><span class="pnum">' + p.step + '</span>' + esc(p.name) + '</span>' +
+        '<span class="psrc">' + esc(p.src) + '</span>' +
+        '<span class="psize">' + esc(p.size) + '</span></button></li>';
+    }).join('');
+    dotButtons.forEach(function (b, i) {
+      if (i + 1 === state.step) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current');
+      b.classList.toggle('done', i + 1 < state.step);
+    });
+    el.prev.disabled = state.step === 1;
+    el.next.disabled = state.step === STEP_COUNT;
+    renderCut();
+    markPicked();
+  }
+
+  function markPicked() {
+    Array.prototype.forEach.call(el.pieces.querySelectorAll('.piece'), function (b) {
+      b.classList.toggle('on', b.getAttribute('data-key') === state.picked);
+    });
+    Array.prototype.forEach.call(el.cut.querySelectorAll('.part, .seg'), function (g) {
+      g.classList.toggle('on', g.getAttribute('data-key') === state.picked);
+    });
+  }
+
+  // Cutting plan (mm, 2440 × 1220 sheets). Each piece carries the number of the step it goes on in.
+  var SHEETS = [
+    { name: 'Sheet 1', parts: [
+      { key: 'deckHen', x: 0, y: 0, w: 910, h: 878, label: 'Top deck', size: '910 × 878' },
+      { key: 'gables', x: 913, y: 0, w: 657, h: 878, label: 'Gables ×2', size: '878 × 657', diag: [101, 556] },
+      { key: 'floorHen', x: 1573, y: 0, w: 852, h: 896, label: 'Floor', size: '896 × 852' },
+      { key: 'hingeStrip', x: 0, y: 881, w: 913, h: 80, label: 'Hinge strip', size: '913 × 80' }
+    ] },
+    { name: 'Sheet 2', parts: [
+      { key: 'endWall', x: 0, y: 0, w: 860, h: 913, label: 'End wall', size: '860 × 913', lab: { b: [430, 160, 70], n: [430, 300, 'middle'] } },
+      { key: 'hatch', x: 105, y: 483, w: 650, h: 340, label: 'Hatch door', size: '650 × 340', cutout: true },
+      { key: 'backWall', x: 863, y: 0, w: 910, h: 913, label: 'Back wall', size: '910 × 913' },
+      { key: 'frontWall', x: 1776, y: 0, w: 549, h: 897, label: 'Front wall', size: '897 × 549', extra: 'no hole' }
+    ] },
+    { name: 'Sheet 3', parts: [
+      { key: 'door', x: 0, y: 0, w: 824, h: 910, label: 'Door', size: '824 × 910' },
+      { key: 'floorRun', opt: 'floor', x: 827, y: 0, w: 896, h: 852, label: 'Floor', size: '896 × 852' },
+      { key: 'deckRun', opt: 'deck', x: 827, y: 0, w: 902, h: 878, label: 'Run deck', size: '902 × 878' },
+      { key: 'frontWall', x: 1732, y: 0, w: 549, h: 897, label: 'Front wall', size: '897 × 549', lab: { b: [100, 75, 50], n: [170, 75, 'start'], small: true } },
+      { key: 'flap', x: 1812, y: 150, w: 270, h: 600, label: 'Flap', size: '600 × 270', cutout: true },
+      { key: 'packers', opt: 'floor', x: 2284, y: 0, w: 150, h: 1220, label: 'Packers', size: '3 strips 45 × 1220' }
+    ] }
+  ];
+
+  function badge(x, y, r, n) {
+    return '<circle cx="' + x + '" cy="' + y + '" r="' + r + '"/>' +
+      '<text class="bn" x="' + x + '" y="' + y + '" text-anchor="middle" dominant-baseline="central" style="font-size:' +
+      Math.round(Math.min(84, r * 1.35)) + 'px">' + n + '</text>';
+  }
+
+  function txt(cls, x, y, anchor, t) {
+    return '<text class="' + cls + '" x="' + x + '" y="' + y + '" text-anchor="' + anchor + '" dominant-baseline="central">' + esc(t) + '</text>';
+  }
+
+  // Measurements as drawn: the left edge shows the piece's height on the sheet, the bottom edge its width.
+  function dimLabels(p) {
+    var s = '';
+    if (p.w >= 200 && p.h >= 200) {
+      s += '<text class="pd" transform="translate(' + (p.x + 36) + ' ' + (p.y + p.h / 2) + ') rotate(-90)" text-anchor="middle" dominant-baseline="central">' + p.h + '</text>';
+    }
+    if (p.w >= 150 && p.h >= 120) s += txt('pd', p.x + p.w / 2, p.y + p.h - 36, 'middle', String(p.w));
+    return s;
+  }
+
+  function partSvg(p) {
+    var n = PMAP[p.key].step;
+    var cx = p.x + p.w / 2, cy = p.y + p.h / 2;
+    var s = '<g class="part' + (p.cutout ? ' cutout' : '') + (n === state.step ? ' now' : '') + '" data-key="' + p.key + '">' +
+      '<rect x="' + p.x + '" y="' + p.y + '" width="' + p.w + '" height="' + p.h + '"/>';
+    if (p.diag) s += '<line x1="' + (p.x + p.diag[0]) + '" y1="' + p.y + '" x2="' + (p.x + p.diag[1]) + '" y2="' + (p.y + p.h) + '"/>';
+    if (p.lab) {
+      // Panel with a cut-out inside: its own number and name sit where the cut-out isn't.
+      s += badge(p.x + p.lab.b[0], p.y + p.lab.b[1], p.lab.b[2], n);
+      s += txt(p.lab.small ? 'pn sm' : 'pn', p.x + p.lab.n[0], p.y + p.lab.n[1], p.lab.n[2], p.label);
+      s += dimLabels(p);
+    } else if (p.h >= 600 && p.w >= 400) {
+      // Tall panel: number and name in the middle.
+      s += badge(cx, cy - 100, 80, n);
+      s += txt('pn', cx, cy + 50, 'middle', p.label);
+      if (p.extra) s += txt('ph', cx, cy + 140, 'middle', p.extra);
+      s += dimLabels(p);
+    } else if (p.h >= 240 && p.w >= 500) {
+      // Wide, shorter panel: number on the left, name beside it.
+      s += badge(p.x + 150, cy, 70, n);
+      s += txt(p.label.length * 40 + 270 > p.w ? 'pn sm' : 'pn', p.x + 250, cy, 'start', p.label);
+      s += dimLabels(p);
+    } else if (p.w >= 200 && p.h >= 400) {
+      // Narrow, tall panel: number near the top, name under it.
+      var rr = Math.min(60, p.w / 2 - 50);
+      s += badge(cx + 15, p.y + 70 + rr, rr, n);
+      s += txt('pn', cx + 15, p.y + 120 + 2 * rr + 40, 'middle', p.label);
+      s += dimLabels(p);
+    } else if (p.w < 200 && p.h >= 600) {
+      // Narrow strip: number at the top, text running down the strip.
+      var r = Math.min(80, p.w / 2 - 8);
+      s += badge(cx, p.y + 40 + r, r, n);
+      s += '<text class="ph" transform="translate(' + cx + ' ' + (p.y + 80 + 2 * r) + ') rotate(90)" dominant-baseline="central">' +
+        esc(p.label + ': ' + p.size) + '</text>';
+      s += dimLabels(p);
+    } else if (p.h >= 70) {
+      // Thin strip: everything on one line.
+      s += '<text class="pn thin" x="' + (p.x + 40) + '" y="' + cy + '" dominant-baseline="central">' +
+        n + ' ' + esc(p.label) + ' ' + esc(p.size) + '</text>';
+    }
+    return s + '</g>';
+  }
+
+  // Fence palings, each 1800 × 100 × 12. "Rip" = cut lengthwise into two 48 wide halves.
+  var PALINGS = [
+    { ids: '1 + 2', how: 'Glue the two together face to face. No ripping.', parts: [
+      { key: 'backRail', len: 1794, name: 'Back rail', size: '1794 × 100 × 24' }] },
+    { ids: '3', ripped: true, how: 'Rip in half, then glue the halves together.', parts: [
+      { key: 'frontBottom', len: 1794, name: 'Front bottom cleat', size: '1794 × 48 × 24' }] },
+    { ids: '4', ripped: true, how: 'Rip in half, then glue the halves together.', parts: [
+      { key: 'frontTop', len: 1794, name: 'Front top cleat', size: '1794 × 48 × 24' }] },
+    { ids: '5', ripped: true, how: 'Rip in half, then glue the halves together.', parts: [
+      { key: 'purlins', len: 1794, name: 'Middle purlin', size: '1794 × 48 × 24' }] },
+    { ids: '6', ripped: true, how: 'Rip in half, cut both halves the same, then glue the matching pieces together.', parts: [
+      { key: 'rafter', len: 925, name: 'Middle rafter', size: '925 × 48 × 24' },
+      { key: 'uprights', len: 441, name: 'End upright', size: '441 × 48 × 24' },
+      { key: 'gableBattens', len: 200, name: 'Gable block', size: '200 × 48 × 24' }] },
+    { ids: '7', ripped: true, how: 'Rip in half and cut both halves the same. The sloping strips stay single; glue the other pieces in pairs.', parts: [
+      { key: 'gableBattens', len: 900, name: 'Sloping gable strips (one from each half)', size: '900 × 48 × 12' },
+      { key: 'uprights', len: 441, name: 'End upright', size: '441 × 48 × 24' },
+      { key: 'gableBattens', len: 200, name: 'Gable block', size: '200 × 48 × 24' }] },
+    { ids: '8', how: 'Full width, no ripping.', parts: [
+      { key: 'doorBattens', len: 790, name: 'Door ledge', size: '790 × 100' },
+      { key: 'doorBattens', len: 790, name: 'Door ledge', size: '790 × 100' }] },
+    { ids: '9', how: 'Full width, no ripping.', parts: [
+      { key: 'drip', len: 700, name: 'Drip strip', size: '700 × 100' },
+      { key: 'uprights', len: 441, name: 'Middle joint backer', size: '441 × 100' }] },
+    { ids: '10', how: 'Spare, in case one turns out split or rotten.', parts: [] }
+  ];
+
+  function palingRow(pl) {
+    var bar = '<div class="bar' + (pl.ripped ? ' ripped' : '') + '">' + pl.parts.map(function (p) {
+      var n = PMAP[p.key].step;
+      return '<span class="seg' + (n === state.step ? ' now' : '') + '" data-key="' + p.key + '" style="flex-basis:' +
+        (p.len / 18).toFixed(2) + '%" title="' + esc(p.name) + '">' + n + '</span>';
+    }).join('') + '</div>';
+    var list = pl.parts.length ? '<ul class="pal-parts">' + pl.parts.map(function (p) {
+      return '<li><span class="pnum">' + PMAP[p.key].step + '</span>' + esc(p.name) + ' <span class="mono">' + esc(p.size) + '</span></li>';
+    }).join('') + '</ul>' : '';
+    return '<li class="pal"><div class="pal-head"><span class="pal-id">Paling ' + pl.ids + '</span><span class="pal-how">' +
+      esc(pl.how) + '</span></div>' + bar + list + '</li>';
+  }
+
+  function renderCut() {
+    var sheets = SHEETS.map(function (sh) {
+      var parts = sh.parts.filter(function (p) { return !p.opt || p.opt === state.run; });
+      return '<figure class="sheet"><figcaption>' + sh.name + ' · 2440 × 1220 · blank areas are spare</figcaption>' +
+        '<svg viewBox="-8 -8 2456 1236" role="img" aria-label="' + sh.name + ' cutting layout">' +
+        '<rect class="sheet-bg" x="0" y="0" width="2440" height="1220"/>' +
+        parts.map(partSvg).join('') + '</svg></figure>';
+    }).join('');
+    var palings = '<div class="pal-intro"><p class="sub">Fence palings · 10 × 1800 × 100 × 12</p>' +
+      '<p class="cut-note">Rip with a circular saw, or a jigsaw run along a clamped straight edge. Glue pieces together with exterior wood glue or construction adhesive, plus 25 mm screws every 150 mm. Drill pilot holes, because old hardwood palings split easily. A dashed line through a bar means that paling is ripped in half.</p></div>' +
+      '<ol class="pals">' + PALINGS.map(palingRow).join('') + '</ol>';
+    el.cut.innerHTML = sheets + palings;
+  }
+
+  function showChip(key) {
+    var p = key && PMAP[key];
+    if (!p) { el.chip.textContent = 'Tap a piece in the model to see its size.'; return; }
+    el.chip.innerHTML = '<span class="num">' + p.step + '</span><strong>' + esc(p.name) + '</strong><span class="mono">' + esc(p.size) + '</span><span class="tag">' + esc(p.src) + ' · step ' + p.step + '</span>';
+  }
+
+  var view3d = null;
+
+  function selectPiece(key) {
+    state.picked = key;
+    showChip(key);
+    markPicked();
+    if (view3d) view3d.refresh();
+  }
+
+  function goTo(n, fly) {
+    state.step = Math.max(1, Math.min(STEP_COUNT, n));
+    state.picked = null;
+    state.hover = null;
+    renderPanel();
+    showChip(null);
+    save();
+    if (view3d) {
+      view3d.refresh();
+      if (fly !== false) view3d.flyTo(STEPS[state.step - 1].view);
+    }
+  }
+
+  el.prev.addEventListener('click', function () { goTo(state.step - 1); });
+  el.next.addEventListener('click', function () { goTo(state.step + 1); });
+  document.addEventListener('keydown', function (e) {
+    var tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (e.key === 'ArrowRight') goTo(state.step + 1);
+    if (e.key === 'ArrowLeft') goTo(state.step - 1);
+  });
+
+  el.pieces.addEventListener('click', function (e) {
+    var b = e.target.closest('.piece');
+    if (!b) return;
+    var key = b.getAttribute('data-key');
+    selectPiece(state.picked === key ? null : key);
+  });
+  el.pieces.addEventListener('mouseover', function (e) {
+    var b = e.target.closest('.piece');
+    var key = b ? b.getAttribute('data-key') : null;
+    if (key !== state.hover) { state.hover = key; if (view3d) view3d.refresh(); }
+  });
+  el.pieces.addEventListener('mouseleave', function () { state.hover = null; if (view3d) view3d.refresh(); });
+  el.cut.addEventListener('click', function (e) {
+    var g = e.target.closest('.part, .seg');
+    if (!g) return;
+    var key = g.getAttribute('data-key');
+    if (PMAP[key].step !== state.step) goTo(PMAP[key].step);
+    selectPiece(key);
+  });
+  el.nums.addEventListener('change', function () { state.nums = el.nums.checked; });
+
+  el.explode.addEventListener('change', function () {
+    state.explode = el.explode.checked;
+    if (view3d) view3d.flyTo(STEPS[state.step - 1].view);
+  });
+  el.open.addEventListener('change', function () { state.open = el.open.checked; });
+  el.metal.addEventListener('change', function () { state.metal = el.metal.checked; if (view3d) view3d.refresh(); });
+  el.frame.addEventListener('change', function () { state.frame = el.frame.checked; if (view3d) view3d.refresh(); });
+  [el.runFloor, el.runDeck].forEach(function (r) {
+    r.addEventListener('change', function () {
+      if (!r.checked) return;
+      state.run = r.value;
+      renderPanel();
+      save();
+      if (view3d) view3d.refresh();
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.views button'), function (b) {
+    b.addEventListener('click', function () { if (view3d) view3d.flyTo(VIEWS[b.getAttribute('data-view')]); });
+  });
+
+  renderPanel();
+  view3d = init3D();
+
+  function init3D() {
+    var host = $('viewer');
+    var fail = function () { $('fallback').hidden = false; el.chip.hidden = true; return null; };
+    if (!window.THREE || !THREE.OrbitControls) return fail();
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ antialias: true }); } catch (e) { return fail(); }
+    if (!renderer.getContext()) return fail();
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    host.insertBefore(renderer.domElement, host.firstChild);
+
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(35, 1, 20, 40000);
+    var controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.09;
+    controls.minDistance = 500;
+    controls.maxDistance = 12000;
+    controls.maxPolarAngle = Math.PI * 0.495;
+    controls.screenSpacePanning = true;
+
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x7d806f, 0.72));
+    var sun = new THREE.DirectionalLight(0xffffff, 0.8);
+    sun.position.set(2600, 4200, 2200);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(2048, 2048);
+    var sc = sun.shadow.camera;
+    sc.left = -2600; sc.right = 2600; sc.top = 2600; sc.bottom = -2600; sc.near = 200; sc.far = 12000;
+    sun.shadow.bias = -0.0004;
+    scene.add(sun);
+    var fillLight = new THREE.DirectionalLight(0xffffff, 0.25);
+    fillLight.position.set(-2500, 1500, -1800);
+    scene.add(fillLight);
+
+    var ground = new THREE.Mesh(new THREE.CircleGeometry(5200, 72), new THREE.MeshStandardMaterial({ color: 0xcbd5c0, roughness: 1 }));
+    ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    var BASE = {
+      ply: new THREE.MeshStandardMaterial({ color: 0xd4a96b, roughness: 0.82 }),
+      timber: new THREE.MeshStandardMaterial({ color: 0xe3c77e, roughness: 0.78 }),
+      steel: new THREE.MeshStandardMaterial({ color: 0x8e959b, roughness: 0.45, metalness: 0.45 }),
+      hw: new THREE.MeshStandardMaterial({ color: 0x3b3f42, roughness: 0.4, metalness: 0.6 }),
+      metal: new THREE.MeshStandardMaterial({ color: 0xd6d2c6, roughness: 0.42, metalness: 0.5, side: THREE.DoubleSide }),
+      block: new THREE.MeshStandardMaterial({ color: 0xa7a59c, roughness: 0.95 })
+    };
+    var edgeMat = new THREE.LineBasicMaterial({ color: 0x4a3420, transparent: true, opacity: 0.5 });
+    var accent = new THREE.Color(0x2e6a4d);
+    var edgeHi = new THREE.LineBasicMaterial({ color: 0x2e6a4d });
+
+    var wireTex = (function () {
+      var c = document.createElement('canvas');
+      c.width = c.height = 128;
+      var g = c.getContext('2d');
+      g.strokeStyle = '#ffffff';
+      g.lineWidth = 3;
+      for (var i = 0; i <= 128; i += 16) {
+        g.beginPath(); g.moveTo(i, 0); g.lineTo(i, 128); g.stroke();
+        g.beginPath(); g.moveTo(0, i); g.lineTo(128, i); g.stroke();
+      }
+      var t = new THREE.CanvasTexture(c);
+      t.wrapS = t.wrapT = THREE.RepeatWrapping;
+      return t;
+    })();
+
+    // Dimensions (mm). x along the coop (hatch end is +x), y up, z across (front door side is +z).
+    var B = 200, LF = 1803, WF = 860, HF = 913, T = 9;   // measured bare frame, outside of the steel
+    var X0 = -LF / 2, X1 = LF / 2, Z0 = -WF / 2, Z1 = WF / 2;
+    var D = WF + 2 * T, HD = D / 2;  // deck and gable width, and half of it
+    var R0 = B + HF + T;            // top of deck, base of roof box
+    var HB = 46;                    // gable height at the back; back rail (100) = HB + purlin depth
+    var S = (500 - HB) / D, ANG = Math.atan(S), CA = Math.cos(ANG), SA = Math.sin(ANG);
+    var SL = D / CA;                // slope length, back edge to front edge
+    function slopeY(z) { return R0 + HB + S * (z + HD); }
+
+    function mat(kind) { return BASE[kind].clone(); }
+    function addEdges(m) {
+      var e = new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry, 20), edgeMat);
+      e.userData.isEdge = true;
+      m.add(e);
+    }
+    function boxMesh(x0, x1, y0, y1, z0, z1, kind, edges) {
+      var m = new THREE.Mesh(new THREE.BoxGeometry(x1 - x0, y1 - y0, z1 - z0), mat(kind));
+      m.position.set((x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2);
+      if (edges !== false) addEdges(m);
+      return m;
+    }
+    function rectShape(w, h, holes) {
+      var s = new THREE.Shape();
+      s.moveTo(0, 0); s.lineTo(w, 0); s.lineTo(w, h); s.lineTo(0, h); s.lineTo(0, 0);
+      (holes || []).forEach(function (r) {
+        var p = new THREE.Path();
+        p.moveTo(r[0], r[1]); p.lineTo(r[0], r[3]); p.lineTo(r[2], r[3]); p.lineTo(r[2], r[1]); p.lineTo(r[0], r[1]);
+        s.holes.push(p);
+      });
+      return s;
+    }
+    function extrudeShape(shape, kind, rotY) {
+      var g = new THREE.ExtrudeGeometry(shape, { depth: T, bevelEnabled: false });
+      if (rotY) g.rotateY(rotY);
+      var m = new THREE.Mesh(g, mat(kind));
+      addEdges(m);
+      return m;
+    }
+    function wire(w, h) {
+      var t = wireTex.clone();
+      t.needsUpdate = true;
+      t.repeat.set(w / 200, h / 200);
+      var m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshStandardMaterial({
+        map: t, alphaTest: 0.35, side: THREE.DoubleSide, roughness: 0.5, metalness: 0.4, color: 0x9aa0a5
+      }));
+      m.userData.seeThrough = true;
+      return m;
+    }
+    // A strip lying in a gable's plane, top flush with the slope: wx wide (across the coop), dn deep.
+    function sloped(xc, za, zb, wx, dn) {
+      var L = (zb - za) / CA;
+      var m = new THREE.Mesh(new THREE.BoxGeometry(wx, dn, L), mat('timber'));
+      addEdges(m);
+      m.rotation.x = -ANG;
+      var zm = (za + zb) / 2;
+      m.position.set(xc, slopeY(zm) - dn / 2 * CA, zm + dn / 2 * SA);
+      return m;
+    }
+    // Purlin standing on edge on the slope: 1800 long, 48 deep, 24 thick.
+    function purlin(zp) {
+      var m = new THREE.Mesh(new THREE.BoxGeometry(X1 - X0 - T, 48, 24), mat('timber'));
+      addEdges(m);
+      m.rotation.x = -ANG;
+      m.position.set((X0 + T + X1) / 2, slopeY(zp) + 24 * CA, zp - 24 * SA);
+      return m;
+    }
+    function sheet(cx, width, lift) {
+      var g = new THREE.PlaneGeometry(width, 1202, Math.max(8, Math.round(width / 9.5)), 1);
+      var pos = g.attributes.position;
+      for (var i = 0; i < pos.count; i++) {
+        var x = pos.getX(i) + cx;
+        pos.setZ(i, -(8.5 + 8.5 * Math.sin(2 * Math.PI * x / 76)));
+      }
+      g.computeVertexNormals();
+      var m = new THREE.Mesh(g, mat('metal'));
+      m.rotation.x = Math.PI / 2 - ANG;
+      var tm = 425.5, zl = -HD + tm * CA, yl = R0 + HB + tm * SA, off = 48 + lift;
+      m.position.set(cx, yl + off * CA, zl - off * SA);
+      return m;
+    }
+
+    var roots = [], allMeshes = [];
+    var labelLayer = document.createElement('div');
+    labelLayer.className = 'labels';
+    host.insertBefore(labelLayer, renderer.domElement.nextSibling);
+    function reg(key, root, ex, labelAt) {
+      root.userData.base = root.position.clone();
+      root.userData.ex = new THREE.Vector3(ex[0], ex[1], ex[2]);
+      root.traverse(function (o) {
+        if (o.isMesh) {
+          if (!o.userData.key) o.userData.key = key;
+          o.userData.root = root;
+          o.castShadow = true;
+          o.receiveShadow = true;
+          allMeshes.push(o);
+        }
+      });
+      root.updateMatrixWorld(true);
+      var anchor = labelAt
+        ? new THREE.Vector3(labelAt[0], labelAt[1], labelAt[2])
+        : new THREE.Box3().setFromObject(root).getCenter(new THREE.Vector3());
+      var lbl = document.createElement('button');
+      lbl.type = 'button';
+      lbl.className = 'lbl';
+      lbl.tabIndex = -1;
+      lbl.hidden = true;
+      lbl.textContent = String(PMAP[key].step);
+      lbl.setAttribute('aria-label', PMAP[key].name + ', step ' + PMAP[key].step);
+      lbl.addEventListener('click', function () { selectPiece(state.picked === key ? null : key); });
+      labelLayer.appendChild(lbl);
+      roots.push({ key: key, root: root, local: root.worldToLocal(anchor), label: lbl, world: new THREE.Vector3(), shown: false, dim: false });
+      scene.add(root);
+      return root;
+    }
+
+    // Bessa blocks
+    [-700, 0, 700].forEach(function (x) {
+      [-390, 390].forEach(function (z) {
+        var b = boxMesh(x - 195, x + 195, 0, B, z - 95, z + 95, 'block', false);
+        b.castShadow = b.receiveShadow = true;
+        scene.add(b);
+      });
+    });
+
+    // 1. Steel frame and mesh
+    var steel = new THREE.Group(), P = 30;
+    [[X0, Z0], [X0, Z1 - P], [X1 - P, Z0], [X1 - P, Z1 - P], [-15, Z0], [-15, Z1 - P]].forEach(function (c) {
+      steel.add(boxMesh(c[0], c[0] + P, B, B + HF, c[1], c[1] + P, 'steel', false));
+    });
+    [[B, B + P], [B + HF - P, B + HF]].forEach(function (r) {
+      steel.add(boxMesh(X0, X1, r[0], r[1], Z1 - P, Z1, 'steel', false));
+      steel.add(boxMesh(X0, X1, r[0], r[1], Z0, Z0 + P, 'steel', false));
+      steel.add(boxMesh(X0, X0 + P, r[0], r[1], Z0, Z1, 'steel', false));
+      steel.add(boxMesh(X1 - P, X1, r[0], r[1], Z0, Z1, 'steel', false));
+      steel.add(boxMesh(-15, 15, r[0], r[1], Z0, Z1, 'steel', false));
+    });
+    reg('frame', steel, [0, 0, 0], [300, B + HF - 15, Z1 - 15]);
+
+    var meshG = new THREE.Group();
+    var wEnd = wire(WF, HF); wEnd.rotation.y = Math.PI / 2; wEnd.position.set(X0 - 1, B + HF / 2, 0); meshG.add(wEnd);
+    var wF = wire(-X0, HF); wF.position.set(X0 / 2, B + HF / 2, Z1 + 1); meshG.add(wF);
+    var wB = wire(-X0, HF); wB.position.set(X0 / 2, B + HF / 2, Z0 - 1); meshG.add(wB);
+    var wT = wire(-X0, WF); wT.rotation.x = -Math.PI / 2; wT.position.set(X0 / 2, B + HF + 1, 0); meshG.add(wT);
+    [[-440, -420, B + 40, B + HF - 34], [-38, -18, B + 40, B + HF - 34], [-440, -18, B + 40, B + 60], [-440, -18, B + HF - 54, B + HF - 34]].forEach(function (r) {
+      meshG.add(boxMesh(r[0], r[1], r[2], r[3], Z1 + 1, Z1 + 7, 'steel', false));
+    });
+    reg('mesh', meshG, [0, 0, 0], [-650, B + 560, Z1 + 1]);
+
+    // 2. Floor
+    reg('floorHen', boxMesh(2, 898, B + 30, B + 39, Z0 + 4, Z1 - 4, 'ply'), [0, 120, 0]);
+    reg('floorRun', boxMesh(-898, -2, B + 30, B + 39, Z0 + 4, Z1 - 4, 'ply'), [0, 120, 0]);
+
+    // 3. End wall with hatch hole
+    var endWall = extrudeShape(rectShape(WF, HF, [[(WF - 650) / 2, 90, (WF + 650) / 2, 430]]), 'ply', Math.PI / 2);
+    endWall.position.set(X1, B, Z1);
+    reg('endWall', endWall, [350, 0, 0], [X1 + T, B + 640, 0]);
+
+    // 4. Back wall and hinge strip
+    reg('backWall', boxMesh(0, X1 + T, B, B + HF, Z0 - T, Z0, 'ply'), [0, 0, -350]);
+    reg('hingeStrip', boxMesh(X1 + T - 80, X1 + T, B, B + HF, Z1, Z1 + T, 'ply'), [0, 0, 300]);
+
+    // 5. Top deck
+    reg('deckHen', boxMesh(0, X1 + T, B + HF, B + HF + T, Z0 - T, Z1 + T, 'ply'), [0, 600, 0]);
+    var packers = new THREE.Group();
+    packers.add(boxMesh(X0, 0, B + HF, B + HF + T, Z0 - T, Z0 - T + 45, 'ply'));
+    packers.add(boxMesh(X0, 0, B + HF, B + HF + T, Z1 + T - 45, Z1 + T, 'ply'));
+    packers.add(boxMesh(X0, X0 + 45, B + HF, B + HF + T, Z0 - T + 45, Z1 + T - 45, 'ply'));
+    reg('packers', packers, [0, 600, 0], [-452, B + HF + T, Z1 + T - 22]);
+    reg('deckRun', boxMesh(X0, 0, B + HF, B + HF + T, Z0 - T, Z1 + T, 'ply'), [0, 600, 0]);
+
+    // 6. Front door, hinged at the hatch-end corner
+    var hx = 829, DH = HF - 3;
+    var doorP = new THREE.Group();
+    doorP.position.set(hx, B, Z1 + T);
+    doorP.add(boxMesh(4 - hx, 828 - hx, 0, DH, -T, 0, 'ply'));
+    [[35, 135], [DH - 135, DH - 35]].forEach(function (r) {
+      var m = boxMesh(20 - hx, 810 - hx, r[0], r[1], -T - 12, -T, 'timber');
+      m.userData.key = 'doorBattens';
+      doorP.add(m);
+    });
+    [[69, 101], [DH - 101, DH - 69]].forEach(function (r) {
+      var m = boxMesh(-14, 16, r[0], r[1], 0, 3, 'hw', false);
+      m.userData.key = 'hinges';
+      doorP.add(m);
+    });
+    var latch = boxMesh(8 - hx, 32 - hx, DH / 2 - 15, DH / 2 + 15, 0, 12, 'hw', false);
+    latch.userData.key = 'hinges';
+    doorP.add(latch);
+    reg('door', doorP, [0, 0, 420]);
+
+    // 7. Hatch door and drip strip
+    // Hatch door is the cut-out from the end wall: flush in the hole, hinged at the top outside edge.
+    var hatchP = new THREE.Group();
+    hatchP.position.set(X1 + T, B + 429, 0);
+    hatchP.add(boxMesh(-T, 0, -338, 0, -324, 324, 'ply'));
+    reg('hatch', hatchP, [520, 0, 0]);
+    var hStops = new THREE.Group();
+    hStops.add(boxMesh(X1 - T, X1, B + 72, B + 102, -343, 343, 'ply'));
+    hStops.add(boxMesh(X1 - T, X1, B + 102, B + 430, -343, -313, 'ply'));
+    hStops.add(boxMesh(X1 - T, X1, B + 102, B + 430, 313, 343, 'ply'));
+    reg('hatchStops', hStops, [180, 0, 0]);
+    reg('drip', boxMesh(X1 + T, X1 + T + 12, B + 470, B + 570, -350, 350, 'timber'), [520, 0, 0]);
+
+    // 8. Roof base
+    var RX = 1000;
+    reg('backRail', boxMesh(X0 + T, X1, R0, R0 + 100, Z0 - T, Z0 - T + 24, 'timber'), [0, RX, -150]);
+    reg('frontBottom', boxMesh(X0 + T, X1, R0, R0 + 48, Z1 - 24, Z1, 'timber'), [0, RX, 150]);
+    // Gables reach the underside of the iron: the slope line plus the purlin depth, measured upright.
+    var SH = 48 / CA;
+    function gableShape() {
+      var s = new THREE.Shape();
+      s.moveTo(0, 0); s.lineTo(D, 0); s.lineTo(D, 500 + SH); s.lineTo(0, HB + SH); s.lineTo(0, 0);
+      return s;
+    }
+    var gH = extrudeShape(gableShape(), 'ply', -Math.PI / 2); gH.position.set(X1 + T, R0, Z0 - T);
+    reg('gables', gH, [300, RX, 0]);
+    var gW = extrudeShape(gableShape(), 'ply', -Math.PI / 2); gW.position.set(X0 + T, R0, Z0 - T);
+    reg('gables', gW, [-300, RX, 0]);
+    var gbH = new THREE.Group();
+    gbH.add(sloped(X1 - 6, Z0 - T + 24, Z1 - 48, 12, 48));
+    gbH.add(boxMesh(X1 - 24, X1, R0, R0 + 48, -100, 100, 'timber'));
+    reg('gableBattens', gbH, [180, RX, 0], [X1 - 6, slopeY(-16.5) - 24 * CA, -16.5 + 24 * SA]);
+    var gbW = new THREE.Group();
+    gbW.add(sloped(X0 + T + 6, Z0 - T + 24, Z1 - 48, 12, 48));
+    gbW.add(boxMesh(X0 + T, X0 + T + 24, R0, R0 + 48, -100, 100, 'timber'));
+    reg('gableBattens', gbW, [-180, RX, 0], [X0 + T + 6, slopeY(-16.5) - 24 * CA, -16.5 + 24 * SA]);
+
+    // 9. Roof front wall, battens and storage flap
+    reg('frontWall', boxMesh(X0 + T, 4.5, R0, R0 + 549, Z1, Z1 + T, 'ply'), [0, RX, 300]);
+    var fwR = extrudeShape(rectShape(X1 - 4.5, 549, [[150, 80, 750, 350]]), 'ply');
+    fwR.position.set(4.5, R0, Z1);
+    reg('frontWall', fwR, [0, RX, 300], [850, R0 + 250, Z1 + T]);
+    reg('frontTop', boxMesh(X0 + T, X1, R0 + 489, R0 + 537, Z1 - 24, Z1, 'timber'), [0, RX, 150]);
+    var ups = new THREE.Group();
+    [[X0 + T, X0 + T + 24], [X1 - 24, X1]].forEach(function (r) {
+      ups.add(boxMesh(r[0], r[1], R0 + 48, R0 + 489, Z1 - 48, Z1, 'timber'));
+    });
+    ups.add(boxMesh(-45.5, 54.5, R0 + 48, R0 + 489, Z1 - 12, Z1, 'timber'));
+    reg('uprights', ups, [0, RX, 150]);
+    // Storage flap is the cut-out from the front wall, flush in the hole.
+    var flapP = new THREE.Group();
+    flapP.position.set(454.5, R0 + 349, Z1 + T);
+    flapP.add(boxMesh(-299, 299, -268, 0, -T, 0, 'ply'));
+    reg('flap', flapP, [0, RX, 420]);
+    var fStops = new THREE.Group();
+    fStops.add(boxMesh(136.5, 772.5, R0 + 62, R0 + 92, Z1 - T, Z1, 'ply'));
+    fStops.add(boxMesh(136.5, 166.5, R0 + 92, R0 + 350, Z1 - T, Z1, 'ply'));
+    fStops.add(boxMesh(742.5, 772.5, R0 + 92, R0 + 350, Z1 - T, Z1, 'ply'));
+    reg('flapStops', fStops, [0, RX, 180]);
+
+    // 10. Purlins and middle rafter
+    reg('purlins', purlin(0), [0, RX + 250, 0]);
+    reg('rafter', sloped(4.5, Z0 - T + 24, Z1 - 24, 24, 48), [0, RX + 120, 0]);
+
+    // 11. Metal roof
+    var mBig = new THREE.Group();
+    mBig.add(sheet(540.5, 840, 0));
+    mBig.add(sheet(-223.5, 840, 2));
+    reg('metalBig', mBig, [0, RX + 600, 0]);
+    reg('metalNarrow', sheet(-767.5, 400, 4), [0, RX + 600, 0]);
+    var roofMesh = wire(LF + T, Math.round(SL));
+    roofMesh.rotation.x = Math.PI / 2 - ANG;
+    roofMesh.position.set((X0 + X1 + T) / 2, R0 + HB + SL / 2 * SA + 47 * CA, -HD + SL / 2 * CA - 47 * SA);
+    reg('roofMesh', roofMesh, [0, RX + 450, 0]);
+
+    function refresh() {
+      roots.forEach(function (r) {
+        var p = PMAP[r.key];
+        var vis = p.step <= state.step && (!p.opt || p.opt === state.run);
+        if (p.kind === 'metal' && !state.metal) vis = false;
+        if ((r.key === 'frame' || r.key === 'mesh') && !state.frame) vis = false;
+        r.root.visible = vis;
+        r.label.classList.toggle('now', p.step === state.step);
+        r.label.classList.toggle('hot', r.key === state.hover || r.key === state.picked);
+        r.root.traverse(function (o) {
+          if (o.isMesh && o.material.emissive) {
+            var k = o.userData.key, pk = PMAP[k];
+            var strong = k && (k === state.hover || k === state.picked);
+            var fresh = pk && pk.step === state.step;
+            o.material.emissive.copy(accent).multiplyScalar(strong ? 0.55 : fresh ? 0.24 : 0);
+          } else if (o.userData.isEdge) {
+            var k2 = o.parent.userData.key, pk2 = PMAP[k2];
+            var on = (pk2 && pk2.step === state.step) || k2 === state.hover || k2 === state.picked;
+            o.material = on ? edgeHi : edgeMat;
+          }
+        });
+      });
+    }
+
+    function applyTheme() {
+      var cs = getComputedStyle(document.documentElement);
+      scene.background = new THREE.Color(cs.getPropertyValue('--scene').trim() || '#e6eae1');
+      ground.material.color.set(cs.getPropertyValue('--ground').trim() || '#cbd5c0');
+      accent.set(cs.getPropertyValue('--coop').trim() || '#2e6a4d');
+      edgeHi.color.copy(accent);
+      refresh();
+    }
+    if (window.matchMedia) {
+      var mq = window.matchMedia('(prefers-color-scheme: dark)');
+      if (mq.addEventListener) mq.addEventListener('change', applyTheme); else if (mq.addListener) mq.addListener(applyTheme);
+    }
+    new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    var tween = null;
+    function flyTo(view) {
+      var p = new THREE.Vector3(view.p[0], view.p[1], view.p[2]);
+      var t = new THREE.Vector3(view.t[0], view.t[1], view.t[2]);
+      if (state.explode) {
+        p.sub(t).multiplyScalar(1.45).add(t);
+        t.y += 450; p.y += 450;
+      }
+      if (reduce) {
+        camera.position.copy(p); controls.target.copy(t); controls.update(); tween = null; return;
+      }
+      tween = { p0: camera.position.clone(), t0: controls.target.clone(), p1: p, t1: t, k: 0 };
+    }
+    controls.addEventListener('start', function () { tween = null; });
+
+    var ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), down = null;
+    function shown(o) { while (o) { if (!o.visible) return false; o = o.parent; } return true; }
+    renderer.domElement.addEventListener('pointerdown', function (e) { down = { x: e.clientX, y: e.clientY }; });
+    renderer.domElement.addEventListener('pointerup', function (e) {
+      if (!down) return;
+      var d = Math.hypot(e.clientX - down.x, e.clientY - down.y);
+      down = null;
+      if (d > 6) return;
+      var r = renderer.domElement.getBoundingClientRect();
+      ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+      ray.setFromCamera(ndc, camera);
+      var hits = ray.intersectObjects(scene.children, true).filter(function (h) {
+        return h.object.isMesh && h.object.userData.key && shown(h.object);
+      });
+      var hit = hits.find(function (h) { return h.object.userData.key !== 'mesh'; }) || hits[0];
+      selectPiece(hit ? hit.object.userData.key : null);
+    });
+
+    function resize() {
+      var w = host.clientWidth, h = host.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    if (window.ResizeObserver) new ResizeObserver(resize).observe(host); else window.addEventListener('resize', resize);
+    resize();
+
+    var v0 = STEPS[state.step - 1].view;
+    camera.position.set(v0.p[0], v0.p[1], v0.p[2]);
+    controls.target.set(v0.t[0], v0.t[1], v0.t[2]);
+    controls.update();
+    applyTheme();
+
+    var exT = 0, opT = 0, last = performance.now();
+    function ease(k) { return k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2; }
+    function tick(now) {
+      var dt = Math.min(0.05, (now - last) / 1000);
+      last = now;
+      var exGoal = state.explode ? 1 : 0, opGoal = state.open ? 1 : 0;
+      if (reduce) { exT = exGoal; opT = opGoal; }
+      else { exT += (exGoal - exT) * Math.min(1, dt * 6); opT += (opGoal - opT) * Math.min(1, dt * 5); }
+      roots.forEach(function (r) {
+        r.root.position.copy(r.root.userData.base).addScaledVector(r.root.userData.ex, exT);
+      });
+      doorP.rotation.y = 1.75 * opT;
+      hatchP.rotation.z = 1.15 * opT;
+      flapP.rotation.x = -1.05 * opT;
+      if (tween) {
+        tween.k = Math.min(1, tween.k + dt / 0.9);
+        var e = ease(tween.k);
+        camera.position.lerpVectors(tween.p0, tween.p1, e);
+        controls.target.lerpVectors(tween.t0, tween.t1, e);
+        if (tween.k >= 1) tween = null;
+      }
+      controls.update();
+      updateLabels(now);
+      renderer.render(scene, camera);
+      requestAnimationFrame(tick);
+    }
+
+    // Step-number tags: follow each piece on screen, and fade when something sits in front of it.
+    var oray = new THREE.Raycaster(), tmpV = new THREE.Vector3(), dirV = new THREE.Vector3(), lastOcc = 0;
+    function updateLabels(now) {
+      scene.updateMatrixWorld();
+      var w = host.clientWidth, h = host.clientHeight;
+      roots.forEach(function (r) {
+        var want = state.nums && r.root.visible;
+        if (want) {
+          r.world.copy(r.local);
+          r.root.localToWorld(r.world);
+          tmpV.copy(r.world).project(camera);
+          if (tmpV.z > 1 || tmpV.z < -1) want = false;
+          else r.label.style.transform = 'translate(' + ((tmpV.x + 1) / 2 * w).toFixed(1) + 'px,' + ((1 - tmpV.y) / 2 * h).toFixed(1) + 'px) translate(-50%, -50%)';
+        }
+        if (want !== r.shown) { r.shown = want; r.label.hidden = !want; }
+      });
+      if (now - lastOcc > 220) { lastOcc = now; occlusion(); }
+    }
+    function occlusion() {
+      var cand = allMeshes.filter(function (m) { return !m.userData.seeThrough && shown(m); });
+      roots.forEach(function (r) {
+        if (!r.shown) return;
+        dirV.copy(r.world).sub(camera.position);
+        var dist = dirV.length();
+        oray.set(camera.position, dirV.normalize());
+        oray.far = Math.max(0, dist - 20);
+        var blocked = oray.intersectObjects(cand, false).some(function (hh) { return hh.object.userData.root !== r.root; });
+        if (blocked !== r.dim) { r.dim = blocked; r.label.classList.toggle('dim', blocked); }
+      });
+    }
+    requestAnimationFrame(tick);
+
+    return { refresh: refresh, flyTo: flyTo };
+  }
+})();
+</script>
+</body>
+</html>
