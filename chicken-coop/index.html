@@ -245,8 +245,8 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
           </div>
         </div>
         <div class="seg-wrap">
-          <span>Egg hatch in the back wall</span>
-          <div class="seg" role="radiogroup" aria-label="Egg hatch in the back wall">
+          <span>Egg hatch in the end wall</span>
+          <div class="seg" role="radiogroup" aria-label="Egg hatch in the end wall">
             <label><input type="radio" name="hatch" id="hatchYes" value="yes" checked><span>Cut it</span></label>
             <label><input type="radio" name="hatch" id="hatchNo" value="no"><span>Not now</span></label>
           </div>
@@ -275,9 +275,9 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
           <tbody>
             <tr><td><span class="pnum">2</span>Floors</td><td>890 × 852<span class="note">hen half</span>903 × 852<span class="note">run half, with a 540 × 18 notch for the mesh door</span></td></tr>
             <tr><td><span class="pnum">2</span>Door ledger strip</td><td>500 × 20 × 18<span class="note">two layers of 9 mm ply, inside the front base rail</span></td></tr>
-            <tr><td><span class="pnum">3</span>End wall</td><td>860 × 913<span class="note">solid for now</span></td></tr>
+            <tr><td><span class="pnum">3</span>End wall</td><td>860 × 913</td></tr>
+            <tr><td><span class="pnum">3</span>Egg hatch (optional)</td><td>650 × 340<span class="note">cut-out from the end wall, centred, bottom edge 100 up; ply stops 30 wide: 650, 340, 340</span></td></tr>
             <tr><td><span class="pnum">4</span>Back wall</td><td>904 × 913</td></tr>
-            <tr><td><span class="pnum">4</span>Egg hatch (optional)</td><td>650 × 340<span class="note">cut-out from the back wall, centred, bottom edge 100 up; ply stops 30 wide: 650, 340, 340</span></td></tr>
             <tr><td><span class="pnum">5</span>Top deck, hen half</td><td>904 × 869<span class="note">cut 904 × 878, then trim 9 off the front edge</span></td></tr>
             <tr><td><span class="pnum">8</span>Gables</td><td>878 long, 100 and 554 high<span class="note">cut both from an 878 × 657 strip, then trim 9 off the tall end of the hatch-end one</span></td></tr>
             <tr><td><span class="pnum">9</span>Roof front wall, run half</td><td>899 × 549<span class="note">with a 250 × 300 feeder hole, 60 in from the run end, 150 up</span></td></tr>
@@ -314,11 +314,11 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     { key: 'floorHen', step: 2, kind: 'ply', name: 'Floor, hen half', size: '890 × 852, notch round posts', src: 'Sheet 1' },
     { key: 'floorRun', step: 2, opt: 'floor', kind: 'ply', name: 'Floor, run half', size: '903 × 852, notch 540 × 18 for the mesh door, notch round posts', src: 'Sheet 3' },
     { key: 'doorLedger', step: 2, opt: 'floor', kind: 'ply', name: 'Door ledger strip', size: '500 × 20 × 18, two layers of 9 mm ply, inside the front base rail', src: 'Sheet 2' },
-    { key: 'endWall', step: 3, kind: 'ply', name: 'End wall', size: '860 × 913, solid for now', src: 'Sheet 2' },
+    { key: 'endWall', step: 3, kind: 'ply', name: 'End wall', size: '860 × 913', src: 'Sheet 2' },
+    { key: 'hatch', step: 3, hatch: true, kind: 'ply', name: 'Egg hatch door (optional)', size: '650 × 340, the piece cut out of the end wall, 100 up', src: 'Sheet 2' },
+    { key: 'hatchStops', step: 3, hatch: true, kind: 'ply', name: 'Hatch stops', size: '30 wide ply strips: 650, 340, 340', src: 'Ply offcut' },
+    { key: 'drip', step: 3, hatch: true, kind: 'timber', name: 'Drip strip', size: '700 × 100, paling laid flat', src: 'Paling 8' },
     { key: 'backWall', step: 4, kind: 'ply', name: 'Back wall', size: '904 × 913', src: 'Sheet 2' },
-    { key: 'hatch', step: 4, hatch: true, kind: 'ply', name: 'Egg hatch door (optional)', size: '650 × 340, the piece cut out of the back wall, 100 up', src: 'Sheet 2' },
-    { key: 'hatchStops', step: 4, hatch: true, kind: 'ply', name: 'Hatch stops', size: '30 wide ply strips: 650, 340, 340', src: 'Ply offcut' },
-    { key: 'drip', step: 4, hatch: true, kind: 'timber', name: 'Drip strip', size: '700 × 100, paling laid flat', src: 'Paling 8' },
     { key: 'deckHen', step: 5, kind: 'ply', name: 'Top deck, hen half', size: '904 × 869: cut 904 × 878, then trim 9 off the front edge', src: 'Sheet 1' },
     { key: 'packers', step: 5, opt: 'floor', kind: 'ply', name: 'Packer strips ×3', size: '45 wide: 2 × 908 long, 1 × 788 long', src: 'Sheet 3' },
     { key: 'deckRun', step: 5, opt: 'deck', kind: 'ply', name: 'Top deck, run half', size: '908 × 878', src: 'Sheet 3' },
@@ -368,23 +368,22 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
           ? 'You’ve chosen to deck the run half instead, so only the hen half gets a ply floor. The run keeps its wire floor.'
           : 'Two halves: the hen half comes from sheet 1 and the run half from sheet 3. The mesh door sits 20 mm into the frame, right where the run floor would lie, so cut a notch 540 long and 18 deep off the run floor’s front edge, starting at the end that meets the hen floor. Then fix a ledger strip inside the front base rail across the door opening, flush with the top, so the notched edge still has something to sit on. Make it from two 500 × 20 strips of 9 mm ply glued together (not paling, because the hens can reach it) and fix it with self-drilling screws through the rail from outside.'
       ]; } },
-    { title: 'End wall', view: { p: [2900, 1300, 1700], t: [300, 600, 0] },
-      body: function () { return [
-        'The end wall is solid for now. You can cut an egg hatch into it later.',
-        'Screw the panel to the outside of the frame. Drill 5 mm clearance holes in the ply, then put self-drilling screws into the steel every 150 mm, 12 mm in from the edge.'
-      ]; } },
-    { title: 'Back wall and egg hatch (optional)', view: { p: [1900, 1300, -2500], t: [450, 550, 0] },
+    { title: 'End wall and egg hatch (optional)', view: { p: [3000, 1200, 1300], t: [600, 550, 0] },
       body: function (s) {
-        var t = ['The back wall runs from the middle post to the end and covers the back edge of the end wall. Screw it to the steel the same way as the end wall.'];
+        var t = ['Screw the end wall to the outside of the frame. Drill 5 mm clearance holes in the ply, then put self-drilling screws into the steel every 150 mm, 12 mm in from the edge.'];
         if (!s.hatch) {
-          return t.concat(['You’ve left the egg hatch out for now, so the back wall stays solid. You can cut it in later: 650 × 340, centred along the wall, with its bottom edge 100 up from the base.']);
+          return t.concat(['You’ve left the egg hatch out for now, so the end wall stays solid. You can cut it in later: 650 × 340, centred along the wall, with its bottom edge 100 up from the base.']);
         }
         return t.concat([
-          'Egg hatch (optional): cut a 650 × 340 hole, centred along the back wall, with its bottom edge 100 up from the base (about 70 above the floor, so the bedding stays in). Keep the piece that comes out, because it becomes the hatch door. Drill a starter hole at each corner on the wall side of the line, then cut along the lines with a jigsaw so the cut-out stays whole. Never cut the steel: if a rail is in the way, fit the hole between the rails.',
-          'Glue and screw 30 mm ply strips around the inside of the hole along the bottom and both sides, sticking 12 mm into the opening, so the hatch closes against them. Hinge it along the top on the outside, screw a flat paling strip to the wall just above the hinges to shed rain, and add a turn-button or bolt at the bottom. The roof’s back overhang gives it extra shelter.',
+          'Egg hatch (optional): before the wall goes on, cut a 650 × 340 hole, centred along it, with its bottom edge 100 up from the base (about 70 above the floor, so the bedding stays in). Keep the piece that comes out, because it becomes the hatch door. Drill a starter hole at each corner on the wall side of the line, then cut along the lines with a jigsaw so the cut-out stays whole. Never cut the steel: if a rail is in the way, fit the hole between the rails.',
+          'Glue and screw 30 mm ply strips around the inside of the hole along the bottom and both sides, sticking 12 mm into the opening, so the hatch closes against them. Hinge it along the top on the outside, screw a flat paling strip to the wall just above the hinges to shed rain, and add a turn-button or bolt at the bottom.',
           'You’ll be one hinge short: the tall door takes three and the hatch two, and you have four. Buy one more, or hang the tall door on two.'
         ]);
       } },
+    { title: 'Back wall', view: { p: [2300, 1500, -2600], t: [300, 600, 0] },
+      body: function () { return [
+        'The back wall runs from the middle post to the end and covers the back edge of the end wall. Screw it to the steel the same way as the end wall.'
+      ]; } },
     { title: 'Top deck', view: { p: [2200, 2600, 2400], t: [0, 900, 0] },
       body: function (s) { return [
         'Trim 9 mm off the front edge of the deck first, so it finishes 904 × 869. The tall front door passes in front of it.',
@@ -524,10 +523,10 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       { key: 'hingeStrip', x: 0, y: 884, w: 1471, h: 80, label: 'Hinge strip', size: '1471 × 80' }
     ] },
     { name: 'Sheet 2', parts: [
-      { key: 'endWall', x: 0, y: 0, w: 860, h: 913, label: 'End wall', size: '860 × 913' },
-      { key: 'backWall', hatchVariant: false, x: 863, y: 0, w: 904, h: 913, label: 'Back wall', size: '904 × 913' },
-      { key: 'backWall', hatchVariant: true, x: 863, y: 0, w: 904, h: 913, label: 'Back wall', size: '904 × 913', lab: { b: [452, 170, 70], n: [452, 300, 'middle'] } },
-      { key: 'hatch', x: 990, y: 473, w: 650, h: 340, label: 'Egg hatch', size: '650 × 340', extra: 'optional cut-out', cutout: true, lab: { b: [140, 110, 50], n: [210, 110, 'start'], e: [325, 225] } },
+      { key: 'endWall', hatchVariant: false, x: 0, y: 0, w: 860, h: 913, label: 'End wall', size: '860 × 913' },
+      { key: 'endWall', hatchVariant: true, x: 0, y: 0, w: 860, h: 913, label: 'End wall', size: '860 × 913', lab: { b: [430, 170, 70], n: [430, 300, 'middle'] } },
+      { key: 'hatch', x: 105, y: 473, w: 650, h: 340, label: 'Egg hatch', size: '650 × 340', extra: 'optional cut-out', cutout: true, lab: { b: [140, 110, 50], n: [210, 110, 'start'], e: [325, 225] } },
+      { key: 'backWall', x: 863, y: 0, w: 904, h: 913, label: 'Back wall', size: '904 × 913' },
       { key: 'frontWall', x: 1770, y: 0, w: 549, h: 899, label: 'Front wall', size: '899 × 549', extra: 'run half', notch: [150, 60, 300, 250], notchNotes: ['feeder', '250 × 300'], lab: { b: [274, 450, 70], n: [274, 575, 'middle'], e: [274, 665] } },
       { key: 'slider', x: 911, y: 1002, w: 610, h: 132, label: 'Runners', size: '4 × 610' },
       { key: 'packers', opt: 'floor', x: 0, y: 919, w: 908, h: 141, label: 'Packers', size: '3 × 908 × 45' },
@@ -999,27 +998,25 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     // Ply ledger (two 9 mm layers) inside the front base rail, flush with its top, carries the notched edge.
     reg('doorLedger', boxMesh(DX0, DX1, B, B + P, Z1 - P - 18, Z1 - P, 'ply'), [0, 60, -150]);
 
-    // 3. End wall: solid for now (an egg hatch can be cut in later)
-    reg('endWall', boxMesh(X1, X1 + T, B, B + HF, Z0, Z1, 'ply'), [350, 0, 0]);
-
-    // 4. Back wall
-    // Two versions of the back wall: solid, or with the optional 650 × 340 egg hatch hole (centred, 100 up).
-    reg('backWall', boxMesh(XM, X1 + T, B, B + HF, Z0 - T, Z0, 'ply'), [0, 0, -350]).userData.hatchVariant = false;
-    var HW = X1 + T - XM, hx0 = (HW - 650) / 2, hcx = XM + HW / 2;
-    var bwHatch = extrudeShape(rectShape(HW, HF, [[hx0, 100, hx0 + 650, 440]]), 'ply');
-    bwHatch.position.set(XM, B, Z0 - T);
-    reg('backWall', bwHatch, [0, 0, -350], [XM + 120, B + 650, Z0 - T]).userData.hatchVariant = true;
+    // 3. End wall, in two versions: solid, or with the optional 650 × 340 egg hatch hole (centred, 100 up).
+    reg('endWall', boxMesh(X1, X1 + T, B, B + HF, Z0, Z1, 'ply'), [350, 0, 0]).userData.hatchVariant = false;
+    var ewHatch = extrudeShape(rectShape(WF, HF, [[(WF - 650) / 2, 100, (WF + 650) / 2, 440]]), 'ply', Math.PI / 2);
+    ewHatch.position.set(X1, B, Z1);
+    reg('endWall', ewHatch, [350, 0, 0], [X1 + T, B + 650, 0]).userData.hatchVariant = true;
     // Egg hatch door: the cut-out, flush in the hole, hinged along its top outside edge; stops inside, drip strip above.
     var hatchP = new THREE.Group();
-    hatchP.position.set(hcx, B + 439, Z0 - T);
-    hatchP.add(boxMesh(-324, 324, -338, 0, 0, T, 'ply'));
-    reg('hatch', hatchP, [0, 0, -520]);
+    hatchP.position.set(X1 + T, B + 439, 0);
+    hatchP.add(boxMesh(-T, 0, -338, 0, -324, 324, 'ply'));
+    reg('hatch', hatchP, [520, 0, 0]);
     var hStops = new THREE.Group();
-    hStops.add(boxMesh(hcx - 343, hcx + 343, B + 82, B + 112, Z0, Z0 + T, 'ply'));
-    hStops.add(boxMesh(hcx - 343, hcx - 313, B + 112, B + 440, Z0, Z0 + T, 'ply'));
-    hStops.add(boxMesh(hcx + 313, hcx + 343, B + 112, B + 440, Z0, Z0 + T, 'ply'));
-    reg('hatchStops', hStops, [0, 0, -180]);
-    reg('drip', boxMesh(hcx - 350, hcx + 350, B + 480, B + 580, Z0 - T - 12, Z0 - T, 'timber'), [0, 0, -520]);
+    hStops.add(boxMesh(X1 - T, X1, B + 82, B + 112, -343, 343, 'ply'));
+    hStops.add(boxMesh(X1 - T, X1, B + 112, B + 440, -343, -313, 'ply'));
+    hStops.add(boxMesh(X1 - T, X1, B + 112, B + 440, 313, 343, 'ply'));
+    reg('hatchStops', hStops, [180, 0, 0]);
+    reg('drip', boxMesh(X1 + T, X1 + T + 12, B + 480, B + 580, -350, 350, 'timber'), [520, 0, 0]);
+
+    // 4. Back wall
+    reg('backWall', boxMesh(XM, X1 + T, B, B + HF, Z0 - T, Z0, 'ply'), [0, 0, -350]);
 
     // 5. Top deck: front edge trimmed 9 mm so the tall door passes in front of it
     reg('deckHen', boxMesh(XM, X1 + T, B + HF, B + HF + T, Z0 - T, Z1, 'ply'), [0, 600, 0]);
@@ -1232,7 +1229,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       });
       doorP.rotation.y = 1.75 * opT;
       sliderPanel.position.x = sliderX0 + 300 * opT;
-      hatchP.rotation.x = 1.15 * opT;
+      hatchP.rotation.z = 1.15 * opT;
       if (tween) {
         tween.k = Math.min(1, tween.k + dt / 0.9);
         var e = ease(tween.k);
