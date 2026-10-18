@@ -95,7 +95,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
 .piece { width: 100%; display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; column-gap: 10px; align-items: baseline; text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 8px 4px; color: inherit; font: inherit; cursor: pointer; border-radius: 0; }
 .piece:hover, .piece.on { background: var(--coop-soft); }
 .sw { width: 12px; height: 12px; border-radius: 3px; align-self: center; grid-row: span 2; border: 1px solid rgba(0,0,0,.18); }
-.sw.ply { background: var(--ply); } .sw.timber { background: var(--timber); } .sw.steel { background: var(--steel); } .sw.metal { background: var(--metal); } .sw.hw { background: var(--hw); }
+.sw.ply { background: var(--ply); } .sw.timber { background: var(--timber); } .sw.steel { background: var(--steel); } .sw.metal { background: var(--metal); } .sw.hw { background: var(--hw); } .sw.pvc { background: #f1f1ec; }
 .pname { font-weight: 600; font-size: 15px; line-height: 1.3; }
 .psrc { font-family: var(--f-mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
 .psize { grid-column: 2 / 4; font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
@@ -233,7 +233,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
         <div class="toggles">
           <label class="tog wide"><input type="checkbox" id="optNums" checked> Step numbers on the pieces</label>
           <label class="tog"><input type="checkbox" id="optExplode"> Pull pieces apart</label>
-          <label class="tog"><input type="checkbox" id="optOpen"> Open the front door</label>
+          <label class="tog"><input type="checkbox" id="optOpen"> Open the door and slider</label>
           <label class="tog"><input type="checkbox" id="optMetal" checked> Metal roof</label>
           <label class="tog"><input type="checkbox" id="optFrame" checked> Steel frame and mesh</label>
         </div>
@@ -254,6 +254,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
           <li><span class="sw steel"></span>Steel frame</li>
           <li><span class="sw metal"></span>Roof sheet</li>
           <li><span class="sw hw"></span>Hinges, latch</li>
+          <li><span class="sw pvc"></span>PVC feeder</li>
           <li><span class="sw now"></span>Added in this step</li>
         </ul>
       </section>
@@ -271,7 +272,8 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
             <tr><td><span class="pnum">4</span>Back wall</td><td>904 × 913</td></tr>
             <tr><td><span class="pnum">5</span>Top deck, hen half</td><td>904 × 869<span class="note">cut 904 × 878, then trim 9 off the front edge</span></td></tr>
             <tr><td><span class="pnum">8</span>Gables</td><td>878 long, 100 and 554 high<span class="note">cut both from an 878 × 657 strip, then trim 9 off the tall end of the hatch-end one</span></td></tr>
-            <tr><td><span class="pnum">9</span>Roof front wall, run half</td><td>899 × 549</td></tr>
+            <tr><td><span class="pnum">9</span>Roof front wall, run half</td><td>899 × 549<span class="note">with a 250 × 300 feeder hole, 60 in from the run end, 150 up</span></td></tr>
+            <tr><td><span class="pnum">9</span>Feeder slider</td><td>300 × 360<span class="note">runs in ply runners: 2 × 610 × 20 and 2 × 610 × 40</span></td></tr>
             <tr><td><span class="pnum">12</span>Tall front door</td><td>818 × 1468<span class="note">opens the coop and the roof storage</span></td></tr>
             <tr><td><span class="pnum">12</span>Hinge strip</td><td>80 × 1471</td></tr>
             <tr><td><span class="pnum">12</span>Door ledges ×3</td><td>785 × 100 ×2, 745 × 100<span class="note">each two layers of 9 mm ply</span></td></tr>
@@ -313,7 +315,9 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     { key: 'frontBottom', step: 6, kind: 'timber', name: 'Front bottom cleat', size: '1794 × 48 × 24, on edge', src: 'Paling 3' },
     { key: 'gableBattens', step: 7, kind: 'timber', name: 'Gable strips and blocks', size: '2 sloping strips 900 × 48 × 12, 2 blocks 200 × 48 × 24', src: 'Palings 6, 7' },
     { key: 'gables', step: 8, kind: 'ply', name: 'Gable ends ×2', size: '878 long, 100 high at back, 554 at front; trim 9 off the tall end of the hatch-end one', src: 'Sheet 1' },
-    { key: 'frontWall', step: 9, kind: 'ply', name: 'Roof front wall, run half', size: '899 × 549', src: 'Sheet 2' },
+    { key: 'frontWall', step: 9, kind: 'ply', name: 'Roof front wall, run half', size: '899 × 549, with a 250 × 300 feeder hole', src: 'Sheet 2' },
+    { key: 'slider', step: 9, kind: 'ply', name: 'Feeder slider and runners', size: 'slider 300 × 360; runners 2 × 610 × 20 and 2 × 610 × 40', src: 'Sheets 2, 3' },
+    { key: 'feeder', step: 9, kind: 'pvc', name: 'Food feeder pipe (yours)', size: '100 mm PVC, top about 330 above the deck, end cap on', src: 'Existing' },
     { key: 'frontTop', step: 9, kind: 'timber', name: 'Front top cleat', size: '1794 × 48 × 24, 12 below the top', src: 'Paling 4' },
     { key: 'uprights', step: 9, kind: 'timber', name: 'End uprights ×2 and middle backer', size: '441 × 48 × 24 each; backer 441 × 100', src: 'Palings 6, 7, 8' },
     { key: 'purlins', step: 10, kind: 'timber', name: 'Middle purlin', size: '1794 × 48 × 24, on edge', src: 'Paling 5' },
@@ -385,11 +389,14 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
         'Trim 9 mm off the tall end of the gable that goes at the hatch end, so the tall door and its hinge strip can pass in front of it. The other gable stays full length.',
         'Stand a gable at each end and screw through it into the ends of the back rail and the front cleat. The gables come right up to the underside of the roof sheet, so there’s no gap at the ends.'
       ]; } },
-    { title: 'Roof front wall (run half)', view: { p: [800, 1700, 3300], t: [0, 1200, 0] },
+    { title: 'Roof front wall (run half) and feeder', view: { p: [-300, 1500, 3000], t: [-500, 1000, 0] },
       body: function () { return [
         'Only the run half gets a fixed front wall, 899 × 549. It runs from the run-end gable to the middle post, with a glued upright at the gable end and a flat paling backer behind its other end. The tall door covers the hen half.',
+        'Before it goes up, cut a 250 × 300 hole in it for refilling the feeder: start the hole 60 in from the run-end edge, with its bottom edge 150 up from the bottom of the wall.',
         'Fix the other upright inside the hatch-end gable, right at its front edge: the full-height hinge strip screws into it later.',
-        'Fix the top cleat 12 mm below the top edge so it stays under the slope. Over the hen half it spans on its own between the backer and the hatch-end upright, so screw it firmly to both. The tall door closes against it.'
+        'Fix the top cleat 12 mm below the top edge so it stays under the slope. Over the hen half it spans on its own between the backer and the hatch-end upright, so screw it firmly to both. The tall door closes against it.',
+        'Stand your 100 mm PVC feeder in the front corner at the run end, about 105 in from the end of the frame and 95 in from the front, so it clears the corner post and the packers. It goes up through a snug hole in the top mesh (or the run deck); keep the gap around it under 6 mm so mice can’t follow it up. Trim the pipe so its top sits about 330 above the deck, then check your 90° elbow fits under the iron before you cut.',
+        'Make the slider: screw two runners across the outside of the wall, one above the hole and one below, each a 20 mm ply spacer with a 40 mm ply lip on top, 610 long. The 300 × 360 slider runs between them; slide it along to refill, then slide it back and lock it with a turn-button.'
       ]; } },
     { title: 'Middle purlin and rafter', view: { p: [2300, 3000, 2300], t: [0, 1200, 0] },
       body: function () { return [
@@ -495,7 +502,8 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     { name: 'Sheet 2', parts: [
       { key: 'endWall', x: 0, y: 0, w: 860, h: 913, label: 'End wall', size: '860 × 913' },
       { key: 'backWall', x: 863, y: 0, w: 904, h: 913, label: 'Back wall', size: '904 × 913' },
-      { key: 'frontWall', x: 1770, y: 0, w: 549, h: 899, label: 'Front wall', size: '899 × 549', extra: 'run half' },
+      { key: 'frontWall', x: 1770, y: 0, w: 549, h: 899, label: 'Front wall', size: '899 × 549', extra: 'run half', notch: [150, 60, 300, 250], notchNotes: ['feeder', '250 × 300'], lab: { b: [274, 450, 70], n: [274, 575, 'middle'], e: [274, 665] } },
+      { key: 'slider', x: 911, y: 1002, w: 610, h: 132, label: 'Runners', size: '4 × 610' },
       { key: 'packers', opt: 'floor', x: 0, y: 919, w: 908, h: 141, label: 'Packers', size: '3 × 908 × 45' },
       { key: 'doorLedger', opt: 'floor', x: 911, y: 919, w: 1003, h: 80, label: 'Ledger', size: '2 × 500 × 20' }
     ] },
@@ -506,6 +514,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       { key: 'doorBattens', x: 0, y: 824, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
       { key: 'doorBattens', x: 0, y: 927, w: 745, h: 100, label: 'Ledge', size: '745 × 100' },
       { key: 'doorBattens', x: 0, y: 1030, w: 745, h: 100, label: 'Ledge', size: '745 × 100' },
+      { key: 'slider', x: 791, y: 824, w: 300, h: 360, label: 'Slider', size: '300 × 360', lab: { b: [150, 90, 55], n: [150, 205, 'middle'], s: [150, 300], small: true }, nodims: true },
       { key: 'doorBattens', x: 1471, y: 884, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
       { key: 'doorBattens', x: 1471, y: 987, w: 785, h: 100, label: 'Ledge', size: '785 × 100' },
       { key: 'doorBattens', x: 1471, y: 1090, w: 785, h: 100, label: 'Ledge', size: '785 × 100' }
@@ -540,15 +549,21 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     if (p.diag) s += '<line x1="' + (p.x + p.diag[0]) + '" y1="' + p.y + '" x2="' + (p.x + p.diag[1]) + '" y2="' + (p.y + p.h) + '"/>';
     if (p.notch) {
       s += '<rect class="notch" x="' + (p.x + p.notch[0]) + '" y="' + (p.y + p.notch[1]) + '" width="' + p.notch[2] + '" height="' + p.notch[3] + '"/>';
+      if (p.notchNotes) {
+        var ncx = p.x + p.notch[0] + p.notch[2] / 2, ncy = p.y + p.notch[1] + p.notch[3] / 2;
+        p.notchNotes.forEach(function (t, i) { s += txt('ph', ncx, ncy + (i - (p.notchNotes.length - 1) / 2) * 70, 'middle', t); });
+      }
     }
     if (p.notes) {
       p.notes.forEach(function (t, i) { s += txt('ph', cx, p.y + 85 + i * 72, 'middle', t); });
     }
     if (p.lab) {
-      // Panel with a cut-out inside: its own number and name sit where the cut-out isn't.
+      // Custom label placement: for panels with a hole in them, or pieces too small for the usual layout.
       s += badge(p.x + p.lab.b[0], p.y + p.lab.b[1], p.lab.b[2], n);
       s += txt(p.lab.small ? 'pn sm' : 'pn', p.x + p.lab.n[0], p.y + p.lab.n[1], p.lab.n[2], p.label);
-      s += dimLabels(p);
+      if (p.lab.e && p.extra) s += txt('ph', p.x + p.lab.e[0], p.y + p.lab.e[1], 'middle', p.extra);
+      if (p.lab.s) s += txt('ph', p.x + p.lab.s[0], p.y + p.lab.s[1], 'middle', p.size);
+      if (!p.nodims) s += dimLabels(p);
     } else if (p.h >= 600 && p.w >= 400) {
       // Tall panel: number and name in the middle.
       s += badge(cx, cy - 100, 80, n);
@@ -759,7 +774,8 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
       steel: new THREE.MeshStandardMaterial({ color: 0x8e959b, roughness: 0.45, metalness: 0.45 }),
       hw: new THREE.MeshStandardMaterial({ color: 0x3b3f42, roughness: 0.4, metalness: 0.6 }),
       metal: new THREE.MeshStandardMaterial({ color: 0xd6d2c6, roughness: 0.42, metalness: 0.5, side: THREE.DoubleSide }),
-      block: new THREE.MeshStandardMaterial({ color: 0xa7a59c, roughness: 0.95 })
+      block: new THREE.MeshStandardMaterial({ color: 0xa7a59c, roughness: 0.95 }),
+      pvc: new THREE.MeshStandardMaterial({ color: 0xf1f1ec, roughness: 0.55 })
     };
     var edgeMat = new THREE.LineBasicMaterial({ color: 0x4a3420, transparent: true, opacity: 0.5 });
     var accent = new THREE.Color(0x2e6a4d);
@@ -1008,7 +1024,10 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     reg('gableBattens', gbW, [-180, RX, 0], [X0 + T + 6, slopeY(-16.5) - 24 * CA, -16.5 + 24 * SA]);
 
     // 9. Roof front wall over the run half only (the tall door covers the hen half), top cleat, uprights and backer
-    reg('frontWall', boxMesh(X0 + T, XM, R0, R0 + 549, Z1, Z1 + T, 'ply'), [0, RX, 300]);
+    // Run-half front wall with a 250 × 300 hole for refilling the feeder, 60 in from the run end, 150 up.
+    var fwRun = extrudeShape(rectShape(XM - X0 - T, 549, [[60, 150, 310, 450]]), 'ply');
+    fwRun.position.set(X0 + T, R0, Z1);
+    reg('frontWall', fwRun, [0, RX, 300], [X0 + T + 600, R0 + 300, Z1 + T]);
     reg('frontTop', boxMesh(X0 + T, X1, R0 + 489, R0 + 537, Z1 - 24, Z1, 'timber'), [0, RX, 150]);
     var ups = new THREE.Group();
     [[X0 + T, X0 + T + 24], [X1 - 24, X1]].forEach(function (r) {
@@ -1016,6 +1035,29 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
     });
     ups.add(boxMesh(XM - 50, XM + 50, R0 + 48, R0 + 489, Z1 - 12, Z1, 'timber'));
     reg('uprights', ups, [0, RX, 150]);
+
+    // Refill slider: a 300 × 360 ply panel running sideways between two runners (spacer plus lip) on the wall.
+    var sx0 = X0 + T;
+    var slider = new THREE.Group();
+    [[R0 + 482, R0 + 502, Z1 + T, Z1 + 2 * T], [R0 + 462, R0 + 502, Z1 + 2 * T, Z1 + 3 * T],
+     [R0 + 98, R0 + 118, Z1 + T, Z1 + 2 * T], [R0 + 98, R0 + 138, Z1 + 2 * T, Z1 + 3 * T]].forEach(function (r) {
+      slider.add(boxMesh(sx0 + 30, sx0 + 640, r[0], r[1], r[2], r[3], 'ply'));
+    });
+    var sliderPanel = boxMesh(sx0 + 35, sx0 + 335, R0 + 120, R0 + 480, Z1 + T, Z1 + 2 * T, 'ply');
+    slider.add(sliderPanel);
+    var sliderX0 = sliderPanel.position.x;
+    reg('slider', slider, [0, RX, 420]);
+
+    // Food feeder: the existing 100 mm PVC pipe in the run-end front corner, its capped top in the roof storage.
+    var fx = X0 + 105, fz = Z1 - 95, fy0 = B + P + T, fy1 = R0 + 330;
+    var feeder = new THREE.Group();
+    var pipe = new THREE.Mesh(new THREE.CylinderGeometry(55, 55, fy1 - fy0, 32), mat('pvc'));
+    pipe.position.set(fx, (fy0 + fy1) / 2, fz); addEdges(pipe); feeder.add(pipe);
+    var cap = new THREE.Mesh(new THREE.CylinderGeometry(59, 59, 30, 32), mat('pvc'));
+    cap.position.set(fx, fy1 + 10, fz); addEdges(cap); feeder.add(cap);
+    var spout = new THREE.Mesh(new THREE.CylinderGeometry(55, 55, 130, 32), mat('pvc'));
+    spout.rotation.z = Math.PI / 2; spout.position.set(fx + 90, fy0 + 60, fz); addEdges(spout); feeder.add(spout);
+    reg('feeder', feeder, [0, RX / 2, 0], [fx, R0 - 200, fz + 56]);
 
     // 10. Purlins and middle rafter
     reg('purlins', purlin(0), [0, RX + 250, 0]);
@@ -1132,6 +1174,7 @@ h1 { margin: 2px 0 0; font-family: var(--f-display); font-weight: 600; font-size
         r.root.position.copy(r.root.userData.base).addScaledVector(r.root.userData.ex, exT);
       });
       doorP.rotation.y = 1.75 * opT;
+      sliderPanel.position.x = sliderX0 + 300 * opT;
       if (tween) {
         tween.k = Math.min(1, tween.k + dt / 0.9);
         var e = ease(tween.k);
