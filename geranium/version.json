@@ -1,0 +1,5 @@
+{
+ "version": "0.8.0",
+ "publishedAt": "2026-10-23T11:12:26.529Z",
+ "notes": "- **Version number and update banner.** The version is shown at the foot of the sidebar and in Settings › Preferences › About & updates.\n  - When a newer version is available, a banner says so, with *What's new*, *Download* (desktop) or *Reload to update* (browser), and a button to dismiss it. Once dismissed, it stays hidden until a newer version comes out.\n  - Geranium checks at most once a day. The desktop app asks GitHub's public list of Geranium releases, and the browser version asks its own website. Nothing about you or your money is sent.\n  - The check can be switched off, and *Check now* is there too. Each desktop check is listed in the network log.\n  - Updates are never installed by themselves.\n- Release notes on GitHub now include this change log's section for each version (they showed \"What's new in undefined\")."
+}
